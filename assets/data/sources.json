@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updated": "2026-10-14",
+  "note": "Публичные IPTV-плейлисты. url — прямая ссылка на M3U. flag — короткая метка 2–4 символа. title — название. desc — короткое описание.",
+  "sources": [
+    { "url": "https://iptv-org.github.io/iptv/countries/ru.m3u", "flag": "RU", "title": "Россия", "desc": "iptv-org · федеральные и региональные" },
+    { "url": "https://iptv-org.github.io/iptv/index.m3u", "flag": "ALL", "title": "Мир", "desc": "iptv-org · все страны" },
+    { "url": "https://iptv-org.github.io/iptv/categories/kids.m3u", "flag": "KIDS", "title": "Детские", "desc": "iptv-org · мультфильмы" },
+    { "url": "https://iptv-org.github.io/iptv/categories/movies.m3u", "flag": "MOV", "title": "Кино", "desc": "iptv-org · фильмы" },
+    { "url": "https://iptv-org.github.io/iptv/categories/music.m3u", "flag": "MUS", "title": "Музыка", "desc": "iptv-org · музыкальные" },
+    { "url": "https://iptv-org.github.io/iptv/categories/news.m3u", "flag": "NEWS", "title": "Новости", "desc": "iptv-org · новостные" },
+    { "url": "https://iptv-org.github.io/iptv/categories/sports.m3u", "flag": "SPORT", "title": "Спорт", "desc": "iptv-org · спортивные" },
+    { "url": "https://ngrch.github.io/iptv/ru.m3u", "flag": "NGR", "title": "ngrch · Россия", "desc": "коллекция ngrch · обновляется" },
+    { "url": "https://ngrch.github.io/iptv/music.m3u", "flag": "NGR", "title": "ngrch · Музыка", "desc": "коллекция ngrch · музыка и радио" },
+    { "url": "https://ngrch.github.io/iptv/cartoons.m3u", "flag": "NGR", "title": "ngrch · Мультфильмы", "desc": "коллекция ngrch · мультфильмы" },
+    { "url": "https://raw.githubusercontent.com/smolnp/IPTVru/refs/heads/gh-pages/IPTVru.m3u", "flag": "SMN", "title": "smolnp · Россия", "desc": "IPTVru · основной список" },
+    { "url": "https://raw.githubusercontent.com/smolnp/IPTVru/refs/heads/gh-pages/IPTVstable.m3u8", "flag": "SMN", "title": "smolnp · Стабильный", "desc": "IPTVru · проверенные каналы" },
+    { "url": "https://raw.githubusercontent.com/blackbirdstudiorus/LoganetXIPTV/main/LoganetXAll.m3u", "flag": "LGX", "title": "LoganetX", "desc": "публичный · смешанный" },
+    { "url": "https://raw.githubusercontent.com/IPTVRU2026/IPTVMIR/main/IPTV_MEGA_PLAYLIST.m3u", "flag": "DRP", "title": "DropTV · 9000+", "desc": "обновление еженедельно" },
+    { "url": "https://raw.githubusercontent.com/CrocoUser/zabava-project/refs/heads/main/zabava-full.m3u", "flag": "ZBV", "title": "Zabava · полный", "desc": "Ростелеком · 2500+ потоков" },
+    { "url": "https://raw.githubusercontent.com/Sanuyyq/iptv-ot-sanaeye/main/tvteam.m3u8", "flag": "SAN", "title": "Sanuyyq · tvteam", "desc": "альтернативный источник" }
+  ]
+}
