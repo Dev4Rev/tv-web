@@ -150,7 +150,8 @@
     wrap.classList.remove('is-controls-hidden');
     if (hideTimer) clearTimeout(hideTimer);
     hideTimer = setTimeout(function () {
-      if (isFullscreen()) wrap.classList.add('is-controls-hidden');
+      if (!video || video.paused) return;
+      wrap.classList.add('is-controls-hidden');
     }, HIDE_DELAY);
   }
 
@@ -161,19 +162,79 @@
 
   function toggleFullscreen() {
     if (!wrap) return;
-    if (!isFullscreen()) {
-      var req = wrap.requestFullscreen || wrap.webkitRequestFullscreen || wrap.webkitRequestFullScreen;
-      if (req) { var p = req.call(wrap); if (p && p.catch) p.catch(function () {}); }
-    } else {
+
+    if (isFullscreen()) {
       var exit = document.exitFullscreen || document.webkitExitFullscreen || document.webkitCancelFullScreen;
-      if (exit) { var p2 = exit.call(document); if (p2 && p2.catch) p2.catch(function () {}); }
+      if (exit) { try { var p = exit.call(document); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
+      return;
     }
+
+    
+
+    // Цепочка fallback
+    var req = wrap.requestFullscreen || wrap.webkitRequestFullscreen || wrap.webkitRequestFullScreen;
+    if (req) {
+      try {
+        var p1 = req.call(wrap);
+        if (p1 && p1.catch) p1.catch(function (err) {
+          log('fullscreen-wrap-rejected', err);
+          tryVideoFullscreen();
+        });
+        return;
+      } catch (e) {
+        log('fullscreen-wrap-throw', e);
+      }
+    }
+    tryVideoFullscreen();
+
+    function tryVideoFullscreen() {
+      if (video && typeof video.webkitEnterFullscreen === 'function') {
+        try { video.webkitEnterFullscreen(); return; } catch (e) { log('ios-fs-fallback', e); }
+      }
+      if (video && typeof video.requestFullscreen === 'function') {
+        try {
+          var p2 = video.requestFullscreen();
+          if (p2 && p2.catch) p2.catch(function (err) { log('fullscreen-video-rejected', err); });
+        } catch (e) { log('fullscreen-video-throw', e); }
+      }
+    }
+  }
+
+  // ─── Orientation lock + hint ────────────────────────────
+  var orientationLocked = false;
+  var rotateHintTimer = null;
+
+  function tryLockOrientation() {
+    // Пытаемся повернуть в landscape. Если не получилось —
+    // оставляем portrait fullscreen без подсказок.
+    if (!screen.orientation || typeof screen.orientation.lock !== 'function') {
+      return;
+    }
+    try {
+      var p = screen.orientation.lock('landscape');
+      if (p && p.catch) p.catch(function () {});
+    } catch (e) {}
+  }
+
+  function unlockOrientation() {
+    if (screen.orientation && typeof screen.orientation.unlock === 'function') {
+      try { screen.orientation.unlock(); } catch (e) {}
+    }
+  }
+
+  function updateRotateHint() {
+    // Заглушка: подсказка «Поверните устройство» отключена —
+    // если автоповорот не сработал, остаёмся в portrait fullscreen.
+    var hint = document.getElementById('rotateHint');
+    if (hint) hint.hidden = true;
   }
 
   function bind() {
     if (!video) return;
 
-    video.addEventListener('click', function () {
+    video.addEventListener('click', function (e) {
+      // При двойном клике e.detail > 1 — не ставим паузу, отработает dblclick
+      if (e.detail > 1) return;
       togglePlay();
       showControls();
     });
@@ -270,8 +331,13 @@
       });
     }
 
-    ['mousemove', 'mousedown', 'touchstart', 'touchmove'].forEach(function (ev) {
+    ['mousemove', 'mousedown', 'touchstart'].forEach(function (ev) {
       wrap.addEventListener(ev, showControls, { passive: true });
+    });
+
+    window.addEventListener('resize', updateRotateHint);
+    window.addEventListener('orientationchange', function () {
+      setTimeout(updateRotateHint, 150);
     });
 
     document.addEventListener('keydown', function () {
@@ -280,27 +346,24 @@
 
     document.addEventListener('fullscreenchange', function () {
       var fsEl = document.fullscreenElement;
-      if (fsEl === video && wrap) {
-        var exit = document.exitFullscreen || document.webkitExitFullscreen;
-        if (exit) exit.call(document);
-        setTimeout(function () {
-          var req = wrap.requestFullscreen || wrap.webkitRequestFullscreen;
-          if (req) { var p = req.call(wrap); if (p && p.catch) p.catch(function () {}); }
-        }, 100);
-        return;
-      }
-      if (fsEl === wrap) showControls();
-      else {
+      if (fsEl === wrap) {
+        showControls();
+        tryLockOrientation();
+      } else {
         if (hideTimer) clearTimeout(hideTimer);
         wrap.classList.remove('is-controls-hidden');
+        unlockOrientation();
       }
     });
 
     document.addEventListener('webkitfullscreenchange', function () {
-      if (isFullscreen()) showControls();
-      else {
+      if (isFullscreen()) {
+        showControls();
+        tryLockOrientation();
+      } else {
         if (hideTimer) clearTimeout(hideTimer);
         wrap.classList.remove('is-controls-hidden');
+        unlockOrientation();
       }
     });
 
@@ -337,8 +400,15 @@
 
     window.dev4revControls = {
       show: showControls,
+      hide: function () {
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+        if (wrap) wrap.classList.add('is-controls-hidden');
+      },
       isFullscreen: isFullscreen,
-      toggleFullscreen: toggleFullscreen
+      toggleFullscreen: toggleFullscreen,
+      tryLockOrientation: tryLockOrientation,
+      unlockOrientation: unlockOrientation,
+      updateRotateHint: updateRotateHint
     };
   });
 })();

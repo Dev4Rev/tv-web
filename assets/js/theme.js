@@ -19,18 +19,37 @@
   });
   setTheme(getTheme());
 
-  // ─── TV mode ───────────────────────────────────────────────
+    // ─── TV mode ───────────────────────────────────────────────
   var tvToggle = document.getElementById('tvToggle');
-  function getTvMode() { return document.documentElement.dataset.tvMode || 'auto'; }
-  function isTvActive() {
-    var v = getTvMode();
-    return v === 'on';
+
+  function isMobileDevice() {
+    try {
+      if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+        return false;
+      }
+    } catch (e) { return false; }
+    var ua = navigator.userAgent || '';
+    if (/SmartTV|Tizen|Web0S|WebOS|HbbTV|NETCAST|Viera|BRAVIA|Aquos|SmartHub|AndroidTV|GoogleTV|AppleTV|PhilipsTV|Hisense|Vestel|Roku/i.test(ua)) {
+      return false; // SmartTV с пультом — touch может быть
+    }
+    return true;
   }
+
+  function getTvMode() { return document.documentElement.dataset.tvMode || 'auto'; }
+  function isTvActive() { return getTvMode() === 'on'; }
+
   function setTvMode(value) {
+    // На мобильных ТВ-режим запрещён
+    if (isMobileDevice()) {
+      document.documentElement.dataset.tvMode = 'off';
+      try { localStorage.removeItem(TV_KEY); } catch (e) {}
+      updateTvToggleState();
+      return;
+    }
+
     var v = (value === 'on' || value === 'off') ? value : 'auto';
     if (v === 'auto') {
       try { localStorage.removeItem(TV_KEY); } catch (e) {}
-      // Re-run auto detection
       var ua = navigator.userAgent || '';
       var isTvUA = /SmartTV|Tizen|Web0S|WebOS|HbbTV|NETCAST|Viera|BRAVIA|Aquos|SmartHub|AndroidTV|GoogleTV|AppleTV|PhilipsTV|Hisense|Vestel|Roku/i.test(ua);
       var isBigScreen = window.screen && window.screen.width >= 1600 && window.screen.height >= 900;
@@ -43,22 +62,32 @@
     updateTvToggleState();
     window.dispatchEvent(new CustomEvent('dev4rev:tvchange', { detail: { active: isTvActive() } }));
   }
+
   function updateTvToggleState() {
     if (!tvToggle) return;
     var active = isTvActive();
     tvToggle.setAttribute('aria-pressed', active ? 'true' : 'false');
     tvToggle.classList.toggle('is-active', active);
   }
+
   if (tvToggle) {
     tvToggle.addEventListener('click', function () {
+      if (isMobileDevice()) return; // защита от случайного клика
       setTvMode(isTvActive() ? 'off' : 'on');
     });
   }
+
+  // При инициализации: если мобильный — принудительно off
+  if (isMobileDevice()) {
+    document.documentElement.dataset.tvMode = 'off';
+    try { localStorage.removeItem(TV_KEY); } catch (e) {}
+  }
   updateTvToggleState();
 
-  // Экспорт для других скриптов
+  // Экспорт
   window.dev4revSetTheme = setTheme;
   window.dev4revGetTheme = getTheme;
   window.dev4revSetTvMode = setTvMode;
   window.dev4revIsTvActive = isTvActive;
+  window.dev4revIsMobileDevice = isMobileDevice;
 })();

@@ -1853,8 +1853,6 @@ html[data-theme="dark"] ::selection {
 
 @media (max-width: 640px) {
   .hero { padding: 88px 20px 20px; }
-  .playlist-bar { flex-direction: column; gap: 8px; }
-  .playlist-bar__btn { height: 46px; justify-content: center; padding: 0 22px; }
   .sources { margin-top: 32px; }
   .sources + .sources { margin-top: 24px; }
   .source-list { grid-template-columns: 1fr; }
@@ -1905,3 +1903,637 @@ html[data-theme="dark"] ::selection {
     -webkit-backdrop-filter: none;
   }
 }
+
+/* ─── 16 · QUALITY ──────────────────────────────────────────────────── */
+
+.player__ctrl-btn--quality {
+  width: auto;
+  min-width: 46px;
+  padding: 0 10px;
+  gap: 4px;
+}
+
+.player__quality-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.player__quality {
+  position: absolute;
+  right: 16px;
+  bottom: 64px;
+  z-index: 25;
+  min-width: 150px;
+  max-height: calc(100% - 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  background: rgba(18, 18, 18, 0.94);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 6px;
+  color: #f5f5f5;
+  transform: translateY(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+.player__quality.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
+}
+
+.player__quality-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.player__quality-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: inherit;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.player__quality-item:hover,
+.player__quality-item:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+.player__quality-item.is-active {
+  color: var(--accent);
+}
+.player__quality-item.is-active::after {
+  content: "✓";
+  font-size: 13px;
+  margin-left: auto;
+}
+
+.player__quality-item small {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-left: 8px;
+}
+
+
+/* ─── 17 · MOBILE PLAYER ───────────────────────────────────────────── */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Скрываем только слайдер, mute оставляем */
+  .player__volume {
+    display: none !important;
+  }
+
+  .player__ctrl-btn {
+    width: clamp(32px, 9vw, 44px);
+    height: clamp(32px, 9vw, 44px);
+  }
+
+  .player__ctrl-icon {
+    width: clamp(16px, 4.6vw, 20px);
+    height: clamp(16px, 4.6vw, 20px);
+  }
+
+  .player__ctrl-btn--quality {
+    width: auto;
+    min-width: clamp(36px, 11vw, 56px);
+    padding: 0 clamp(6px, 2vw, 12px);
+    gap: 3px;
+  }
+
+  .player__quality-label {
+    font-size: clamp(9px, 2.4vw, 10.5px);
+  }
+
+  .player__ctrl-time {
+    font-size: clamp(9px, 2.4vw, 11.5px);
+    min-width: clamp(26px, 7vw, 40px);
+  }
+
+  .player__seek {
+    height: clamp(24px, 6vw, 32px);
+    min-width: 24px;
+  }
+
+  .player__controls {
+    gap: clamp(2px, 1.2vw, 8px);
+    padding: clamp(6px, 1.8vw, 14px) clamp(6px, 1.8vw, 12px) clamp(8px, 2vw, 14px);
+  }
+
+  .player__side-btn {
+    width: clamp(32px, 10vw, 44px);
+    height: clamp(32px, 10vw, 44px);
+    background: rgba(0, 0, 0, 0.32);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .player__side-btn svg {
+    width: clamp(16px, 5vw, 22px);
+    height: clamp(16px, 5vw, 22px);
+  }
+
+  .player__side {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .player__video-wrap:not(.is-controls-hidden) .player__side {
+    opacity: 0.75;
+  }
+
+  .player__side--prev { left: clamp(6px, 2vw, 12px); }
+  .player__side--next { right: clamp(6px, 2vw, 12px); }
+
+  .player__quality-item {
+    padding: 12px 14px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  .player__video-wrap {
+    aspect-ratio: 16 / 10;
+    min-height: 190px;
+  }
+
+  #duration {
+    display: none;
+  }
+
+  .player__quality {
+    right: 8px;
+    left: 8px;
+    bottom: 54px;
+    min-width: 0;
+  }
+
+  .player__bigplay {
+    width: clamp(52px, 15vw, 72px);
+    height: clamp(52px, 15vw, 72px);
+  }
+  .player__bigplay svg {
+    width: clamp(22px, 7vw, 32px);
+    height: clamp(22px, 7vw, 32px);
+  }
+}
+
+@media (max-width: 400px) {
+  .player__quality-label {
+    display: none;
+  }
+  .player__ctrl-btn--quality {
+    min-width: clamp(30px, 9vw, 40px);
+    padding: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .player__ctrl-time {
+    min-width: 22px;
+    font-size: 9px;
+  }
+  .player__controls {
+    gap: 2px;
+  }
+  .player__ctrl-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .player__ctrl-icon {
+    width: 15px;
+    height: 15px;
+  }
+  .player__ctrl-btn--quality {
+    min-width: 30px;
+  }
+}
+
+
+/* ─── 18 · ROTATE HINT ──────────────────────────────────────────────── */
+
+.player__rotate-hint {
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-align: center;
+  padding: 24px;
+  pointer-events: none;
+}
+.player__rotate-hint[hidden] { display: none; }
+
+.player__rotate-hint svg {
+  width: 56px;
+  height: 56px;
+  color: #ffffff;
+  animation: dev4rev-rotate-hint 2s ease-in-out infinite;
+}
+
+.player__rotate-hint span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes dev4rev-rotate-hint {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(90deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .player__rotate-hint svg { animation: none; }
+}
+
+
+/* КРИТИЧНО: [hidden] должен перебивать display: inline-flex */
+.player__ctrl-btn[hidden],
+.player__quality[hidden],
+.player__rotate-hint[hidden] {
+  display: none !important;
+}
+
+
+/* Поиск в панели каналов (fullscreen) */
+.player__channels-search {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+  background: rgba(0,0,0,0.18);
+}
+.player__channels-input {
+  width: 100%;
+  height: 34px;
+  padding: 0 14px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12.5px;
+  color: #f5f5f5;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.player__channels-input::placeholder { color: rgba(255,255,255,0.4); }
+.player__channels-input:focus {
+  border-color: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 0 3px rgba(90,130,255,0.2);
+}
+html[data-tv-mode="on"] .player__channels-input {
+  height: 48px;
+  font-size: 15px;
+  padding: 0 20px;
+}
+.player__channels-empty {
+  padding: 24px 16px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  list-style: none;
+}
+
+
+/* Pin скрыт на мобильных — sticky-плеер не работает в узком экране */
+@media (max-width: 640px) {
+  #pinBtn {
+    display: none !important;
+  }
+}
+
+
+/* Toggle свёрнутой истории поиска */
+.suggest__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  text-align: left;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  transition: background 0.1s, color 0.1s;
+}
+.suggest__toggle:hover {
+  color: var(--ink);
+  background: var(--surface);
+}
+.suggest__toggle-count {
+  margin-left: auto;
+  color: var(--faint);
+  font-size: 10px;
+}
+.suggest__toggle-chev {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform 0.2s var(--ease);
+}
+.suggest__toggle.is-open .suggest__toggle-chev {
+  transform: rotate(180deg);
+}
+
+
+/* ─── 22 · TO-PLAYER BUTTON ──────────────────────────────────────────── */
+
+.to-player {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 45;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  opacity: 0;
+  transform: translateY(8px);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.25s var(--ease),
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s,
+    visibility 0s linear 0.25s;
+}
+.to-player.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.25s var(--ease),
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s,
+    visibility 0s linear 0s;
+}
+.to-player:hover {
+  color: var(--accent);
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+.to-player:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.to-player svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Мобильные — компактнее и ближе к углу */
+@media (max-width: 640px) {
+  .to-player {
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-player {
+    transition: none;
+  }
+}
+
+
+/* ─── 23 · RECENT (свёрнутые недавние) ──────────────────────────────── */
+
+.sources__recent-body {
+  padding-top: 8px;
+}
+
+/* Счётчик рядом с «недавние» */
+#recentCount {
+  margin-left: auto;
+  margin-right: 8px;
+  color: var(--faint);
+  font-size: 10.5px;
+}
+
+html[data-tv-mode="on"] .sources__recent-body .sources__clear {
+  font-size: 13px;
+  padding: 6px 14px;
+}
+html[data-tv-mode="on"] #recentCount {
+  font-size: 13px;
+}
+
+
+/* ─── 24 · CLEAR-INLINE (кнопка в строке «недавние») ───────────────── */
+
+.sources__clear-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px 3px 6px;
+  margin-right: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+.sources__clear-inline svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}
+.sources__clear-inline:hover,
+.sources__clear-inline:focus-visible {
+  color: var(--err);
+  border-color: var(--err);
+  background: rgba(220, 38, 38, 0.08);
+  outline: none;
+}
+
+/* На узких экранах — только иконка, без текста */
+@media (max-width: 480px) {
+  .sources__clear-inline {
+    padding: 4px;
+    margin-right: 4px;
+  }
+  .sources__clear-inline span {
+    display: none;
+  }
+  .sources__clear-inline svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* TV-режим — крупнее */
+html[data-tv-mode="on"] .sources__clear-inline {
+  padding: 5px 12px 5px 10px;
+  font-size: 13px;
+  margin-right: 10px;
+}
+html[data-tv-mode="on"] .sources__clear-inline svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* patch_v10: playlist-bar mobile override */
+/* Поле и кнопка — одной высоты, шрифт как в оригинале,
+   ширина 100% + border-box → не уезжает за экран */
+@media (max-width: 640px) {
+  .playlist-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .playlist-bar__input {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 46px !important;
+    font-size: 12.5px !important;
+    padding: 0 18px !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    flex: none !important;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .playlist-bar__input::placeholder {
+    font-size: 12.5px;
+    opacity: 0.7;
+  }
+  .playlist-bar__btn {
+    width: 100%;
+    max-width: 100%;
+    height: 46px !important;
+    font-size: 14px !important;
+    padding: 0 22px;
+    box-sizing: border-box;
+    justify-content: center;
+    flex: none !important;
+  }
+  .playlist-bar__btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+
+
+/* ─── 27 · ТВ-РЕЖИМ НЕДОСТУПЕН НА МОБИЛЬНЫХ ────────────────────────── */
+
+@media (hover: none) and (pointer: coarse) {
+  #tvToggle {
+    display: none !important;
+  }
+}
+@media (max-width: 640px) {
+  #tvToggle {
+    display: none !important;
+  }
+}
+
+
+
+/* ─── 28 · КОМПАКТНОЕ МЕНЮ КАЧЕСТВА НА МОБИЛЬНОМ ───────────────────── */
+
+@media (max-width: 640px) {
+  .player__quality {
+    right: 8px;
+    left: 8px;
+    bottom: 54px;
+    min-width: 0;
+    max-height: calc(100% - 62px);
+  }
+  .player__quality-item {
+    padding: 6px 10px;
+    font-size: 11.5px;
+    min-height: 32px;
+    gap: 6px;
+  }
+  .player__quality-item small {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 400px) {
+  .player__quality-item {
+    padding: 5px 8px;
+    font-size: 11px;
+    min-height: 30px;
+  }
+  .player__quality {
+    max-height: calc(100% - 56px);
+  }
+}
+
+/* Стилизация скроллбара внутри меню качества (WebKit) */
+.player__quality::-webkit-scrollbar {
+  width: 6px;
+}
+.player__quality::-webkit-scrollbar-track {
+  background: transparent;
+}
+.player__quality::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 3px;
+}
+.player__quality::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+

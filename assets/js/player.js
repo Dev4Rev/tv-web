@@ -9,9 +9,12 @@
   var onFatal = null;
 
   // Токен сессии: каждое play() увеличивает его.
-  // Все async колбэки проверяют актуальность токена, чтобы не влиять на чужой поток.
   var sessionToken = 0;
   var watchdogTimer = null;
+
+  // Качество
+  var qualityLevels = [];
+  var currentQuality = -1;
 
   function nextToken() {
     sessionToken += 1;
@@ -28,9 +31,6 @@
     return name === 'AbortError' || msg.indexOf('interrupted') !== -1;
   }
 
-  // ─── Нормализация URL ───────────────────────────────────
-  // Если снаружи определена dev4revNormalizeUrl — используем её.
-  // Иначе — безопасный fallback (без него play() падал с TypeError).
   function normalizeUrl(url) {
     var s = String(url == null ? '' : url).trim();
     if (!s) return s;
@@ -39,14 +39,17 @@
       try {
         var r = window.dev4revNormalizeUrl(s);
         if (typeof r === 'string' && r) return r;
-      } catch (e) {
-        log('normalize-url', e);
-      }
+      } catch (e) { log('normalize-url', e); }
     }
 
-    // Fallback: протокол-относительные ссылки → https
     if (s.indexOf('//') === 0) return 'https:' + s;
     return s;
+  }
+
+  function showControls() {
+    if (window.dev4revControls && window.dev4revControls.show) {
+      window.dev4revControls.show();
+    }
   }
 
   function destroy() {
@@ -65,6 +68,9 @@
       try { video.removeAttribute('src'); } catch (e) {}
       try { video.load(); } catch (e) {}
     }
+    qualityLevels = [];
+    currentQuality = -1;
+    updateQualityUI();
   }
 
   function showOverlay(text) {
@@ -86,7 +92,6 @@
     if (typeof onFatal === 'function') onFatal(currentIdx, reason);
   }
 
-  // ─── HLS check ─────────────────────────────────────────
   function waitForHls(timeout) {
     return new Promise(function (resolve) {
       if (window.Hls) { resolve(true); return; }
@@ -96,6 +101,113 @@
         if (Date.now() - start > timeout) { clearInterval(iv); resolve(false); }
       }, 100);
     });
+  }
+
+  // ─── Качество ──────────────────────────────────────────
+  function buildQualityLevels() {
+    if (!hls || !hls.levels) return [];
+    var levels = [];
+    hls.levels.forEach(function (lvl, i) {
+      if (!lvl || !lvl.height) return;
+      levels.push({
+        index: i,
+        height: lvl.height,
+        bitrate: lvl.bitrate || 0,
+        name: lvl.height + 'p'
+      });
+    });
+    levels.sort(function (a, b) { return b.height - a.height; });
+    levels.forEach(function (l, i) { l.display = i; });
+    return levels;
+  }
+
+  function updateQualityUI() {
+    var btn = document.getElementById('qualityBtn');
+    var menu = document.getElementById('qualityMenu');
+    var list = document.getElementById('qualityList');
+    var label = document.getElementById('qualityLabel');
+    if (!btn || !menu || !list) return;
+
+    // Показываем кнопку только если hls активен
+    if (!hls) {
+      btn.hidden = true;
+      menu.hidden = true;
+      menu.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.disabled = false;
+      return;
+    }
+
+    // Если уровней < 2 — скрываем кнопку (нет выбора)
+    if (qualityLevels.length < 2) {
+      btn.hidden = true;
+      menu.hidden = true;
+      menu.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.disabled = false;
+      return;
+    }
+
+    btn.hidden = false;
+    menu.hidden = false;
+
+    btn.disabled = false;
+    btn.title = 'Качество';
+
+    if (label) {
+      if (currentQuality === -1) {
+        label.textContent = 'auto';
+      } else {
+        var active = null;
+        for (var i = 0; i < qualityLevels.length; i++) {
+          if (qualityLevels[i].index === currentQuality) { active = qualityLevels[i]; break; }
+        }
+        label.textContent = active ? active.name : 'auto';
+      }
+    }
+
+    var html = '<li><button type="button" class="player__quality-item' +
+      (currentQuality === -1 ? ' is-active' : '') +
+      '" data-q="auto" role="option">auto</button></li>';
+    qualityLevels.forEach(function (q) {
+      html += '<li><button type="button" class="player__quality-item' +
+        (currentQuality === q.index ? ' is-active' : '') +
+        '" data-q="' + q.index + '" role="option">' +
+        q.name +
+        (q.bitrate ? '<small>' + Math.round(q.bitrate / 1000) + ' kbps</small>' : '') +
+        '</button></li>';
+    });
+    list.innerHTML = html;
+
+    // Прокрутить к активному пункту — при малой высоте меню
+    // выбранный уровень должен быть виден сразу
+    var activeItem = list.querySelector('.player__quality-item.is-active');
+    if (activeItem && typeof activeItem.scrollIntoView === 'function') {
+      try { activeItem.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+    }
+  }
+
+  function setQuality(levelIndex) {
+    if (!hls) return;
+    try {
+      if (levelIndex === -1) {
+        hls.currentLevel = -1;
+        currentQuality = -1;
+      } else {
+        hls.nextLevel = levelIndex;
+        currentQuality = levelIndex;
+      }
+    } catch (e) {
+      log('set-quality', e);
+    }
+    updateQualityUI();
+  }
+
+  function closeQualityMenu() {
+    var menu = document.getElementById('qualityMenu');
+    var btn = document.getElementById('qualityBtn');
+    if (menu) menu.classList.remove('is-open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
   }
 
   // ─── Play ──────────────────────────────────────────────
@@ -115,10 +227,8 @@
     }
 
     var isHls = /\.m3u8(\?|#|$)/i.test(url);
-
     showOverlay('Загружаем канал…');
 
-    // Watchdog: если за 15 секунд не началось воспроизведение — ошибка
     if (watchdogTimer) clearTimeout(watchdogTimer);
     watchdogTimer = setTimeout(function () {
       if (!isActual(token)) return;
@@ -130,7 +240,6 @@
     if (isHls) {
       waitForHls(3000).then(function (available) {
         if (!isActual(token)) return;
-
         if (!available) {
           if (video.canPlayType('application/vnd.apple.mpegurl')) {
             playNative(url, token);
@@ -139,7 +248,6 @@
           }
           return;
         }
-
         if (window.Hls.isSupported()) {
           playHls(url, token);
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
@@ -165,12 +273,21 @@
       fragLoadingTimeOut: 12000,
       fragLoadingMaxRetry: 1,
       startLevel: -1,
-      capLevelToPlayerSize: true,
+      capLevelToPlayerSize: false,
       maxBufferLength: 30
     });
 
     hls.on(window.Hls.Events.MANIFEST_PARSED, function () {
       if (!isActual(token)) return;
+
+      qualityLevels = buildQualityLevels();
+      updateQualityUI();
+      if (qualityLevels.length) {
+        console.log("[dev4rev/quality] levels:", qualityLevels.length, qualityLevels.map(function (l) { return l.name; }).join(", "));
+      } else {
+        console.log("[dev4rev/quality] уровней нет — кнопка качества не появится");
+      }
+
       video.play().catch(function (err) {
         if (!isAbort(err) && isActual(token)) {
           log('hls-autoplay', err);
@@ -178,6 +295,19 @@
           if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
         }
       });
+    });
+
+    hls.on(window.Hls.Events.LEVEL_SWITCHED, function (event, data) {
+      if (!isActual(token)) return;
+      if (currentQuality === -1 && qualityLevels.length >= 2) {
+        var lvl = hls.levels && hls.levels[data.level];
+        var label = document.getElementById('qualityLabel');
+        if (label && lvl && lvl.height) {
+          label.textContent = lvl.height + 'p';
+        } else if (label) {
+          label.textContent = 'auto';
+        }
+      }
     });
 
     hls.on(window.Hls.Events.ERROR, function (event, data) {
@@ -188,6 +318,10 @@
       try { hls.detachMedia(); } catch (e) {}
       try { hls.destroy(); } catch (e) {}
       hls = null;
+
+      qualityLevels = [];
+      currentQuality = -1;
+      updateQualityUI();
 
       var reason = 'Не удалось воспроизвести канал.';
       if (data.type === 'networkError') {
@@ -245,7 +379,6 @@
       showOverlay('Ошибка воспроизведения. Попробуйте другой канал.');
     });
 
-    // Если видео зависло и не буферизуется — пингуем hls
     var stallTimer = null;
     video.addEventListener('waiting', function () {
       if (stallTimer) clearTimeout(stallTimer);
@@ -260,28 +393,88 @@
     });
   }
 
-  // ─── Fullscreen: если браузер развернул <video> вместо wrap ────
-  function handleFullscreenChange() {
-    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+  // ─── iOS fullscreen (video.webkitEnterFullscreen) ─────
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-    if (fsEl && fsEl === video && wrap) {
-      var exit = document.exitFullscreen || document.webkitExitFullscreen || document.webkitCancelFullScreen;
-      if (exit) {
-        var p = exit.call(document);
-        if (p && p.catch) p.catch(function () {});
+    if (isIOS) {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('#fullscreenBtn');
+      if (!btn) return;
+      // Не делаем preventDefault / stopPropagation —
+      // пусть controls.js тоже попробует (fallback)
+      if (video && typeof video.webkitEnterFullscreen === 'function') {
+        try { video.webkitEnterFullscreen(); } catch (err) { log('ios-fs', err); }
       }
-      setTimeout(function () {
-        var req = wrap.requestFullscreen || wrap.webkitRequestFullscreen || wrap.webkitRequestFullScreen;
-        if (req) {
-          var r = req.call(wrap);
-          if (r && r.catch) r.catch(function () {});
-        }
-      }, 50);
-    }
+    }, true);
   }
 
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+  // ─── Свайпы по видео (мобильные) ──────────────────────
+  var touchStartX = null;
+  var touchStartY = null;
+  var touchStartTime = 0;
+
+  if (wrap) {
+    wrap.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) return;
+      if (e.target.closest('.player__quality, .player__channels')) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+    }, { passive: true });
+
+    wrap.addEventListener('touchend', function (e) {
+      if (touchStartX === null) return;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - touchStartX;
+      var dy = t.clientY - touchStartY;
+      var dt = Date.now() - touchStartTime;
+      touchStartX = null;
+      touchStartY = null;
+
+      if (dt > 600) return;
+
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        var btn = document.getElementById(dx > 0 ? 'videoPrevBtn' : 'videoNextBtn');
+        if (btn) {
+          btn.click();
+          showControls();
+        }
+      }
+    }, { passive: true });
+  }
+
+  // ─── Кнопка качества и меню ───────────────────────────
+  var qualityBtn = document.getElementById('qualityBtn');
+  var qualityMenu = document.getElementById('qualityMenu');
+
+  if (qualityBtn && qualityMenu) {
+    qualityBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showControls();
+      var open = qualityMenu.classList.toggle('is-open');
+      qualityBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    qualityMenu.addEventListener('click', function (e) {
+      var item = e.target.closest('.player__quality-item');
+      if (!item) return;
+      e.stopPropagation();
+      var q = item.dataset.q;
+      if (q === 'auto') {
+        setQuality(-1);
+      } else {
+        setQuality(parseInt(q, 10));
+      }
+      closeQualityMenu();
+      showControls();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (qualityMenu.contains(e.target) || qualityBtn.contains(e.target)) return;
+      closeQualityMenu();
+    });
+  }
 
   // ─── Public API ────────────────────────────────────────
   window.dev4revPlayer = {
@@ -290,6 +483,57 @@
     showOverlay: showOverlay,
     hideOverlay: hideOverlay,
     onFatal: function (fn) { onFatal = fn; },
-    getCurrentIndex: function () { return currentIdx; }
+    getCurrentIndex: function () { return currentIdx; },
+    getQualityLevels: function () { return qualityLevels.slice(); },
+    setQuality: setQuality
   };
+
+  // Поиск в панели каналов (fullscreen)
+  (function () {
+    var searchEl = document.getElementById('playerChannelSearch');
+    var listEl = document.getElementById('playerChannelsList');
+    if (!searchEl || !listEl) return;
+
+    function filterChannels() {
+      var q = searchEl.value.trim().toLowerCase();
+      var items = listEl.querySelectorAll('.player__channel');
+      var visible = 0;
+      for (var i = 0; i < items.length; i++) {
+        var li = items[i];
+        var text = (li.textContent || '').toLowerCase();
+        var show = !q || text.indexOf(q) !== -1;
+        li.style.display = show ? '' : 'none';
+        if (show) visible++;
+      }
+      var emptyEl = listEl.querySelector('.player__channels-empty');
+      if (visible === 0 && q) {
+        if (!emptyEl) {
+          emptyEl = document.createElement('li');
+          emptyEl.className = 'player__channels-empty';
+          emptyEl.textContent = 'Ничего не найдено';
+          listEl.appendChild(emptyEl);
+        }
+        emptyEl.style.display = '';
+      } else if (emptyEl) {
+        emptyEl.style.display = 'none';
+      }
+    }
+
+    searchEl.addEventListener('input', filterChannels);
+    searchEl.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        searchEl.value = '';
+        filterChannels();
+      }
+    });
+
+    var closeBtn = document.getElementById('channelsCloseBtn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        searchEl.value = '';
+        filterChannels();
+      });
+    }
+  })();
+
 })();

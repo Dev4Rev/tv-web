@@ -112,11 +112,25 @@
   function renderRecent() {
     var section = document.getElementById('recentSection');
     var list = document.getElementById('recentList');
+    var count = document.getElementById('recentCount');
+    var details = document.getElementById('recentDetails');
     if (!section || !list) return;
 
     var items = getRecent();
-    if (!items.length) { section.hidden = true; list.innerHTML = ''; return; }
+    if (!items.length) {
+      section.hidden = true;
+      list.innerHTML = '';
+      if (details) details.open = false;
+      return;
+    }
     section.hidden = false;
+    if (count) count.textContent = items.length + ' шт.';
+
+    // При первом показе — всегда свёрнуто
+    if (details && !details.dataset.init) {
+      details.open = false;
+      details.dataset.init = '1';
+    }
 
     list.innerHTML = items.map(function (item) {
       return '<li class="recent">' +
@@ -315,7 +329,10 @@
 
     if (playerListOpen) {
       var playing = list.querySelector('.player__channel.is-playing');
-      if (playing) playing.scrollIntoView({ block: 'nearest' });
+      if (playing) {
+        var offset = playing.offsetTop - list.clientHeight / 2 + playing.offsetHeight / 2;
+        list.scrollTop = Math.max(0, offset);
+      }
     }
   }
 
@@ -339,14 +356,17 @@
 
     if (playerListOpen) {
       renderPlayerChannels();
-      requestAnimationFrame(function () {
-        var active = document.querySelector('.player__channel.is-playing') ||
-                     document.querySelector('.player__channel');
-        if (active) active.focus({ preventScroll: true });
-      });
+      var panelListEl = document.getElementById('playerChannelsList');
+      if (panelListEl) {
+        var active = panelListEl.querySelector('.player__channel.is-playing');
+        if (active) {
+          var offset = active.offsetTop - panelListEl.clientHeight / 2 + active.offsetHeight / 2;
+          panelListEl.scrollTop = Math.max(0, offset);
+          try { active.focus({ preventScroll: true }); } catch (e) {}
+        }
+      }
     }
 
-    setTimeout(updatePlayerHeight, 50);
   }
 
   function togglePlayerList() {
@@ -684,7 +704,13 @@
     }
 
     var clearBtn = document.getElementById('clearRecent');
-    if (clearBtn) clearBtn.addEventListener('click', clearRecent);
+    if (clearBtn) clearBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      clearRecent();
+      var det = document.getElementById('recentDetails');
+      if (det) det.open = false;
+    });
 
     var backBtn = document.getElementById('backBtn');
     if (backBtn) backBtn.addEventListener('click', unload);
@@ -899,6 +925,59 @@
       window.addEventListener('resize', updatePlayerHeight);
     }
     setTimeout(updatePlayerHeight, 300);
+
+    // ── Кнопка «К плееру» ──────────────────────────────────
+    var toPlayerBtn = document.getElementById('toPlayerBtn');
+    var toPlayerRaf = null;
+
+    function updateToPlayerBtn() {
+      if (!toPlayerBtn) return;
+      if (toPlayerRaf) return;
+      toPlayerRaf = requestAnimationFrame(function () {
+        toPlayerRaf = null;
+        if (!playerLoaded) { toPlayerBtn.classList.remove('is-visible'); return; }
+        var ps = document.getElementById('playerSection');
+        if (!ps || ps.hidden) { toPlayerBtn.classList.remove('is-visible'); return; }
+        var wrap = document.getElementById('playerWrap');
+        if (wrap && (document.fullscreenElement === wrap ||
+                     document.webkitFullscreenElement === wrap)) {
+          toPlayerBtn.classList.remove('is-visible');
+          return;
+        }
+        var topbarH = parseFloat(getComputedStyle(document.documentElement)
+          .getPropertyValue('--topbar-h')) || 64;
+        var rect = ps.getBoundingClientRect();
+        // Показать: плеер уехал выше topbar ИЛИ плеер ниже вьюпорта
+        var scrolledPast = rect.bottom < topbarH + 40;
+        var playerBelow = rect.top > window.innerHeight;
+        var show = scrolledPast || playerBelow;
+        toPlayerBtn.classList.toggle('is-visible', show);
+      });
+    }
+
+    if (toPlayerBtn) {
+      toPlayerBtn.addEventListener('click', function () {
+        var ps = document.getElementById('playerSection');
+        if (!ps) return;
+        var topbarH = parseFloat(getComputedStyle(document.documentElement)
+          .getPropertyValue('--topbar-h')) || 64;
+        var y = ps.getBoundingClientRect().top + window.scrollY - topbarH - 8;
+        try {
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        } catch (e) {
+          window.scrollTo(0, Math.max(0, y));
+        }
+        if (window.dev4revControls && window.dev4revControls.show) {
+          window.dev4revControls.show();
+        }
+      });
+
+      window.addEventListener('scroll', updateToPlayerBtn, { passive: true });
+      window.addEventListener('resize', updateToPlayerBtn);
+      document.addEventListener('fullscreenchange', updateToPlayerBtn);
+      document.addEventListener('webkitfullscreenchange', updateToPlayerBtn);
+      updateToPlayerBtn();
+    }
 
     var marqueeTimer = null;
     window.addEventListener('resize', function () {

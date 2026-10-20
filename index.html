@@ -70,6 +70,7 @@
 
       <div class="playlist-bar">
         <input type="url" class="playlist-bar__input" id="playlistUrl"
+               inputmode="url" enterkeyhint="go" autocapitalize="off" autocorrect="off"
                placeholder="https://example.com/playlist.m3u"
                autocomplete="off" spellcheck="false"
                aria-label="URL плейлиста">
@@ -92,11 +93,26 @@
 
     <!-- Недавние плейлисты -->
     <section class="sources sources--recent reveal" id="recentSection" hidden>
-      <div class="sources__head">
-        <span class="sources__eyebrow">недавние</span>
-        <button type="button" class="sources__clear" id="clearRecent">очистить</button>
-      </div>
-      <ul class="recent-list" id="recentList" role="list"></ul>
+      <details class="sources__details" id="recentDetails">
+        <summary class="sources__head sources__head--button">
+          <span class="sources__eyebrow">недавние</span>
+          <span class="sources__hint mono" id="recentCount">—</span>
+          <button type="button" class="sources__clear-inline" id="clearRecent" aria-label="Очистить историю" title="Очистить историю">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 6h18"/>
+              <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              <path d="m19 6-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+            </svg>
+            <span>очистить</span>
+          </button>
+          <svg class="sources__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </summary>
+        <div class="sources__recent-body">
+          <ul class="recent-list" id="recentList" role="list"></ul>
+        </div>
+      </details>
     </section>
 
     <!-- Публичные источники -->
@@ -121,7 +137,6 @@
           </svg>
           <span>Плейлисты</span>
         </button>
-        <span class="player__eyebrow">now playing</span>
         <span class="player__title" id="nowPlaying">—</span>
         <span class="player__group" id="nowGroup"></span><div class="player__nav">
           <button type="button" class="player__nav-btn" id="pinBtn" aria-label="Закрепить плеер" aria-pressed="false" title="Закрепить плеер">
@@ -147,6 +162,14 @@
         </div>
 
         <!-- Верхняя панель в fullscreen: название канала + кнопки -->
+        <div class="player__rotate-hint" id="rotateHint" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="8" y="2" width="8" height="20" rx="1.5"/>
+            <path d="M12 18h.01"/>
+          </svg>
+          <span>Поверните устройство</span>
+        </div>
+
         <div class="player__fs-head" id="fsHead">
           <div class="player__fs-head-left">
             <span class="player__fs-title" id="fsTitle">—</span>
@@ -224,6 +247,13 @@
                  min="0" max="100" value="100" step="5"
                  aria-label="Громкость">
 
+          <button type="button" class="player__ctrl-btn player__ctrl-btn--quality" id="qualityBtn" aria-label="Качество" title="Качество" aria-haspopup="true" aria-expanded="false" hidden>
+            <svg class="player__ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>
+            </svg>
+            <span class="player__quality-label" id="qualityLabel">auto</span>
+          </button>
+
           <button type="button" class="player__ctrl-btn" id="fullscreenBtn" aria-label="На весь экран" title="На весь экран">
             <svg class="player__ctrl-icon player__ctrl-icon--expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
@@ -240,6 +270,11 @@
           </button>
         </div>
 
+        <!-- Меню выбора качества -->
+        <div class="player__quality" id="qualityMenu" hidden>
+          <ul class="player__quality-list" id="qualityList" role="listbox"></ul>
+        </div>
+
         <!-- Панель каналов — overlay внутри обёртки -->
         <aside class="player__channels" id="playerChannels" aria-label="Список каналов">
           <div class="player__channels-head">
@@ -250,6 +285,10 @@
                 <path d="M18 6 6 18M6 6l12 12"/>
               </svg>
             </button>
+          </div>
+          <div class="player__channels-search">
+            <input type="search" class="player__channels-input" id="playerChannelSearch"
+                   placeholder="Поиск канала…" autocomplete="off" aria-label="Поиск канала">
           </div>
           <ul class="player__channels-list" id="playerChannelsList" role="list"></ul>
         </aside>
@@ -288,5 +327,11 @@
   <script src="./assets/js/player.js" defer></script>
   <script src="./assets/js/controls.js" defer></script>
   <script src="./assets/js/main.js" defer></script>
+
+  <button type="button" class="to-player" id="toPlayerBtn" aria-label="К плееру" title="К плееру">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m18 15-6-6-6 6"></path>
+    </svg>
+  </button>
 </body>
 </html>
