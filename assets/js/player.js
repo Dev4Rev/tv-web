@@ -5,9 +5,24 @@
   var video = document.getElementById('video');
   var wrap = document.getElementById('playerWrap');
   var hls = null;
+<<<<<<< HEAD
   var currentIdx = -1;
   var onFatal = null;
 
+=======
+  var dash = null;
+  var mpegts = null;
+  var currentIdx = -1;
+  var currentFormat = 'unknown';
+  var onFatal = null;
+
+  // Библиотеки подключаются только при реальной необходимости.
+  var CDN = {
+    dash: 'https://cdn.jsdelivr.net/npm/dashjs@4.7.4/dist/dash.all.min.js',
+    ts: 'https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.min.js'
+  };
+
+>>>>>>> 08f7507 (updated playlists, new visual)
   // Токен сессии: каждое play() увеличивает его.
   var sessionToken = 0;
   var watchdogTimer = null;
@@ -63,6 +78,18 @@
       try { hls.destroy(); } catch (e) {}
       hls = null;
     }
+<<<<<<< HEAD
+=======
+    if (dash) {
+      try { dash.reset(); } catch (e) {}
+      try { dash.destroy(); } catch (e) {}
+      dash = null;
+    }
+    if (mpegts) {
+      try { mpegts.destroy(); } catch (e) {}
+      mpegts = null;
+    }
+>>>>>>> 08f7507 (updated playlists, new visual)
     if (video) {
       try { video.pause(); } catch (e) {}
       try { video.removeAttribute('src'); } catch (e) {}
@@ -70,6 +97,11 @@
     }
     qualityLevels = [];
     currentQuality = -1;
+<<<<<<< HEAD
+=======
+    currentFormat = 'unknown';
+    resetVideoAspect();
+>>>>>>> 08f7507 (updated playlists, new visual)
     updateQualityUI();
   }
 
@@ -103,6 +135,102 @@
     });
   }
 
+<<<<<<< HEAD
+=======
+  // ─── Форматы потоков ────────────────────────────────────
+  // Расширение может быть спрятано за параметрами (?token=…), поэтому
+  // ищем расширение как «слово», после которого нет латинской цифры/буквы.
+  var RE_HLS = /\.m3u8(?![a-z0-9])/i;
+  var RE_DASH = /\.mpd(?![a-z0-9])/i;
+  var RE_TS = /\.ts(?![a-z0-9])/i;
+  var RE_NATIVE = /\.(?:mp4|m4v|webm|ogv|ogg|mov)(?![a-z0-9])/i;
+
+  function detectFormat(url) {
+    if (RE_HLS.test(url)) return 'hls';
+    if (RE_DASH.test(url)) return 'dash';
+    if (RE_TS.test(url)) return 'ts';
+    if (RE_NATIVE.test(url)) return 'native';
+    return 'unknown';
+  }
+
+  // Ссылки без расширения часто ведут на тот же HLS-манифест.
+  // Читаем только первый чанк и сразу закрываем соединение.
+  function sniffFormat(url) {
+    if (!window.fetch) return Promise.resolve('unknown');
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 4000);
+    var opts = { cache: 'no-store' };
+    if (ctrl) opts.signal = ctrl.signal;
+
+    return fetch(url, opts).then(function (r) {
+      clearTimeout(timer);
+      if (!r.ok) return 'unknown';
+      if (!r.body || !r.body.getReader) {
+        return r.text().then(function (t) { return /^\s*#EXTM3U/.test(t) ? 'hls' : 'unknown'; });
+      }
+      var reader = r.body.getReader();
+      return reader.read().then(function (res) {
+        try { reader.cancel(); } catch (e) {}
+        var text = '';
+        try { text = new TextDecoder('utf-8').decode(res.value || new Uint8Array(0)); } catch (e) {}
+        return /^\s*#EXTM3U/.test(text) ? 'hls' : 'unknown';
+      });
+    }).catch(function () {
+      clearTimeout(timer);
+      return 'unknown';
+    });
+  }
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { reject(new Error('Не удалось загрузить библиотеку: ' + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function ensureLibrary(name, token) {
+    if (name === 'dash' && window.dashjs) return Promise.resolve(true);
+    if (name === 'ts' && window.mpegts) return Promise.resolve(true);
+    return loadScript(CDN[name]).then(function () {
+      if (!isActual(token)) return false;
+      var ok = (name === 'dash') ? !!window.dashjs : !!window.mpegts;
+      if (!ok) throw new Error('Библиотека не инициализировалась');
+      return true;
+    });
+  }
+
+  // ─── Соотношение сторон ─────────────────────────────────
+  function resetVideoAspect() {
+    if (!wrap) return;
+    wrap.classList.remove('has-video-ratio');
+    wrap.style.removeProperty('--video-ratio');
+  }
+
+  function applyVideoAspect() {
+    if (!video || !wrap) return;
+    var w = video.videoWidth;
+    var h = video.videoHeight;
+    if (!w || !h || !isFinite(w) || !isFinite(h)) return;
+
+    // Ограничиваем диапазон, чтобы вертикальный или сверхширокий поток
+    // не растягивал страницу. Сам кадр при этом НЕ обрезается —
+    // object-fit: contain оставляет поля, но без искажений.
+    var ratio = w / h;
+    if (ratio < 0.75) ratio = 0.75;
+    if (ratio > 2.4) ratio = 2.4;
+    var next = ratio.toFixed(4);
+    if (wrap.classList.contains('has-video-ratio') &&
+        wrap.style.getPropertyValue('--video-ratio').trim() === next) return;
+
+    wrap.style.setProperty('--video-ratio', next);
+    wrap.classList.add('has-video-ratio');
+  }
+
+>>>>>>> 08f7507 (updated playlists, new visual)
   // ─── Качество ──────────────────────────────────────────
   function buildQualityLevels() {
     if (!hls || !hls.levels) return [];
@@ -135,6 +263,10 @@
       menu.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
       btn.disabled = false;
+<<<<<<< HEAD
+=======
+      if (window.dev4revSyncPlayerDialogs) window.dev4revSyncPlayerDialogs();
+>>>>>>> 08f7507 (updated playlists, new visual)
       return;
     }
 
@@ -145,6 +277,10 @@
       menu.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
       btn.disabled = false;
+<<<<<<< HEAD
+=======
+      if (window.dev4revSyncPlayerDialogs) window.dev4revSyncPlayerDialogs();
+>>>>>>> 08f7507 (updated playlists, new visual)
       return;
     }
 
@@ -208,6 +344,10 @@
     var btn = document.getElementById('qualityBtn');
     if (menu) menu.classList.remove('is-open');
     if (btn) btn.setAttribute('aria-expanded', 'false');
+<<<<<<< HEAD
+=======
+    if (window.dev4revSyncPlayerDialogs) window.dev4revSyncPlayerDialogs();
+>>>>>>> 08f7507 (updated playlists, new visual)
   }
 
   // ─── Play ──────────────────────────────────────────────
@@ -226,7 +366,10 @@
       return;
     }
 
+<<<<<<< HEAD
     var isHls = /\.m3u8(\?|#|$)/i.test(url);
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
     showOverlay('Загружаем канал…');
 
     if (watchdogTimer) clearTimeout(watchdogTimer);
@@ -237,7 +380,26 @@
       }
     }, 15000);
 
+<<<<<<< HEAD
     if (isHls) {
+=======
+    var format = detectFormat(url);
+    if (format === 'unknown') {
+      sniffFormat(url).then(function (sniffed) {
+        if (!isActual(token)) return;
+        route(sniffed === 'hls' ? 'hls' : 'native', url, token);
+      });
+      return;
+    }
+    route(format, url, token);
+  }
+
+  function route(format, url, token) {
+    if (!isActual(token)) return;
+    currentFormat = format;
+
+    if (format === 'hls') {
+>>>>>>> 08f7507 (updated playlists, new visual)
       waitForHls(3000).then(function (available) {
         if (!isActual(token)) return;
         if (!available) {
@@ -256,9 +418,40 @@
           failCurrent('Браузер не поддерживает воспроизведение HLS.', token);
         }
       });
+<<<<<<< HEAD
     } else {
       playNative(url, token);
     }
+=======
+      return;
+    }
+
+    if (format === 'dash') {
+      ensureLibrary('dash', token).then(function (ok) {
+        if (!isActual(token) || !ok) return;
+        playDash(url, token);
+      }).catch(function (e) {
+        if (!isActual(token)) return;
+        log('dash-lib', e);
+        failCurrent('Не удалось загрузить поддержку DASH. Проверьте соединение.', token);
+      });
+      return;
+    }
+
+    if (format === 'ts') {
+      ensureLibrary('ts', token).then(function (ok) {
+        if (!isActual(token) || !ok) return;
+        playTs(url, token);
+      }).catch(function (e) {
+        if (!isActual(token)) return;
+        log('mpegts-lib', e);
+        failCurrent('Не удалось загрузить поддержку MPEG-TS. Проверьте соединение.', token);
+      });
+      return;
+    }
+
+    playNative(url, token);
+>>>>>>> 08f7507 (updated playlists, new visual)
   }
 
   function playHls(url, token) {
@@ -367,6 +560,71 @@
     });
   }
 
+<<<<<<< HEAD
+=======
+  function playDash(url, token) {
+    try {
+      dash = window.dashjs.MediaPlayer().create();
+
+      var events = window.dashjs.MediaPlayer.events;
+      if (events && events.ERROR) {
+        dash.on(events.ERROR, function (e) {
+          if (!isActual(token)) return;
+          log('dash-error', e);
+          failCurrent('Ошибка DASH-потока. Переходим к следующему…', token);
+        });
+      }
+
+      dash.initialize(video, url, true);
+      video.play().catch(function (err) {
+        if (!isAbort(err) && isActual(token)) {
+          log('dash-autoplay', err);
+          showOverlay('Нажмите Play, чтобы начать воспроизведение');
+          if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
+        }
+      });
+    } catch (e) {
+      log('dash-init', e);
+      failCurrent('Не удалось подключить DASH-поток.', token);
+    }
+  }
+
+  function playTs(url, token) {
+    try {
+      mpegts = window.mpegts.createPlayer({
+        type: 'mpegts',
+        url: url,
+        isLive: true,
+        lazilyLoad: false
+      });
+
+      var events = window.mpegts.Events;
+      // У mpegts.js нет единого ERROR — ошибки приходят как IO_ERROR / DEMUX_ERROR.
+      [events && events.IO_ERROR, events && events.DEMUX_ERROR].forEach(function (ev) {
+        if (!ev) return;
+        mpegts.on(ev, function (detail) {
+          if (!isActual(token)) return;
+          log('mpegts-error', detail);
+          failCurrent('Ошибка MPEG-TS потока. Переходим к следующему…', token);
+        });
+      });
+
+      mpegts.attachMediaElement(video);
+      mpegts.load();
+      video.play().catch(function (err) {
+        if (!isAbort(err) && isActual(token)) {
+          log('mpegts-autoplay', err);
+          showOverlay('Нажмите Play, чтобы начать воспроизведение');
+          if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
+        }
+      });
+    } catch (e) {
+      log('mpegts-init', e);
+      failCurrent('Не удалось подключить MPEG-TS поток.', token);
+    }
+  }
+
+>>>>>>> 08f7507 (updated playlists, new visual)
   // ─── Video events ──────────────────────────────────────
   if (video) {
     video.addEventListener('playing', function () {
@@ -375,10 +633,28 @@
     });
 
     video.addEventListener('error', function () {
+<<<<<<< HEAD
       if (!video.src && !hls) return;
       showOverlay('Ошибка воспроизведения. Попробуйте другой канал.');
     });
 
+=======
+      // У MSE-плееров (hls.js / dash.js / mpegts.js) video.src пуст —
+      // их фатальные ошибки обрабатываются самими библиотеками.
+      if (!video.src || !video.error) return;
+      var code = video.error.code;
+      var reason = (code === 4)
+        ? 'Неподдерживаемый формат потока. Переходим к следующему…'
+        : 'Ошибка воспроизведения. Переходим к следующему…';
+      failCurrent(reason, sessionToken);
+    });
+
+    // Реальное соотношение сторон становится известно после метаданных.
+    video.addEventListener('loadedmetadata', applyVideoAspect);
+    video.addEventListener('loadeddata', applyVideoAspect);
+    video.addEventListener('resize', applyVideoAspect);
+
+>>>>>>> 08f7507 (updated playlists, new visual)
     var stallTimer = null;
     video.addEventListener('waiting', function () {
       if (stallTimer) clearTimeout(stallTimer);
@@ -452,8 +728,17 @@
     qualityBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       showControls();
+<<<<<<< HEAD
       var open = qualityMenu.classList.toggle('is-open');
       qualityBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+=======
+      var willOpen = !qualityMenu.classList.contains('is-open');
+      if (willOpen && window.dev4revClosePlayerDialogs) window.dev4revClosePlayerDialogs('quality');
+      var open = qualityMenu.classList.toggle('is-open');
+      qualityBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open && window.dev4revEnsurePlayerDialogVisible) window.dev4revEnsurePlayerDialogVisible();
+      if (window.dev4revSyncPlayerDialogs) window.dev4revSyncPlayerDialogs();
+>>>>>>> 08f7507 (updated playlists, new visual)
     });
 
     qualityMenu.addEventListener('click', function (e) {
@@ -484,6 +769,13 @@
     hideOverlay: hideOverlay,
     onFatal: function (fn) { onFatal = fn; },
     getCurrentIndex: function () { return currentIdx; },
+<<<<<<< HEAD
+=======
+    getFormat: function () { return currentFormat; },
+    getVideoSize: function () {
+      return { width: video ? video.videoWidth : 0, height: video ? video.videoHeight : 0 };
+    },
+>>>>>>> 08f7507 (updated playlists, new visual)
     getQualityLevels: function () { return qualityLevels.slice(); },
     setQuality: setQuality
   };
