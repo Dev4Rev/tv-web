@@ -6,6 +6,7 @@
   }
 
   var RECENT_KEY = 'dev4rev.tv.recent';
+<<<<<<< HEAD
   var PIN_KEY = 'dev4rev.tv.pinned';
   var LAST_CHANNEL_URL_KEY = 'dev4rev.tv.lastChannelUrl';
   var MAX_RECENT = 5;
@@ -19,6 +20,19 @@
   var pinned = false;
   var playerLoaded = false;
   var playerListOpen = false;
+=======
+  var LAST_CHANNEL_URL_KEY = 'dev4rev.tv.lastChannelUrl';
+  var MAX_RECENT = 5;
+
+  var allChannels = [];
+  var visibleChannels = [];
+  var currentPlaylistUrl = '';
+  var currentIdx = -1;
+  var playerLoaded = false;
+  var playerListOpen = false;
+  var channelQuery = '';
+  var channelGroup = '';
+>>>>>>> 08f7507 (updated playlists, new visual)
 
   var playEpoch = 0;
   var fatalRetries = 0;
@@ -33,6 +47,24 @@
       .replace(/"/g, '&quot;');
   }
 
+<<<<<<< HEAD
+=======
+  var FAV_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8l-5.8 3.1 1.1-6.5L2.6 9.8l6.5-.9z"/></svg>';
+
+  function isFavorite(url) {
+    return !!(window.dev4revFavorites && window.dev4revFavorites.has(url));
+  }
+
+  function favButton(ch, cls) {
+    var active = isFavorite(ch.url);
+    return '<button type="button" class="' + cls + ' fav-btn' + (active ? ' is-active' : '') + '"' +
+      ' data-fav-url="' + esc(ch.url) + '"' +
+      ' aria-label="' + (active ? 'Убрать из избранного' : 'Добавить в избранное') + '"' +
+      ' aria-pressed="' + (active ? 'true' : 'false') + '"' +
+      ' title="' + (active ? 'Убрать из избранного' : 'В избранное') + '">' + FAV_ICON + '</button>';
+  }
+
+>>>>>>> 08f7507 (updated playlists, new visual)
   function initials(name) {
     var s = String(name || '').trim();
     if (!s) return '?';
@@ -59,6 +91,7 @@
     return new Date(ts).toLocaleDateString('ru-RU');
   }
 
+<<<<<<< HEAD
   function copyToClipboard(text, btn) {
     var done = function () {
       if (btn) {
@@ -82,6 +115,8 @@
     } catch (e) {}
   }
 
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
   function getRecent() {
     try {
       var raw = localStorage.getItem(RECENT_KEY);
@@ -147,6 +182,7 @@
     }).join('');
   }
 
+<<<<<<< HEAD
   function renderSources() {
     var list = document.getElementById('sourceList');
     if (!list) return;
@@ -217,17 +253,28 @@
     var ul = document.getElementById('channelList');
     var empty = document.getElementById('channelEmpty');
     var count = document.getElementById('channelsCount');
+=======
+  function renderChannels(list) {
+    var ul = document.getElementById('channelList');
+    var empty = document.getElementById('channelEmpty');
+>>>>>>> 08f7507 (updated playlists, new visual)
     if (!ul) return;
 
     if (!list.length) {
       ul.innerHTML = '';
       if (empty) empty.hidden = false;
+<<<<<<< HEAD
       if (count) count.textContent = 'ничего не найдено';
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
       renderPlayerChannels();
       return;
     }
     if (empty) empty.hidden = true;
+<<<<<<< HEAD
     if (count) count.textContent = list.length + ' из ' + allChannels.length + ' каналов';
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
 
     ul.innerHTML = list.map(function (ch) {
       var logoHtml;
@@ -236,6 +283,7 @@
       } else {
         logoHtml = '<span class="channel__logo channel__logo--placeholder">' + esc(initials(ch.name)) + '</span>';
       }
+<<<<<<< HEAD
       return '<li><button type="button" class="channel' + (ch._idx === currentIdx ? ' is-playing' : '') + '" data-idx="' + ch._idx + '">' +
         logoHtml +
         '<span class="channel__body">' +
@@ -248,6 +296,23 @@
           '<span class="channel__group">' + esc(ch.group) + '</span>' +
         '</span>' +
       '</button></li>';
+=======
+      return '<li class="channel-item">' +
+        '<button type="button" class="channel' + (ch._idx === currentIdx ? ' is-playing' : '') + '" data-idx="' + ch._idx + '">' +
+          logoHtml +
+          '<span class="channel__body">' +
+            '<span class="channel__name">' +
+              '<span class="channel__name-track">' +
+                '<span class="channel__name-text">' + esc(ch.name) + '</span>' +
+                '<span class="channel__name-text" aria-hidden="true">' + esc(ch.name) + '</span>' +
+              '</span>' +
+            '</span>' +
+            '<span class="channel__group">' + esc(ch.group) + '</span>' +
+          '</span>' +
+        '</button>' +
+        favButton(ch, '') +
+      '</li>';
+>>>>>>> 08f7507 (updated playlists, new visual)
     }).join('');
 
     applyMarqueeOverflow();
@@ -269,6 +334,7 @@
     });
   }
 
+<<<<<<< HEAD
   function filterChannels() {
     var searchEl = document.getElementById('channelSearch');
     var groupEl = document.getElementById('groupFilter');
@@ -289,17 +355,72 @@
     var groups = {};
     channels.forEach(function (ch) { groups[ch.group] = (groups[ch.group] || 0) + 1; });
     var keys = Object.keys(groups).sort(function (a, b) { return a.localeCompare(b, 'ru'); });
+=======
+  function syncFilterInputs() {
+    var pairs = [
+      ['channelSearch', channelQuery],
+      ['playerChannelSearch', channelQuery],
+      ['groupFilter', channelGroup],
+      ['playerGroupFilter', channelGroup]
+    ];
+    pairs.forEach(function (pair) {
+      var el = document.getElementById(pair[0]);
+      // Не перезаписываем поле, в которое пользователь печатает прямо сейчас.
+      if (el && document.activeElement !== el && el.value !== pair[1]) el.value = pair[1];
+    });
+  }
+
+  function setChannelFilter(q, g) {
+    channelQuery = String(q || '').toLowerCase().trim();
+    channelGroup = String(g || '');
+    syncFilterInputs();
+    filterChannels();
+    // Внешнее меню под плеером дублирует поиск каналов из панели.
+    window.dispatchEvent(new CustomEvent('dev4rev:channelfilter', {
+      detail: { query: channelQuery, group: channelGroup }
+    }));
+  }
+
+  function filterChannels() {
+    visibleChannels = allChannels.filter(function (ch) {
+      if (channelGroup && ch.group !== channelGroup) return false;
+      if (channelQuery &&
+          ch.name.toLowerCase().indexOf(channelQuery) === -1 &&
+          ch.group.toLowerCase().indexOf(channelQuery) === -1) return false;
+      return true;
+    });
+    renderChannels(visibleChannels);
+    syncFilterInputs();
+  }
+
+  function buildGroups(channels) {
+    var selects = ['groupFilter', 'playerGroupFilter']
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+    if (!selects.length) return;
+
+    var groups = {};
+    channels.forEach(function (ch) { groups[ch.group] = (groups[ch.group] || 0) + 1; });
+    var keys = Object.keys(groups).sort(function (a, b) { return a.localeCompare(b, 'ru'); });
+    if (channelGroup && !groups[channelGroup]) channelGroup = '';
+>>>>>>> 08f7507 (updated playlists, new visual)
     var html = '<option value="">Все группы (' + channels.length + ')</option>';
     keys.forEach(function (k) {
       html += '<option value="' + esc(k) + '">' + esc(k) + ' (' + groups[k] + ')</option>';
     });
+<<<<<<< HEAD
     sel.innerHTML = html;
+=======
+    selects.forEach(function (sel) { sel.innerHTML = html; });
+    syncFilterInputs();
+>>>>>>> 08f7507 (updated playlists, new visual)
   }
 
   function renderPlayerChannels() {
     var panel = document.getElementById('playerChannels');
     var list = document.getElementById('playerChannelsList');
     var count = document.getElementById('playerChannelsCount');
+<<<<<<< HEAD
     if (!panel || !list) return;
 
     if (!visibleChannels.length) {
@@ -307,6 +428,21 @@
       if (count) count.textContent = '0';
       return;
     }
+=======
+    var empty = document.getElementById('playerChannelsEmpty');
+    if (!panel || !list) return;
+
+    if (!visibleChannels.length) {
+      list.innerHTML = '';
+      if (empty) {
+        empty.hidden = false;
+        empty.textContent = allChannels.length ? 'Каналы не найдены' : 'Сначала загрузите плейлист';
+      }
+      if (count) count.textContent = '0';
+      return;
+    }
+    if (empty) empty.hidden = true;
+>>>>>>> 08f7507 (updated playlists, new visual)
 
     if (count) count.textContent = visibleChannels.length + '';
 
@@ -317,6 +453,7 @@
       } else {
         logoHtml = '<span class="player__channel-logo player__channel-logo--placeholder">' + esc(initials(ch.name)) + '</span>';
       }
+<<<<<<< HEAD
       return '<li><button type="button" class="player__channel' + (ch._idx === currentIdx ? ' is-playing' : '') + '" data-idx="' + ch._idx + '" role="option" aria-selected="' + (ch._idx === currentIdx ? 'true' : 'false') + '">' +
         logoHtml +
         '<span class="player__channel-body">' +
@@ -325,6 +462,19 @@
         '</span>' +
         '<span class="player__channel-indicator" aria-hidden="true"></span>' +
       '</button></li>';
+=======
+      return '<li class="player__channel-item">' +
+        '<button type="button" class="player__channel' + (ch._idx === currentIdx ? ' is-playing' : '') + '" data-idx="' + ch._idx + '" role="option" aria-selected="' + (ch._idx === currentIdx ? 'true' : 'false') + '">' +
+          logoHtml +
+          '<span class="player__channel-body">' +
+            '<span class="player__channel-name">' + esc(ch.name) + '</span>' +
+            '<span class="player__channel-group">' + esc(ch.group) + '</span>' +
+          '</span>' +
+          '<span class="player__channel-indicator" aria-hidden="true"></span>' +
+        '</button>' +
+        favButton(ch, '') +
+      '</li>';
+>>>>>>> 08f7507 (updated playlists, new visual)
     }).join('');
 
     if (playerListOpen) {
@@ -336,6 +486,7 @@
     }
   }
 
+<<<<<<< HEAD
   function setPlayerListOpen(open) {
     playerListOpen = !!open;
     var panel = document.getElementById('playerChannels');
@@ -355,6 +506,63 @@
     }
 
     if (playerListOpen) {
+=======
+  function syncPlayerListButton() {
+    var fsListBtn = document.getElementById('fsListBtn');
+    if (!fsListBtn) return;
+    fsListBtn.classList.toggle('is-active', playerListOpen);
+    fsListBtn.setAttribute('aria-pressed', playerListOpen ? 'true' : 'false');
+    fsListBtn.setAttribute('aria-expanded', playerListOpen ? 'true' : 'false');
+  }
+
+  function setPlayerListOpen(open, tab, immediate) {
+    // В свёрнутом плеере выдвижная панель не имеет права появляться.
+    // Разворачиваем плеер и только потом открываем нужную вкладку.
+    if (open && !immediate && window.dev4revMiniPlayer &&
+        window.dev4revMiniPlayer.isActive()) {
+      window.dev4revMiniPlayer.expand(true);
+    }
+
+    playerListOpen = !!open;
+    var panel = document.getElementById('playerChannels');
+    if (panel) {
+      if (playerListOpen) {
+        // Открытие: снимаем состояние закрытия, чтобы обрезка окна видео
+        // не мешала панели выехать.
+        panel.classList.remove('is-closing', 'is-instant-close');
+        if (panel._closeTimer) { clearTimeout(panel._closeTimer); panel._closeTimer = null; }
+      } else if (immediate) {
+        // Сворачивание плеера: убираем панель без анимации, иначе она
+        // успевает «проехать» по уменьшающемуся окну и обрезается.
+        if (panel._closeTimer) { clearTimeout(panel._closeTimer); panel._closeTimer = null; }
+        panel.classList.remove('is-closing');
+        panel.classList.add('is-instant-close');
+      } else {
+        // Закрытие: сохраняем overflow video-wrap на время анимации уезда,
+        // иначе панель исчезает рывком, не успев уехать за край.
+        panel.classList.remove('is-instant-close');
+        panel.classList.add('is-closing');
+        if (panel._closeTimer) clearTimeout(panel._closeTimer);
+        panel._closeTimer = setTimeout(function () {
+          panel.classList.remove('is-closing');
+          panel._closeTimer = null;
+          if (window.dev4revSyncPlayerDialogs) window.dev4revSyncPlayerDialogs();
+        }, 460);
+      }
+      panel.classList.toggle('is-open', playerListOpen);
+      panel.setAttribute('data-state', playerListOpen ? 'open' : 'closed');
+    }
+    syncPlayerListButton();
+
+    // Содержимое панели (плейлисты/каналы) рисует cinema.js.
+    if (window.dev4revCinema) {
+      window.dev4revCinema.setContextTab(tab || 'channels', playerListOpen);
+    }
+
+    if (playerListOpen) {
+      if (window.dev4revClosePlayerDialogs) window.dev4revClosePlayerDialogs('channels');
+      if (window.dev4revEnsurePlayerDialogVisible) window.dev4revEnsurePlayerDialogVisible();
+>>>>>>> 08f7507 (updated playlists, new visual)
       renderPlayerChannels();
       var panelListEl = document.getElementById('playerChannelsList');
       if (panelListEl) {
@@ -367,6 +575,7 @@
       }
     }
 
+<<<<<<< HEAD
   }
 
   function togglePlayerList() {
@@ -407,13 +616,31 @@
     if (!target) return;
     var h = target.getBoundingClientRect().height;
     if (h > 0) document.documentElement.style.setProperty('--player-h', h + 'px');
+=======
+    if (window.dev4revSyncPlayerDialogs) window.dev4revSyncPlayerDialogs();
+  }
+
+  function togglePlayerList() {
+    // Одна кнопка открывает панель на последней выбранной вкладке.
+    var tab = window.dev4revCinema && window.dev4revCinema.getContextTab
+      ? window.dev4revCinema.getContextTab().tab
+      : 'channels';
+    setPlayerListOpen(!playerListOpen, tab);
+>>>>>>> 08f7507 (updated playlists, new visual)
   }
 
   function setStatus(text, kind) {
     var el = document.getElementById('playlistStatus');
+<<<<<<< HEAD
     if (!el) return;
     el.textContent = text || '';
     el.className = 'playlist-status' + (kind ? ' is-' + kind : '');
+=======
+    if (el) {
+      el.textContent = text || '';
+      el.className = 'playlist-status' + (kind ? ' is-' + kind : '');
+    }
+>>>>>>> 08f7507 (updated playlists, new visual)
   }
 
   function syncFsHead(name, group) {
@@ -448,8 +675,21 @@
     var nowPlaying = document.getElementById('nowPlaying');
     var nowGroup = document.getElementById('nowGroup');
     if (playerSection) playerSection.hidden = false;
+<<<<<<< HEAD
     if (nowPlaying) nowPlaying.textContent = ch.name;
     if (nowGroup) nowGroup.textContent = ch.group;
+=======
+    // Плеер может быть просто развёрнут заново (уже загруженный плейлист) —
+    // сообщаем об этом, чтобы меню под плеером снова появилось.
+    window.dispatchEvent(new CustomEvent('dev4rev:playerstate', { detail: { loaded: true } }));
+    if (window.dev4revTicker) {
+      window.dev4revTicker.set(nowPlaying, ch.name);
+      window.dev4revTicker.set(nowGroup, ch.group ? '· ' + ch.group : '');
+    } else {
+      if (nowPlaying) nowPlaying.textContent = ch.name;
+      if (nowGroup) nowGroup.textContent = ch.group;
+    }
+>>>>>>> 08f7507 (updated playlists, new visual)
     syncFsHead(ch.name, ch.group);
 
     document.querySelectorAll('.channel').forEach(function (el) {
@@ -466,12 +706,18 @@
       if (panelActive) panelActive.scrollIntoView({ block: 'nearest' });
     }
 
+<<<<<<< HEAD
     if (!pinned && playerSection) {
       var rect = playerSection.getBoundingClientRect();
       var topbarH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h')) || 64;
       var fullyHidden = rect.bottom <= topbarH || rect.top >= window.innerHeight;
       if (fullyHidden) playerSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+=======
+    window.dispatchEvent(new CustomEvent('dev4rev:channelchange', {
+      detail: { idx: idx, name: ch.name, group: ch.group, url: ch.url }
+    }));
+>>>>>>> 08f7507 (updated playlists, new visual)
 
     showControls();
   }
@@ -540,6 +786,7 @@
   function load(url) {
     var loadBtn = document.getElementById('loadBtn');
     var input = document.getElementById('playlistUrl');
+<<<<<<< HEAD
     var details = document.getElementById('sourcesDetails');
     if (input) input.value = url;
     if (loadBtn) loadBtn.disabled = true;
@@ -547,6 +794,21 @@
     if (details) details.open = false;
 
     window.dev4revLoadPlaylist(url)
+=======
+    // Загружаем по относительным ./... путям (они работают и в локальном превью),
+    // но в поле показываем публичный адрес tv.dev4rev.ru/...m3u.
+    if (input) {
+      input.value = window.dev4revPlaylistLink ? window.dev4revPlaylistLink(url) : url;
+    }
+    currentPlaylistUrl = url;
+    channelQuery = '';
+    channelGroup = '';
+    syncFilterInputs();
+    if (loadBtn) loadBtn.disabled = true;
+    setStatus('Загружаем плейлист…');
+
+    var promise = window.dev4revLoadPlaylist(url)
+>>>>>>> 08f7507 (updated playlists, new visual)
       .then(function (channels) {
         allChannels = channels.map(function (ch, i) { ch._idx = i; return ch; });
         if (!channels.length) { setStatus('Плейлист пуст или не распознан', 'error'); return; }
@@ -560,32 +822,97 @@
         if (channelsSection) channelsSection.hidden = false;
 
         playerLoaded = true;
+<<<<<<< HEAD
         applyPin();
         saveRecent(url, channels.length);
+=======
+        window.dispatchEvent(new CustomEvent('dev4rev:playerstate', { detail: { loaded: true } }));
+        saveRecent(url, channels.length);
+        window.dispatchEvent(new CustomEvent('dev4rev:playlistchange', {
+          detail: { url: url, count: channels.length }
+        }));
+>>>>>>> 08f7507 (updated playlists, new visual)
       })
       .catch(function (e) {
         log('load', e);
         setStatus('Не удалось загрузить. Проверьте ссылку и CORS.', 'error');
       })
       .then(function () { if (loadBtn) loadBtn.disabled = false; });
+<<<<<<< HEAD
+=======
+
+    return promise;
+  }
+
+  // Загрузка каналов без сети: избранное и сохранённые подборки.
+  function loadChannels(channels, opts) {
+    var o = opts || {};
+    var input = document.getElementById('playlistUrl');
+    var loadBtn = document.getElementById('loadBtn');
+    var list = (Array.isArray(channels) ? channels : []).filter(function (ch) {
+      return ch && typeof ch.url === 'string' && /^https?:\/\//i.test(ch.url);
+    }).map(function (ch, i) {
+      return {
+        name: String(ch.name || 'Без названия'),
+        url: ch.url,
+        logo: String(ch.logo || ''),
+        group: String(ch.group || 'Без группы'),
+        _idx: i
+      };
+    });
+
+    currentPlaylistUrl = o.url || ('local:' + (o.label || 'collection'));
+    if (input) input.value = currentPlaylistUrl;
+    channelQuery = '';
+    channelGroup = '';
+    syncFilterInputs();
+    if (loadBtn) loadBtn.disabled = true;
+
+    allChannels = list;
+    buildGroups(allChannels);
+    filterChannels();
+
+    var playerSection = document.getElementById('playerSection');
+    var channelsSection = document.getElementById('channelsSection');
+    if (playerSection) playerSection.hidden = false;
+    if (channelsSection) channelsSection.hidden = false;
+
+    playerLoaded = list.length > 0;
+    setStatus(list.length
+      ? 'Загружено каналов: ' + list.length + (o.label ? ' · ' + o.label : '')
+      : 'В этой подборке пока нет каналов', list.length ? 'ok' : 'warn');
+    window.dispatchEvent(new CustomEvent('dev4rev:playerstate', { detail: { loaded: playerLoaded } }));
+    window.dispatchEvent(new CustomEvent('dev4rev:playlistchange', {
+      detail: { url: currentPlaylistUrl, count: list.length, local: true }
+    }));
+    if (loadBtn) loadBtn.disabled = false;
+    return Promise.resolve(list.length > 0);
+>>>>>>> 08f7507 (updated playlists, new visual)
   }
 
   function unload() {
     var playerSection = document.getElementById('playerSection');
     var channelsSection = document.getElementById('channelsSection');
+<<<<<<< HEAD
     var details = document.getElementById('sourcesDetails');
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
 
     if (window.dev4revPlayer && window.dev4revPlayer.destroy) window.dev4revPlayer.destroy();
 
     setPlayerListOpen(false);
     if (playerSection) playerSection.hidden = true;
     if (channelsSection) channelsSection.hidden = true;
+<<<<<<< HEAD
     if (details) details.open = true;
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
 
     playerLoaded = false;
     currentIdx = -1;
     fatalRetries = 0;
     syncFsHead('—', '');
+<<<<<<< HEAD
     applyPin();
 
     var sources = document.getElementById('sourcesSection');
@@ -594,6 +921,16 @@
       var rect = sources.getBoundingClientRect();
       if (rect.top < topbarH || rect.top > window.innerHeight * 0.4) {
         sources.scrollIntoView({ behavior: 'smooth', block: 'start' });
+=======
+    window.dispatchEvent(new CustomEvent('dev4rev:playerstate', { detail: { loaded: false } }));
+
+    var shelf = document.getElementById('homeShelf');
+    if (shelf) {
+      var topbarH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h')) || 64;
+      var rect = shelf.getBoundingClientRect();
+      if (rect.top < topbarH || rect.top > window.innerHeight * 0.4) {
+        shelf.scrollIntoView({ behavior: 'smooth', block: 'start' });
+>>>>>>> 08f7507 (updated playlists, new visual)
       }
     }
   }
@@ -605,7 +942,11 @@
   }
 
   function updateFsIcon() {
+<<<<<<< HEAD
     var btn = document.getElementById('videoFsBtn');
+=======
+    var btn = document.getElementById('fullscreenBtn');
+>>>>>>> 08f7507 (updated playlists, new visual)
     if (!btn) return;
     var active = isFullscreen();
     btn.setAttribute('aria-label', active ? 'Выйти из полноэкранного режима' : 'На весь экран');
@@ -631,14 +972,25 @@
     updateFsIcon();
     var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
     var wrap = document.getElementById('playerWrap');
+<<<<<<< HEAD
 
     if (fsEl === wrap) {
+=======
+    var active = fsEl === wrap;
+    document.body.classList.toggle('player-immersive', active);
+
+    if (active) {
+>>>>>>> 08f7507 (updated playlists, new visual)
       var ch = allChannels.find(function (c) { return c._idx === currentIdx; });
       if (ch) syncFsHead(ch.name, ch.group);
       if (window.dev4revControls) window.dev4revControls.show();
     } else {
       if (playerListOpen) setPlayerListOpen(false);
     }
+<<<<<<< HEAD
+=======
+    window.dispatchEvent(new CustomEvent('dev4rev:fullscreenchange', { detail: { active: active } }));
+>>>>>>> 08f7507 (updated playlists, new visual)
   }
 
   function showControls() {
@@ -651,16 +1003,21 @@
     if (sinceEl) sinceEl.textContent = '2023';
     if (yEl) yEl.textContent = new Date().getFullYear();
 
+<<<<<<< HEAD
     loadPinPref();
     renderSources();
     renderRecent();
     loadSourcesFromJson();
+=======
+    renderRecent();
+>>>>>>> 08f7507 (updated playlists, new visual)
 
     var input = document.getElementById('playlistUrl');
     var loadBtn = document.getElementById('loadBtn');
 
     try {
       var recent = getRecent();
+<<<<<<< HEAD
       if (recent.length && input && !input.value) input.value = recent[0].url;
     } catch (e) {}
 
@@ -668,6 +1025,26 @@
       loadBtn.addEventListener('click', function () {
         if (!input) return;
         var url = input.value.trim();
+=======
+      if (recent.length && input && !input.value) {
+        input.value = window.dev4revPlaylistLink
+          ? window.dev4revPlaylistLink(recent[0].url) : recent[0].url;
+      }
+    } catch (e) {}
+
+    function readPlaylistInput() {
+      if (!input) return '';
+      var raw = input.value.trim();
+      var url = window.dev4revPlaylistLink ? window.dev4revPlaylistLink(raw) : raw;
+      input.value = url;
+      return url;
+    }
+
+    if (loadBtn) {
+      loadBtn.addEventListener('click', function () {
+        if (!input) return;
+        var url = readPlaylistInput();
+>>>>>>> 08f7507 (updated playlists, new visual)
         if (!url) { setStatus('Введите ссылку на плейлист', 'error'); return; }
         load(url);
       });
@@ -677,6 +1054,7 @@
       input.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') { e.preventDefault(); if (loadBtn) loadBtn.click(); }
       });
+<<<<<<< HEAD
     }
 
     var sourceList = document.getElementById('sourceList');
@@ -692,6 +1070,20 @@
         if (loadBtnEl && loadBtnEl.dataset.url) { e.preventDefault(); load(loadBtnEl.dataset.url); return; }
       });
     }
+=======
+      // Вставленную короткую форму tv.dev4rev.ru/... сразу показываем в полном виде.
+      input.addEventListener('blur', readPlaylistInput);
+    }
+
+    // Ссылка «поделиться плейлистом» может содержать ?playlist=... — загружаем её автоматически.
+    try {
+      var shared = new URLSearchParams(window.location.search).get('playlist');
+      if (shared) {
+        if (/^https?:\/\//i.test(shared)) load(shared);
+        else if (/^\.?\//.test(shared)) load(new URL(shared, window.location.href).href);
+      }
+    } catch (e) {}
+>>>>>>> 08f7507 (updated playlists, new visual)
 
     var recentList = document.getElementById('recentList');
     if (recentList) {
@@ -715,20 +1107,53 @@
     var backBtn = document.getElementById('backBtn');
     if (backBtn) backBtn.addEventListener('click', unload);
 
+<<<<<<< HEAD
     var search = document.getElementById('channelSearch');
     if (search) search.addEventListener('input', filterChannels);
     var group = document.getElementById('groupFilter');
     if (group) group.addEventListener('change', filterChannels);
+=======
+    ['channelSearch', 'playerChannelSearch'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', function () { setChannelFilter(el.value, channelGroup); });
+    });
+    ['groupFilter', 'playerGroupFilter'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('change', function () { setChannelFilter(channelQuery, el.value); });
+    });
+>>>>>>> 08f7507 (updated playlists, new visual)
 
     var list = document.getElementById('channelList');
     if (list) {
       list.addEventListener('click', function (e) {
+<<<<<<< HEAD
+=======
+        var fav = e.target.closest('[data-fav-url]');
+        if (fav) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (window.dev4revFavorites) window.dev4revFavorites.toggle({
+            url: fav.dataset.favUrl,
+            name: (fav.closest('.channel-item').querySelector('.channel__name-text') || {}).textContent,
+            logo: (fav.closest('.channel-item').querySelector('.channel__logo[src]') || {}).src || '',
+            group: (fav.closest('.channel-item').querySelector('.channel__group') || {}).textContent
+          });
+          return;
+        }
+>>>>>>> 08f7507 (updated playlists, new visual)
         var btn = e.target.closest('.channel');
         if (!btn) return;
         playChannel(Number(btn.dataset.idx));
       });
     }
 
+<<<<<<< HEAD
+=======
+    window.addEventListener('dev4rev:favoriteschange', function () {
+      renderChannels(visibleChannels);
+    });
+
+>>>>>>> 08f7507 (updated playlists, new visual)
     var nextBtn = document.getElementById('nextBtn');
     if (nextBtn) nextBtn.addEventListener('click', nextChannel);
     var prevBtn = document.getElementById('prevBtn');
@@ -765,6 +1190,7 @@
     var playerChannelsList = document.getElementById('playerChannelsList');
     if (playerChannelsList) {
       playerChannelsList.addEventListener('click', function (e) {
+<<<<<<< HEAD
         var btn = e.target.closest('.player__channel');
         if (!btn) return;
         playChannel(Number(btn.dataset.idx));
@@ -785,6 +1211,30 @@
       videoFsBtn.addEventListener('click', function (e) { e.preventDefault(); toggleFullscreen(); });
     }
 
+=======
+        var fav = e.target.closest('[data-fav-url]');
+        if (fav) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (window.dev4revFavorites) window.dev4revFavorites.toggle({
+            url: fav.dataset.favUrl,
+            name: (fav.closest('.player__channel-item').querySelector('.player__channel-name') || {}).textContent,
+            logo: (fav.closest('.player__channel-item').querySelector('.player__channel-logo[src]') || {}).src || '',
+            group: (fav.closest('.player__channel-item').querySelector('.player__channel-group') || {}).textContent
+          });
+          return;
+        }
+        var btn = e.target.closest('.player__channel');
+        if (!btn) return;
+        playChannel(Number(btn.dataset.idx));
+        if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches &&
+            window.dev4revCinema) {
+          window.dev4revCinema.closeContext();
+        }
+      });
+    }
+
+>>>>>>> 08f7507 (updated playlists, new visual)
     var fsExitBtn = document.getElementById('fsExitBtn');
     if (fsExitBtn) {
       fsExitBtn.addEventListener('click', function (e) {
@@ -799,6 +1249,15 @@
       playLastOrFirst();
     });
 
+<<<<<<< HEAD
+=======
+    window.addEventListener('dev4rev:contexttab', function (e) {
+      var detail = e.detail || {};
+      playerListOpen = !!detail.open;
+      syncPlayerListButton();
+    });
+
+>>>>>>> 08f7507 (updated playlists, new visual)
     ['mousemove', 'mousedown', 'touchstart', 'touchmove'].forEach(function (ev) {
       document.addEventListener(ev, function () {
         if (isFullscreen()) showControls();
@@ -857,6 +1316,15 @@
       var key = e.key.toLowerCase();
       if (key === 'n' || key === 'т') { e.preventDefault(); nextChannel(); }
       if (key === 'p' || key === 'з') { e.preventDefault(); prevChannel(); }
+<<<<<<< HEAD
+=======
+      if (key === 'i' || key === 'и') {
+        e.preventDefault();
+        if (window.dev4revControls && window.dev4revControls.togglePip) {
+          window.dev4revControls.togglePip();
+        }
+      }
+>>>>>>> 08f7507 (updated playlists, new visual)
       if (e.key === 'MediaTrackNext') { e.preventDefault(); nextChannel(); }
       if (e.key === 'MediaTrackPrevious') { e.preventDefault(); prevChannel(); }
     });
@@ -915,6 +1383,7 @@
       revealEls.forEach(function (el) { el.classList.add('is-visible'); });
     }
 
+<<<<<<< HEAD
     if (window.ResizeObserver) {
       var wrapEl = document.getElementById('playerWrap');
       if (wrapEl) {
@@ -979,6 +1448,8 @@
       updateToPlayerBtn();
     }
 
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
     var marqueeTimer = null;
     window.addEventListener('resize', function () {
       clearTimeout(marqueeTimer);
@@ -999,4 +1470,31 @@
       wakeCursor();
     }
   });
+<<<<<<< HEAD
+=======
+
+  // ── Публичный API для кинотеатра ──────────────────────────
+  window.dev4revApp = {
+    load: function (url) { return load(url); },
+    loadChannels: loadChannels,
+    playChannel: playChannel,
+    next: nextChannel,
+    prev: prevChannel,
+    unload: unload,
+    getChannels: function () { return allChannels.slice(); },
+    getVisibleChannels: function () { return visibleChannels.slice(); },
+    hasChannels: function () { return allChannels.length > 0; },
+    getCurrentIndex: function () { return currentIdx; },
+    isPlayerLoaded: function () { return playerLoaded; },
+    togglePlayerList: togglePlayerList,
+    setPlayerListOpen: setPlayerListOpen,
+    setChannelFilter: setChannelFilter,
+    renderPlayerChannels: renderPlayerChannels,
+    getPlaylistUrl: function () {
+      var input = document.getElementById('playlistUrl');
+      return currentPlaylistUrl || (input ? input.value.trim() : '');
+    },
+    setStatus: setStatus
+  };
+>>>>>>> 08f7507 (updated playlists, new visual)
 })();

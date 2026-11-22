@@ -1,0 +1,82 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Россия · ngrch
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/perviy.png" group-title="Основные",Первый
+https://zabava-htlive.cdn.ngenix.net/hls/CH_1TVSD/variant.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/perviy.png" group-title="Основные (региональные)",Первый -1
+https://rt-nw-klgr-htlive.cdn.ngenix.net/hls/CH_R03_1TV_KLNG/variant.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/pobeda.png" group-title="Кино",Победа
+https://streaming.thestream.cyou/live/43.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/viju_explore.png" group-title="Путешествия",Viju Explore (2)
+https://flussonic.mkpnet.ru/tv-7c57a4c3f9a896ea/video.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/viju_nature.png" group-title="Развлекательные",Viju Nature
+https://flussonic.mkpnet.ru/tv-7a85ea25208f5bf7/video.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/discovery.png" group-title="Документальные",Discovery
+https://stream8.cinerama.uz/1039/index.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/2x2.png" group-title="Детские",2x2
+https://zabava-htlive.cdn.ngenix.net/hls/CH_2X2/variant.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/ru_tv.png" group-title="Музыкальные",RU.TV РУ.ТВ (2)
+https://stream8.cinerama.uz/1202/index.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/m24.png" group-title="Новости",Москва 24 (М24)
+https://stream.smotrim.ru/hls/moscow_24/playlist_3.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Познавательные",ПРНК
+https://serv25.vintera.tv/1pnk/prnk/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Спорт",Матч! Планета
+https://stream8.cinerama.uz/1243/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Мода и стиль",НТВ Стиль
+https://cdn.ntv.ru/th_style/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Кинозалы",Шоу Бенни Хилла
+https://lbgo.bozztv.com/07/ushba62/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Кинозалы Kinowalk",Disney XD
+https://kinowalk.hopto.org/disneyxd_live
+#EXTINF:-1 tvg-logo="" group-title="Кинозалы Catcast",Кино 1 International
+https://kino-1.catcast.tv/content/38617/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Авто",Авто Плюс
+https://stream8.cinerama.uz/1036/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Природа и животные",National Geographic
+https://stream8.cinerama.uz/1041/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Охота и рыбалка",Дикая охота
+https://stream8.cinerama.uz/1412/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Здоровье и фитнес",Здоровое
+https://stream8.cinerama.uz/1428/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Кулинария",Кухня
+https://stream8.cinerama.uz/1236/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Религиозные",Три Ангела
+https://hls.tv.3angels.ru/stream.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Региональные",Беларусь 1 | Беларусь
+https://ngtrk.dc.beltelecom.by/ngtrk/smil:belarus1/index.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/perviy.png" group-title="Основные",Первый (2)
+https://serv30.vintera.tv/restream/1_old/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/perviy.png" group-title="Основные (региональные)",Первый +1
+https://rt-vlg-saratov-htlive.cdn.ngenix.net/hls/CH_R03_OTT_VLG_SARATOV_1TV/variant.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/dom_kino.png" group-title="Кино",Дом Кино
+https://streaming.thestream.cyou/live/44.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Путешествия",Dunyo bo'ylab
+https://stream8.cinerama.uz/1006/index.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/viju_nature.png" group-title="Развлекательные",Viju Nature (2)
+https://stream8.cinerama.uz/1228/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Документальные",RTД
+https://rt-rtd.rttv.com/live/rtdoc/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/solnce.png" group-title="Детские",Солнце
+https://zabava-htlive.cdn.ngenix.net/hls/CH_DISNEY/variant.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/mir.png" group-title="Новости",Мир 24 (2)
+https://stream8.cinerama.uz/1219/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Познавательные",BRICS
+https://rusbrics.mediacdn.ru/cdn/brics/russian/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Спорт",Eurosport 2
+https://stream8.cinerama.uz/1452/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Мода и стиль",Fashion
+https://stream8.cinerama.uz/1053/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Кинозалы",Мистер Бин
+https://lbgo.bozztv.com/07/ushba45/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Кинозалы Kinowalk",JTX
+https://kinowalk.hopto.org/jtxonline_live
+#EXTINF:-1 tvg-logo="" group-title="Кинозалы Catcast",Детское кино
+https://kino-1.catcast.tv/content/40427/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Авто",Авто 24
+https://stream8.cinerama.uz/1430/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Природа и животные",National Geographic Wild
+https://stream8.cinerama.uz/1042/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Охота и рыбалка",Охотник и рыболов
+https://stream8.cinerama.uz/1413/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Здоровье и фитнес",Живи!
+https://stream8.cinerama.uz/1419/index.m3u8

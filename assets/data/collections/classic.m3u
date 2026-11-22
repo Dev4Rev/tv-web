@@ -1,0 +1,29 @@
+#EXTM3U
+#EXTINF:-1 group-title="Классика кино",Классика Кино
+https://serv25.vintera.tv/dai/k_kino_dai_scte-35/playlist.m3u8
+#EXTINF:-1 group-title="Классика кино",100% Классика
+https://stream.smotrim.ru/hls3/fasttv03/playlist_3.m3u8
+#EXTINF:-1 group-title="Классика кино",КиноКлассика
+https://cityeden.catcast.tv/content/34185/index.m3u8
+#EXTINF:-1 group-title="Классика кино",Сити Эдем — Киноклассика
+https://autopilot.catcast.tv/content/34185/index.m3u8?password=promolive
+#EXTINF:-1 group-title="Классика кино",Ретро (2)
+https://stream8.cinerama.uz/1047/index.m3u8
+#EXTINF:-1 group-title="Классика кино",Retrovision
+https://lbgo.bozztv.com/07/ushba-rvision/index.m3u8
+#EXTINF:-1 group-title="Классика кино",Retrovision Motor
+https://lbgo.bozztv.com/07/ushba-rvisionmotor/index.m3u8
+#EXTINF:-1 group-title="Классика кино",Retrovision Кинопанорама
+https://lbgo.bozztv.com/07/ushba-rvisionkinopanorama/index.m3u8
+#EXTINF:-1 group-title="Классика кино",Retrovision Movies
+https://lbgo.bozztv.com/07/ushba-rvisionmovies/index.m3u8
+#EXTINF:-1 group-title="Классика кино",Retrovision Classic
+https://lbgo.bozztv.com/07/ushba-rvisionclassic/index.m3u8
+#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/5f8ed168f72fcd0007e56269/colorLogoPNG_1751272859383.png" group-title="Классика кино",Cine Retro by Pluto TV
+https://jmp2.uk/plu-5f8ed168f72fcd0007e56269.m3u8
+#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/69a9ae4d3bd16a4ed04240d7/colorLogoPNG_1774879695281.png" group-title="Классика кино",Pluto TV Retro Action Movies
+https://jmp2.uk/plu-69a9ae4d3bd16a4ed04240d7.m3u8
+#EXTINF:-1 tvg-logo="https://cdn.smotrim.ru/photobank/prod/large/156/126/56.jpg" group-title="Классика кино",Smotrim 100% Gorkogo (1080p)
+https://stream.smotrim.ru/hls2/fasttv07/playlist_3.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/aASNpKq.png" group-title="Классика кино",Smotrim 100% Klassika (1080p)
+https://stream.smotrim.ru/hls2/fasttv03/playlist_3.m3u8

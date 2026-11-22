@@ -19,6 +19,10 @@
   var durationEl = null;
   var muteBtn = null;
   var fullscreenBtn = null;
+<<<<<<< HEAD
+=======
+  var pipBtn = null;
+>>>>>>> 08f7507 (updated playlists, new visual)
   var hideTimer = null;
 
   var seeking = false;
@@ -160,6 +164,48 @@
     return document.fullscreenElement === wrap || document.webkitFullscreenElement === wrap;
   }
 
+<<<<<<< HEAD
+=======
+  // ─── Picture-in-Picture: плавающее окно поверх вкладок ─
+  function isPipActive() {
+    return !!document.pictureInPictureElement;
+  }
+
+  function syncPipButton() {
+    if (!pipBtn) return;
+    var active = isPipActive();
+    pipBtn.classList.toggle('is-active', active);
+    pipBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    pipBtn.setAttribute('aria-label', active
+      ? 'Закрыть плавающее окно'
+      : 'Плавающее окно (картинка в картинке)');
+    pipBtn.setAttribute('title', active
+      ? 'Закрыть плавающее окно'
+      : 'Плавающее окно поверх вкладок');
+  }
+
+  function togglePip() {
+    if (!video) return;
+    var canPip = document.pictureInPictureEnabled &&
+      typeof video.requestPictureInPicture === 'function';
+    if (!canPip) return;
+
+    try {
+      if (isPipActive()) {
+        var exitPip = document.exitPictureInPicture;
+        if (exitPip) {
+          var p0 = exitPip.call(document);
+          if (p0 && p0.catch) p0.catch(function (e) { log('pip-exit', e); });
+        }
+        return;
+      }
+      if (!hasMedia()) return;
+      var p = video.requestPictureInPicture();
+      if (p && p.catch) p.catch(function (e) { log('pip-enter', e); });
+    } catch (e) { log('pip-toggle', e); }
+  }
+
+>>>>>>> 08f7507 (updated playlists, new visual)
   function toggleFullscreen() {
     if (!wrap) return;
 
@@ -331,6 +377,20 @@
       });
     }
 
+<<<<<<< HEAD
+=======
+    if (pipBtn) {
+      pipBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        togglePip();
+      });
+    }
+
+    video.addEventListener('enterpictureinpicture', syncPipButton);
+    video.addEventListener('leavepictureinpicture', syncPipButton);
+
+>>>>>>> 08f7507 (updated playlists, new visual)
     ['mousemove', 'mousedown', 'touchstart'].forEach(function (ev) {
       wrap.addEventListener(ev, showControls, { passive: true });
     });
@@ -385,9 +445,23 @@
     durationEl = document.getElementById('duration');
     muteBtn = document.getElementById('muteBtn');
     fullscreenBtn = document.getElementById('fullscreenBtn');
+<<<<<<< HEAD
 
     if (!wrap || !video) return;
 
+=======
+    pipBtn = document.getElementById('pipBtn');
+
+    if (!wrap || !video) return;
+
+    if (pipBtn) {
+      var pipSupported = !!document.pictureInPictureEnabled &&
+        typeof video.requestPictureInPicture === 'function';
+      pipBtn.hidden = !pipSupported;
+      if (pipSupported) syncPipButton();
+    }
+
+>>>>>>> 08f7507 (updated playlists, new visual)
     var volPref = loadVolumePref();
     if (volPref) {
       try {
@@ -406,6 +480,11 @@
       },
       isFullscreen: isFullscreen,
       toggleFullscreen: toggleFullscreen,
+<<<<<<< HEAD
+=======
+      togglePip: togglePip,
+      isPipActive: isPipActive,
+>>>>>>> 08f7507 (updated playlists, new visual)
       tryLockOrientation: tryLockOrientation,
       unlockOrientation: unlockOrientation,
       updateRotateHint: updateRotateHint

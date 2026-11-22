@@ -1,4 +1,5 @@
 <!doctype html>
+<<<<<<< HEAD
 <html lang="ru" data-theme="auto" data-tv-mode="auto">
 <head>
   <meta charset="utf-8">
@@ -6,6 +7,14 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+=======
+<html lang="ru" data-tv-mode="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
+>>>>>>> 08f7507 (updated playlists, new visual)
   <script src="./assets/js/theme-init.js"></script>
   <title>TV - бесплатные IPTV-плейлисты M3U, просмотр в браузере и VLC</title>
   <meta name="description" content="TV dev4rev - бесплатные IPTV-плейлисты в формате M3U. Смотрите русские каналы, музыку, мультфильмы прямо в браузере или подключайте к VLC и другим плеерам. Без регистрации и рекламы.">
@@ -30,23 +39,46 @@
   {"@context":"https://schema.org","@graph":[
     {"@type":"Organization","@id":"https://dev4rev.ru/#org","name":"dev4rev","url":"https://dev4rev.ru/","sameAs":["https://t.me/dev4rev"]},
     {"@type":"WebSite","@id":"https://tv.dev4rev.ru/#site","url":"https://tv.dev4rev.ru/","name":"dev4rev TV","inLanguage":"ru-RU","publisher":{"@id":"https://dev4rev.ru/#org"}},
+<<<<<<< HEAD
     {"@type":"WebApplication","name":"TV — IPTV-плейлисты M3U","url":"https://tv.dev4rev.ru/","applicationCategory":"MultimediaApplication","operatingSystem":"Web, Smart TV","description":"Просмотр IPTV-плейлистов в формате M3U прямо в браузере. Публичные источники, поиск каналов, фильтр по группам.","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}},
     {"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"Как смотреть IPTV в браузере без установки приложений?","acceptedAnswer":{"@type":"Answer","text":"Откройте tv.dev4rev.ru. Выберите публичный плейлист или вставьте ссылку M3U, нажмите «Загрузить». Затем выберите канал из списка — видео откроется в плеере прямо на странице."}},
       {"@type":"Question","name":"Как подключить плейлист к VLC?","acceptedAnswer":{"@type":"Answer","text":"Скопируйте ссылку M3U с tv.dev4rev.ru или из публичных источников. Откройте VLC → Медиа → Открыть URL. Вставьте ссылку, нажмите «Воспроизвести»."}},
       {"@type":"Question","name":"Что такое M3U-плейлист?","acceptedAnswer":{"@type":"Answer","text":"M3U — текстовый формат для списка ссылок на потоки. Каждый канал — две строки: метаданные и URL потока."}},
       {"@type":"Question","name":"Почему не все каналы воспроизводятся?","acceptedAnswer":{"@type":"Answer","text":"Публичные IPTV-потоки нестабильны. Сайт автоматически переходит к следующему каналу при ошибке — используйте кнопки N и P для навигации."}}
+=======
+    {"@type":"WebApplication","name":"TV — IPTV-плейлисты M3U","url":"https://tv.dev4rev.ru/","applicationCategory":"MultimediaApplication","operatingSystem":"Web, Smart TV","description":"Просмотр IPTV-плейлистов в формате M3U прямо в браузере. Подборки, поиск каналов, фильтр по группам.","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Как смотреть IPTV в браузере без установки приложений?","acceptedAnswer":{"@type":"Answer","text":"Откройте tv.dev4rev.ru. Выберите подборку в разделе «Что будем смотреть?» или вставьте свою ссылку M3U, нажмите «Загрузить». Затем выберите канал из списка — видео откроется в плеере прямо на странице."}},
+      {"@type":"Question","name":"Как подключить плейлист к VLC?","acceptedAnswer":{"@type":"Answer","text":"Скопируйте ссылку на плейлист через кнопку «Поделиться» в плеере. Откройте VLC → Медиа → Открыть URL. Вставьте ссылку, нажмите «Воспроизвести»."}},
+      {"@type":"Question","name":"Что такое M3U-плейлист?","acceptedAnswer":{"@type":"Answer","text":"M3U — текстовый формат для списка ссылок на потоки. Каждый канал — две строки: метаданные и URL потока."}},
+      {"@type":"Question","name":"Почему не все каналы воспроизводятся?","acceptedAnswer":{"@type":"Answer","text":"Публичные IPTV-потоки нестабильны. Сайт автоматически переходит к следующему каналу при ошибке — используйте кнопки N и P для навигации."}},
+       {"@type":"Question","name":"Как работает кнопка «Сохранить мою»?","acceptedAnswer":{"@type":"Answer","text":"Она сохраняет открытую подборку вместе с каналами только в вашем браузере. Карточка появится в разделе первой в списке с меткой «МОЯ» и останется после перезагрузки. Если открыта уже сохранённая подборка, повторное нажатие добавит в неё текущий плейлист."}}
+>>>>>>> 08f7507 (updated playlists, new visual)
     ]}
   ]}
   </script>
 </head>
 <body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
   <!-- Topbar -->
   <div class="topbar" id="topbar">
     <div class="topbar__inner">
       <a href="https://tv.dev4rev.ru/" class="topbar__brand">dev4rev<span class="dot">.</span>tv</a>
       <div class="topbar__right">
+<<<<<<< HEAD
+=======
+        <button type="button" class="cinema-toggle" id="cinemaToggle" aria-label="Режим кинотеатра" aria-pressed="false" title="Кинотеатр — подборки и полноэкранный плеер">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M7 4v16M17 4v16M2 9h5M17 9h5M2 15h5M17 15h5"/>
+          </svg>
+          <span class="cinema-toggle__label">Кинотеатр</span>
+        </button>
+>>>>>>> 08f7507 (updated playlists, new visual)
         <button type="button" class="tv-toggle" id="tvToggle" aria-label="ТВ-режим" aria-pressed="false" title="ТВ-режим">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="4" width="20" height="13" rx="2"/>
@@ -54,11 +86,14 @@
           </svg>
           <span class="tv-toggle__label">ТВ</span>
         </button>
+<<<<<<< HEAD
         <div class="theme" role="group" aria-label="Тема оформления">
           <button type="button" data-theme-value="auto" title="Авто" aria-pressed="true">◐</button>
           <button type="button" data-theme-value="light" title="Светлая" aria-pressed="false">☀</button>
           <button type="button" data-theme-value="dark" title="Тёмная" aria-pressed="false">☾</button>
         </div>
+=======
+>>>>>>> 08f7507 (updated playlists, new visual)
       </div>
     </div>
   </div>
@@ -66,12 +101,20 @@
   <!-- Hero -->
   <header class="hero" id="top">
     <div class="hero__inner">
+<<<<<<< HEAD
       <p class="hero__eyebrow">IPTV прямо в браузере</p>
+=======
+      <p class="hero__eyebrow" id="heroEyebrow">IPTV прямо в браузере</p>
+>>>>>>> 08f7507 (updated playlists, new visual)
 
       <div class="playlist-bar">
         <input type="url" class="playlist-bar__input" id="playlistUrl"
                inputmode="url" enterkeyhint="go" autocapitalize="off" autocorrect="off"
+<<<<<<< HEAD
                placeholder="https://example.com/playlist.m3u"
+=======
+               placeholder="tv.dev4rev.ru/playlist.m3u"
+>>>>>>> 08f7507 (updated playlists, new visual)
                autocomplete="off" spellcheck="false"
                aria-label="URL плейлиста">
         <button type="button" class="playlist-bar__btn" id="loadBtn">
@@ -115,6 +158,7 @@
       </details>
     </section>
 
+<<<<<<< HEAD
     <!-- Публичные источники -->
     <section class="sources sources--public reveal" id="sourcesSection">
       <details class="sources__details" id="sourcesDetails" open>
@@ -153,10 +197,62 @@
           </button>
         </div>
       </div>
+=======
+    <!-- Подборки (Lampa-style) -->
+    <section class="shelf reveal" id="homeShelf" aria-label="Тематические подборки">
+      <div class="shelf__search-row">
+        <div class="shelf__search" id="globalSearchBox">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="shelfSearch"
+                 placeholder="Поиск каналов, плейлистов и подборок…" autocomplete="off"
+                 aria-label="Глобальный поиск по каналам и плейлистам"
+                 role="combobox" aria-expanded="false" aria-controls="globalSearchResults">
+          <button type="button" class="shelf__search-clear" id="shelfSearchClear"
+                  aria-label="Очистить поиск" title="Очистить поиск" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+            <span>Очистить</span>
+          </button>
+          <div class="global-search__results" id="globalSearchResults" hidden></div>
+        </div>
+      </div>
+      <div class="shelf__head">
+        <div>
+          <p class="shelf__eyebrow">КИНОТЕАТР · ПОДБОРКИ</p>
+          <h2 class="shelf__title">Что будем смотреть?</h2>
+        </div>
+        <div class="shelf__actions">
+          <button type="button" class="shelf__all" id="saveCollectionBtn" disabled aria-label="Сохранить текущую подборку" aria-describedby="saveHelpText" title="Сохраняет открытую подборку в этом браузере">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h9a2 2 0 0 1 2 2v14l-6-4-6 4V6a2 2 0 0 1 1-2z"/><path d="M18 8h4M20 6v4"/></svg>
+            <span>Сохранить мою</span>
+          </button>
+          <div class="shelf__help-wrap">
+            <button type="button" class="shelf__help-btn" id="saveHelpBtn" aria-label="Как работает сохранение" aria-expanded="false" title="Как работает сохранение">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.3 2.1c-.7.3-1.1.9-1.1 1.7M12 17h.01"/></svg>
+            </button>
+            <div class="shelf__help-popover" id="saveHelpPopover" hidden>
+              <strong>Что делает «Сохранить мою»</strong>
+              <p id="saveHelpText">Сохраняет открытую подборку вместе с каналами только в этом браузере. Карточка появится первой в списке с меткой «МОЯ» и останется после перезагрузки.</p>
+              <p>Если открыта уже сохранённая подборка, повторное нажатие добавит в неё текущий плейлист.</p>
+            </div>
+          </div>
+          <button type="button" class="shelf__all" id="shelfAllBtn">Все подборки</button>
+        </div>
+      </div>
+      <div class="shelf__rail" id="homeShelfRail"></div>
+      <p class="shelf__empty" id="shelfEmpty" hidden>Подборки не найдены</p>
+    </section>
+
+    <div class="player-slot" id="playerSlot">
+    <section class="player reveal" id="playerSection" hidden>
+      <div class="cinema__ambient" id="cinemaAmbient" aria-hidden="true"></div>
+>>>>>>> 08f7507 (updated playlists, new visual)
 
       <div class="player__video-wrap" id="playerWrap">
         <video id="video" class="player__video" playsinline preload="none"></video>
 
+<<<<<<< HEAD
         <div class="player__overlay" id="playerOverlay">
           <p class="player__overlay-text">Выберите канал из списка ниже</p>
         </div>
@@ -183,6 +279,65 @@
               </svg>
             </button>
             <button type="button" class="player__fs-iconbtn" id="fsExitBtn" aria-label="Выйти из полноэкранного режима" title="Выйти (Esc)">
+=======
+        <!-- Единая панель плеера: возврат, подборка и управление — внутри видео,
+             поэтому всё доступно и в полноэкранном режиме. -->
+        <div class="player__head" id="playerHead">
+          <div class="player__head-group">
+            <button type="button" class="player__back" id="backBtn" aria-label="Вернуться к подборкам" title="Вернуться к подборкам">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m15 18-6-6 6-6"/>
+              </svg>
+              <span>К подборкам</span>
+            </button>
+          </div>
+
+          <div class="player__head-title">
+            <span class="player__title" id="nowPlaying">—</span>
+            <span class="player__group" id="nowGroup"></span>
+            <span class="player__subline" id="playerSubline">Подборка</span>
+            <span class="player__fs-title player__select-sr" id="fsTitle">—</span>
+            <span class="player__fs-group player__select-sr" id="fsGroup"></span>
+          </div>
+
+          <div class="player__nav">
+            <button type="button" class="player__nav-btn mini-only" id="miniExpandBtn" aria-label="Развернуть плеер" title="Развернуть плеер">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
+                <path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+              </svg>
+            </button>
+            <button type="button" class="player__nav-btn mini-only" id="miniCloseBtn" aria-label="Закрыть мини-плеер" title="Закрыть мини-плеер">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6 6 18M6 6l12 12"/>
+              </svg>
+            </button>
+            <button type="button" class="player__nav-btn" id="fsListBtn" aria-label="Плейлисты и каналы (L)" aria-expanded="false" title="Плейлисты и каналы (L)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/>
+              </svg>
+            </button>
+            <button type="button" class="player__nav-btn" id="sharePlayerBtn" aria-label="Поделиться плейлистом" aria-haspopup="true" aria-expanded="false" title="Поделиться сайтом или плейлистом">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"/>
+                <circle cx="6" cy="12" r="3"/>
+                <circle cx="18" cy="19" r="3"/>
+                <path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/>
+              </svg>
+            </button>
+            <button type="button" class="player__nav-btn cinema-only" id="cinemaExitBtn" aria-label="Выйти из кинотеатра" title="Выйти из кинотеатра (Esc)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6 6 18M6 6l12 12"/>
+              </svg>
+            </button>
+            <button type="button" class="player__nav-btn" id="prevBtn" aria-label="Предыдущий канал (P)" title="Предыдущий (P)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="player__nav-btn" id="nextBtn" aria-label="Следующий канал (N)" title="Следующий (N)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <button type="button" class="player__nav-btn" id="fsExitBtn" aria-label="Выйти из полноэкранного режима" title="Выйти (Esc)">
+>>>>>>> 08f7507 (updated playlists, new visual)
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M8 3v3a2 2 0 0 1-2 2H3"/>
                 <path d="M21 8h-3a2 2 0 0 1-2-2V3"/>
@@ -193,6 +348,78 @@
           </div>
         </div>
 
+<<<<<<< HEAD
+=======
+        <!-- Выдвигающаяся справа панель с переключателем «Плейлисты / Каналы». -->
+        <aside class="player__channels" id="playerChannels" aria-label="Плейлисты и каналы">
+          <div class="player__channels-head">
+            <span class="player__channels-title">Плейлисты и каналы</span>
+            <span class="player__channels-count mono" id="playerChannelsCount">—</span>
+            <button type="button" class="player__channels-close" id="channelsCloseBtn" aria-label="Закрыть панель" title="Закрыть (L)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6 6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          <div class="player__context-tabs" role="tablist" aria-label="Выбор в плеере">
+            <button type="button" class="player__context-tab is-active" id="contextTabPlaylists"
+                    role="tab" aria-selected="true" aria-controls="playerContext"
+                    data-context-tab="playlists">Плейлисты</button>
+            <button type="button" class="player__context-tab" id="contextTabChannels"
+                    role="tab" aria-selected="false" aria-controls="playerChannelsPane"
+                    data-context-tab="channels">Каналы</button>
+          </div>
+          <div class="player__channels-body">
+            <div class="player__context" id="playerContext" role="tabpanel" aria-labelledby="contextTabPlaylists">
+              <div class="player__context-copy">
+                <span class="player__context-eyebrow" id="contextEyebrow"></span>
+                <h2 class="player__context-title" id="contextTitle"></h2>
+                <p class="player__context-desc" id="contextDesc"></p>
+              </div>
+              <div class="player__context-info" id="contextInfo"></div>
+              <div class="player__context-playlists" id="contextPlaylists">
+                <div class="player__playlist-search">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+                  <input type="search" id="playlistSearch" class="player__playlist-search-input"
+                         placeholder="Поиск плейлиста…" autocomplete="off" aria-label="Поиск плейлиста">
+                </div>
+                <div class="player__context-playlists-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+                  <span>Плейлисты в подборке</span>
+                  <span class="mono" id="contextPlaylistCount"></span>
+                </div>
+                <div class="playlist-list" data-playlist-list="context"></div>
+                <select class="player__select-sr" data-playlist-switch aria-label="Плейлист подборки"></select>
+              </div>
+            </div>
+            <div class="player__channels-pane" id="playerChannelsPane" role="tabpanel" aria-labelledby="contextTabChannels" hidden>
+              <p class="player__channels-note" id="channelPlaylistNote"></p>
+              <div class="player__channels-filters">
+                <input type="search" class="player__channels-input" id="playerChannelSearch"
+                       placeholder="Поиск канала…" autocomplete="off" aria-label="Поиск канала">
+                <select class="player__channels-group" id="playerGroupFilter" aria-label="Группа каналов">
+                  <option value="">Все группы</option>
+                </select>
+              </div>
+              <ul class="player__channels-list" id="playerChannelsList" role="list"></ul>
+              <p class="player__channels-empty" id="playerChannelsEmpty" hidden>Каналы не найдены</p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="player__overlay" id="playerOverlay">
+          <p class="player__overlay-text">Выберите канал из списка ниже</p>
+        </div>
+
+        <div class="player__rotate-hint" id="rotateHint" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="8" y="2" width="8" height="20" rx="1.5"/>
+            <path d="M12 18h.01"/>
+          </svg>
+          <span>Поверните устройство</span>
+        </div>
+
+>>>>>>> 08f7507 (updated playlists, new visual)
         <!-- Центральная кнопка play при паузе -->
         <button type="button" class="player__bigplay" id="bigPlayBtn" aria-label="Воспроизвести" hidden>
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -254,6 +481,16 @@
             <span class="player__quality-label" id="qualityLabel">auto</span>
           </button>
 
+<<<<<<< HEAD
+=======
+          <button type="button" class="player__ctrl-btn" id="pipBtn" aria-label="Плавающее окно (картинка в картинке)" title="Плавающее окно поверх вкладок" aria-pressed="false" hidden>
+            <svg class="player__ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <rect x="12" y="11" width="8" height="6" rx="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </button>
+
+>>>>>>> 08f7507 (updated playlists, new visual)
           <button type="button" class="player__ctrl-btn" id="fullscreenBtn" aria-label="На весь экран" title="На весь экран">
             <svg class="player__ctrl-icon player__ctrl-icon--expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
@@ -275,6 +512,7 @@
           <ul class="player__quality-list" id="qualityList" role="listbox"></ul>
         </div>
 
+<<<<<<< HEAD
         <!-- Панель каналов — overlay внутри обёртки -->
         <aside class="player__channels" id="playerChannels" aria-label="Список каналов">
           <div class="player__channels-head">
@@ -300,6 +538,28 @@
       <div class="channels__head" id="channelsHead">
         <span class="channels__count mono" id="channelsCount">—</span>
         <div class="channels__filter">
+=======
+      </div>
+    </section>
+    </div>
+
+    <!-- Каналы и плейлисты отдельным блоком под плеером (не внутри видео). -->
+    <section class="channels reveal" id="channelsSection" hidden>
+      <div class="channels__head" id="channelsHead">
+        <div class="context-switcher" role="tablist" aria-label="Плейлисты и каналы">
+          <button type="button" class="context-switcher__btn is-active" data-context-tab="playlists"
+                  role="tab" aria-selected="true" aria-controls="channelsPlaylistList">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            Плейлисты
+          </button>
+          <button type="button" class="context-switcher__btn" data-context-tab="channels"
+                  role="tab" aria-selected="false" aria-controls="channelsChannelView">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            Каналы
+          </button>
+        </div>
+        <div class="channels__filter" id="channelsChannelFilter">
+>>>>>>> 08f7507 (updated playlists, new visual)
           <input type="search" class="channels__search" id="channelSearch"
                  placeholder="Поиск канала…" autocomplete="off"
                  aria-label="Поиск канала">
@@ -307,9 +567,24 @@
             <option value="">Все группы</option>
           </select>
         </div>
+<<<<<<< HEAD
       </div>
       <ul class="channel-grid" id="channelList" role="list"></ul>
       <p class="channel-empty" id="channelEmpty" hidden>Ничего не найдено</p>
+=======
+        <div class="channels__filter channels__playlist-filter" id="channelsPlaylistFilter" hidden>
+          <input type="search" class="channels__search" id="channelsPlaylistSearch"
+                 placeholder="Поиск плейлиста…" autocomplete="off" aria-label="Поиск плейлиста">
+        </div>
+      </div>
+      <div id="channelsPlaylistList" hidden>
+        <div class="playlist-list channels__playlist-list" data-playlist-list="channels"></div>
+      </div>
+      <div id="channelsChannelView">
+        <ul class="channel-grid" id="channelList" role="list"></ul>
+        <p class="channel-empty" id="channelEmpty" hidden>Ничего не найдено</p>
+      </div>
+>>>>>>> 08f7507 (updated playlists, new visual)
     </section>
 
   </main>
@@ -322,11 +597,70 @@
     </div>
   </footer>
 
+<<<<<<< HEAD
   <script src="./assets/js/theme.js" defer></script>
   <script src="./assets/js/playlist.js" defer></script>
   <script src="./assets/js/player.js" defer></script>
   <script src="./assets/js/controls.js" defer></script>
   <script src="./assets/js/main.js" defer></script>
+=======
+  <!-- Диалог сохранения подборки -->
+  <div class="app-dialog" id="saveDialog" hidden>
+    <div class="app-dialog__backdrop" data-dialog-close></div>
+    <div class="app-dialog__box" role="dialog" aria-modal="true"
+         aria-labelledby="saveDialogTitle" aria-describedby="saveDialogDesc">
+      <div class="app-dialog__head">
+        <div>
+          <p class="app-dialog__eyebrow">СОХРАНЕНИЕ</p>
+          <h3 class="app-dialog__title" id="saveDialogTitle">Сохранить мою подборку</h3>
+        </div>
+        <button type="button" class="app-dialog__close" data-dialog-close aria-label="Закрыть диалог" title="Закрыть">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <p class="app-dialog__desc" id="saveDialogDesc">Подборка вместе с каналами сохранится только в этом браузере.</p>
+      <form id="saveDialogForm">
+        <label class="app-dialog__label" for="saveDialogName">Название подборки</label>
+        <input class="app-dialog__input" id="saveDialogName" type="text" maxlength="80"
+               autocomplete="off" spellcheck="false" required>
+        <div class="app-dialog__actions">
+          <button type="button" class="app-dialog__btn app-dialog__btn--ghost" data-dialog-close>Отмена</button>
+          <button type="submit" class="app-dialog__btn app-dialog__btn--primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Меню «Поделиться» -->
+  <div class="share-menu" id="shareMenu" hidden role="menu" aria-label="Поделиться">
+    <button type="button" class="share-menu__item" data-share="site" role="menuitem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+      <span class="share-menu__text">
+        <span class="share-menu__title">Поделиться сайтом</span>
+        <span class="share-menu__desc">Ссылка на tv.dev4rev.ru</span>
+      </span>
+    </button>
+    <button type="button" class="share-menu__item" data-share="playlist" role="menuitem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="3"/></svg>
+      <span class="share-menu__text">
+        <span class="share-menu__title">Поделиться плейлистом</span>
+        <span class="share-menu__desc" id="sharePlaylistHint">Загрузите плейлист</span>
+      </span>
+    </button>
+  </div>
+  <div class="share-toast" id="shareToast" role="status" aria-live="polite" hidden></div>
+
+  <script src="./assets/js/theme.js" defer></script>
+  <script src="./assets/js/favorites.js" defer></script>
+  <script src="./assets/js/playlist.js" defer></script>
+  <script src="./assets/js/player.js" defer></script>
+  <script src="./assets/js/ambient.js" defer></script>
+  <script src="./assets/js/controls.js" defer></script>
+  <script src="./assets/js/main.js" defer></script>
+  <script src="./assets/js/cinema.js" defer></script>
+  <script src="./assets/js/share.js" defer></script>
+  <script src="./assets/js/mini-player.js" defer></script>
+>>>>>>> 08f7507 (updated playlists, new visual)
 
   <button type="button" class="to-player" id="toPlayerBtn" aria-label="К плееру" title="К плееру">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

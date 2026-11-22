@@ -1,0 +1,70 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",ТВ Америки
+#EXTINF:-1 tvg-logo="" group-title="США",6 Wise Tv
+https://edge.enhdtv.com/8150/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Канада",Afghan Nobel Movies
+https://live.relentlessinnovations.net:1936/afghannobel/afghannobel/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",1001 Noites
+https://cpbr.appflux.com.br:2000/hls/1001noites/1001noites.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Аргентина",5tv
+https://617c5175c970b.streamlock.net:4444/tvcinco/live1/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Мексика",8NTV
+https://60417ddeaf0d9.streamlock.net/ntv/videontv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Колумбия",Alerta Bogota (720p) [Geo-blocked]
+https://mdstrm.com/live-stream-playlist/69b2cdf98815b9b6c48c2532.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Чили",13C
+https://origin.dpsgo.com/ssai/event/GI-9cp_bT8KcerLpZwkuhw/master.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Перу",36 TV Huacho
+https://live-evg10.tv360.bitel.com.pe/bitel/36tvSRT/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Уругвай",Canal 5
+https://tinyurl.com/canal5uy
+#EXTINF:-1 tvg-logo="" group-title="Венесуэла",AbejalesTV
+https://183.bozztv.com/giatv/giatv-AbejalesTV/AbejalesTV/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Эквадор",América Estéreo Guayaquil
+https://video.makrodigital.com/americaestereoguayaquil/americaestereoguayaquil/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Коста-Рика",360 RFTV (576p) [Geo-blocked]
+https://acceso.mediosdecostarica.com:3638/live/360rftvcrlive.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Панама",BTV Panamá (720p) [Not 24/7]
+https://stream.oursnetworktv.com/latin/btvpanama/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Доминикана",A7 TV (720p) [Not 24/7]
+https://183.giatvcdn.com/ssh101/ssh101/a7tvjarabacoa/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Гватемала",Amigos TV Chiquimula
+https://antmedia.cablevisionrobles.com:5443/LiveApp/streams/CqwAgRagMvBNYN8c1731608980342.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",6 Wise Tv
+https://live.enhdtv.com:8081/8150/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Канада",Afghan Nobel TV
+https://live.relentlessinnovations.net:1936/afghannobeltv/afghannobeltv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",1001 Noites (720p) [Not 24/7]
+https://cdn.jmvstream.com/w/LVW-8155/ngrp:LVW8155_41E1ciuCvO_all/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Аргентина",24/7 Canal de Noticias
+https://panel.host-live.com:19360/cn247tv/cn247tv.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Мексика",15TV
+https://servilive.com:3380/live/v3n6thy7glive.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Колумбия",Amaga Television
+https://viewhn.com/amagatelevision/sdfUYWKegHKRPpSirG/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Чили",13 Entretención
+https://origin.dpsgo.com/ssai/event/BBp0VeP6QtOOlH8nu3bWTg/master.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Перу",ABC Teleshow
+https://live-evg10.tv360.bitel.com.pe/bitel/abctv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Уругвай",Canal ALMA
+https://stmv1.voxtvhd.com.br/canalalmatv/canalalmatv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Венесуэла",AbejalesTV
+https://streamtv.intervenhosting.net:3119/live/abejalestvlive.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Эквадор",América Estéreo Ibarra
+https://video.makrodigital.com/americaestereoibarra/americaestereoibarra/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Коста-Рика",¡OPA!
+https://5f1af61612fb5.streamlock.net/genteopa/videogenteopa_720p/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Панама",Corazon TV
+https://sistemastr.tropicalmoonmedia.com/live/7FFCFEC3978B68D1A2ED0A38DE96AF76/12.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Доминикана",Acento TV
+https://acentotv01.streamprolive.com/hls/live.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Гватемала",BD Televisión
+https://stream.oursnetworktv.com/latin/telegtmb/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",48 Hours
+https://dai.google.com/linear/hls/event/JUr94WL2QAiVpGNHY5n5dA/master.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Канада",Amazing Discoveries TV
+https://uni01rtmp.tulix.tv/amazingdtv/amazingdtv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",+MaisUm
+https://stream.ichibansys.com:3230/hybrid/play.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Аргентина",A24
+https://g1.proy-hor.transport.edge-access.net/a15/ngrp:a24-100056_all/Playlist.m3u8

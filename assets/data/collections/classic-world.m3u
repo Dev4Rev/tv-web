@@ -1,0 +1,62 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Классика мира
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/czech-republic/retro-cz.png" group-title="Czech Republic",Retro Music TV
+https://stream.mediawork.cz/retrotv/smil:retrotv2.smil/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/31/Classichits2023.jpg" group-title="Ireland",Classic Hits
+https://live-bauerie.sharp-stream.com/CLASSIC
+#EXTINF:-1 tvg-logo="https://images-0.rakuten.tv/storage/global-live-channel/translation/artwork/1f51bd5f-5c9a-486d-8720-800de7f73129-width200-quality90.jpeg" group-title="Poland",Viasat Explore Classic
+https://da9c49fa.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLXBsX1ZpYXNhdEV4cGxvcmVfSExT/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/pMMUvkt.png" group-title="Saudi Arabia",Rotana Classic
+https://bcovlive-a.akamaihd.net/0debf5648e584e5fb795c3611c5c0252/eu-central-1/6057955906001/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/PNTYOgg.png" group-title="USA",Retro TV
+https://lukentvlive.vgcdn.net/v1/master/cef183924f24adfa3d5d7601c3a17769082c0c2b/retro/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/ytN6jfl.jpeg" group-title="VOD Italy",Classico – Rakuten TV
+https://rakuten-classico-1-eu.rakuten.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",BRIDGE Classic
+https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Retro
+https://stream8.cinerama.uz/1047/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Velvet. Golden Collection
+https://cdn.rostelekom-tv.xyz/live/v804qFZr0QVQ1s9Z.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Classic Arts Showcase
+https://classicarts.akamaized.net/hls/live/1024257/CAS/master.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Classic Cinema (240p) [Not 24/7]
+https://rpn.bozztv.com/gusa/gusa-classiccinema/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",FilmRise Classic TV
+https://d2tv4k5moji5m7.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-lu4pzh9l4b57p/master.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Golden Boy
+https://goldenboy.duckhunting.playout.vju.tv/DuckhuntingTV_GoldenBoy/main.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Golden TV (240p) [Not 24/7]
+https://rpn.bozztv.com/gusa/gusa-goldentv/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Retro TV (720p) [Geo-blocked]
+https://freecast-lukentvlive.vgcdn.net/out/v1/665e9f91614b43b0a0654e9317f1d9f3/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Talkin Live Classics TV
+https://2-fss-1.streamhoster.com/pl_122/206338-3120682-1/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",TVS Classic Movies
+https://rpn.bozztv.com/gusa/gusa-tvsclassicmovies/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",TVS Classic Sports
+https://rpn.bozztv.com/gusa/gusa-tvs/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",Retro Cartoon
+https://stmv1.video.brstream.com.br/retrotv/retrotv/chunklist_w1069200121.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",Series Classic
+https://cdn-tiva-video10-logicahost-com-br.smartbit.co/serieclassic/serieclassic/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Аргентина",Retroclub
+https://video03.logicahost.com.br/retroclub02/retroclub02/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Чили",Retromusica Television
+https://vdochile.com:3864/stream/play.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Чили",V Classic TV
+https://5eaccbab48461.streamlock.net:1936/8112/8112/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Коста-Рика",Retrox TV (720p) [Not 24/7]
+https://lbgo.bozztv.com/ssh101/ssh101/retyroxtv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Коста-Рика",Retrox TV (576p) [Not 24/7]
+https://live20.bozztv.com/giatv/giatv-TVCHANNEL/TVCHANNEL/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Франция",Cine+ Classic
+https://vuvuu-geil-m3u8.yaskar661.workers.dev/?url=https%3A%2F%2Fgeil.to%2Flive%2Fplay%2F1398934027
+#EXTINF:-1 tvg-logo="" group-title="Испания",Anime Vision Classics
+https://d82pyvmcw2kdc.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-swfivzrzwamaq/live/fast-channel-animevisionclassics-efc8dc6d/fast-channel-animevisionclassics-efc8dc6d.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Нидерланды",SBS6 Classics (1080p) [Geo-blocked]
+https://sbs6classic.prd1.talpatvcdn.nl/v1/master/8ada1ed2ae3b9c3db6fc5e604cfa78fc7d2d745e/sbs6classic_ssai/fea54560ba684701a2143f33a9cf4489/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Чехия",Retro Music Television
+https://stream.mediawork.cz/retrotv/retrotvHQ1/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Румыния",Bollywood Classic Romania
+https://hls02ns.antenaplay.ro/hls/bollywood-sd/index.m3u8

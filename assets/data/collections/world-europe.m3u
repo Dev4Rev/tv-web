@@ -1,0 +1,70 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",ТВ Европы
+#EXTINF:-1 tvg-logo="" group-title="Великобритания",5USA
+https://lb.iptvnetwork.net/ls28/10115/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Германия",1-2-3 TV
+https://123tv-mx1.flex-cdn.net/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Франция",6ter
+https://r.eu.cdn-redge.media/livehls/oeu/mt/live/6ter_fr/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Италия",7 Gold
+https://streamcdnr6-dddfac816632463dac50b21109dc1bb3.msvdn.net/live/S58803518/OOZape6Nxp4H/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Испания",3Cat Càmeres del temps
+https://directes-tv-int.3catdirectes.cat/live-content/beauties-hls/master.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Польша",4 Fun Kids
+https://stream.4fun.tv:8889/hls/4fk.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Нидерланды",1Almere TV
+https://d3472rjicrodic.cloudfront.net/nlpo/clr-nlpo/709d5260/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Чехия",Barrandov Krimi
+https://dash4.antik.sk/live/test_barrandov_plus_atk_1200/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Греция",Acheloos TV
+https://acheloostv.streamings.gr/live/stream/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Португалия",ADB TV
+https://live-tv.waytv.pt/adbtv/adbtv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Румыния",A7TV
+https://a7tvlive.ro/A7TV/A7TV/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Венгрия",16tv Budapest
+https://cloudfront44.lexanetwork.com:1344/freerelay/16tv.sdp/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Швеция",Aryen TV (1080p) [Not 24/7]
+https://aryen.tv/live/tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Норвегия",Canal Motor
+https://digicom.hls.iptvdc.com/canalmotor/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Финляндия",Eveo (720p) [Not 24/7]
+https://live-fi.tvkaista.net/eveo/live.m3u8?hd=true
+#EXTINF:-1 tvg-logo="" group-title="Швейцария",Canal 9 en Français
+https://livehd.vedge.infomaniak.com/livecast/livehd/master.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Австрия",Antenne Kaernten
+https://60efd7a2b4d02.streamlock.net/a_kaernten/ngrp:livestream_all/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бельгия",ACTV
+https://dlgt0tdl2hpq3.cloudfront.net/rtbf/clr-rtbf/4db788c7/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Дания",BL-TV/TV Storbyen (720p) [Not 24/7]
+https://5eeb3940cfaa0.streamlock.net/webtv_live/_definst_/mp4:kanalnordvest/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Ирландия",F1 Channel (1080p) [Geo-blocked]
+https://amg12058-c15studio-amg12058c1-lg-us-5787.playouts.now.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Сербия",IDJTV
+https://best-str.umn.cdn.united.cloud/stream?channel=idjhd&p=In$trum300na765ta&player=m3u8&sp=idjtv&stream=hp1400&u=idjtv
+#EXTINF:-1 tvg-logo="" group-title="Болгария",Agro TV
+https://restr2.bgtv.bg/agro/hls/agro.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Хорватия",Bravo! Kids TV
+https://streaming.radiohub.hr/RadioHub_WEB_streaming/BHWUC27pGZ/3.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Словакия",Antik Info TV
+https://dash4.antik.sk/live/test_infokanal_tizen/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Словения",Exodus TV
+https://584943999.r.worldssl.net/584943999/_definst_/vzivo/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Литва",2TV
+https://lnk5511.bstrm.net/live/687e3ff1679c8d4d68fab6c5/hd/manifest.mpd
+#EXTINF:-1 tvg-logo="" group-title="Латвия",Latvijas Radio 3 Klasika
+https://5a44e5b800a41.streamlock.net/liveVLR3/mp4:Klasika/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Эстония",Best of Dance TV
+https://m1b2.worldcast.tv/dancetelevisionone/dancetelevisionone.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Исландия",K100
+https://k100streymi.mbl.is/beint/k100/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Люксембург",apart TV
+https://2-fss-2.streamhoster.com/pl_124/206820-4338160-1/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Мальта",Med.TV
+https://med-tv-it.fast.rakuten.tv/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-hls-aes128-medtv-1-restreaming/bitok/eyJzdGlkIjoiMGUzYjU2OWQtYTY3NC00ZDQxLThmZmMtNjA2NWU5YzMwNTViIiwibWt0IjoiaXQiLCJjaCI6IjUiLCJwdGYiOjV9/hls/main.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Кипр",Ada TV
+https://yayin1.canlitv.fun/live/kibrisadatv.stream/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Великобритания",Aathavan TV
+https://yuppmumfta1.vgcdn.net/211125/athvantv/manifest.mpd
+#EXTINF:-1 tvg-logo="" group-title="Германия",3sat
+https://dash4.antik.sk/live/test_drei_sat_tizen/playlist.m3u8
