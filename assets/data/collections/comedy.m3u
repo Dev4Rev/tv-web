@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/kinokomedia.png" group-title="Комедийное кино",Кинокомедия
 https://stream8.cinerama.uz/1232/index.m3u8
@@ -28,34 +27,3 @@ https://jmp2.uk/plu-61c1e3a679a4390007c78136.m3u8
 https://jmp2.uk/plu-66337de656fc840008ff7a65.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/Meew6eX.png" group-title="Комедийное кино",Rakuten TV Comedy Movies (1080p)
 https://71db867f03ce4d71a29e92155f07ab87.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6180/master.m3u8
-=======
-#EXTM3U
-#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/kinokomedia.png" group-title="Комедийное кино",Кинокомедия
-https://stream8.cinerama.uz/1232/index.m3u8
-#EXTINF:-1 group-title="Комедийное кино",Комедии
-https://kinowalk.hopto.org/cmexye4ku_live
-#EXTINF:-1 group-title="Комедийное кино",Viju+ Comedy
-https://stream8.cinerama.uz/1061/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/146OgfU.png" group-title="Комедийное кино",alpha Cinema (1080p)
-https://live.15plusmg.ru/memfs/b389173a-df4e-4171-8904-e249893e71eb.m3u8
-#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/68c32d88f56983aba40052bd/colorLogoPNG_1759246622596.png" group-title="Комедийное кино",BET Comedy Movies
-https://jmp2.uk/plu-68c32d88f56983aba40052bd.m3u8
-#EXTINF:-1 tvg-logo="https://spiintl.com/data/files/kcfinderUploadDir/images/filmboxplus/filmbox%2Bcomedy.png" group-title="Комедийное кино",FILMBOX+ Comedy Romania
-https://nosignal1.antenaplay.ro/hls/fb-comedy-hd/index.m3u8
-#EXTINF:-1 tvg-logo="https://gia.tv/streams/pptv/208730.png" group-title="Комедийное кино",Maxcine Comedy (720p)
-https://183.giatvcdn.com/giatvplayout7/giatv-208730/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/655b5d865812e80008843bd1/colorLogoPNG_1747044085522.png" group-title="Комедийное кино",Pluto TV Comedias Romanticas
-https://jmp2.uk/plu-655b5d865812e80008843bd1.m3u8
-#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/67b4b2d976a934282e92d71c/colorLogoPNG.png" group-title="Комедийное кино",Pluto TV Comedies Cultes
-https://jmp2.uk/plu-67b4b2d976a934282e92d71c.m3u8
-#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/62ea3d24b8e02600071fa296/colorLogoPNG.png" group-title="Комедийное кино",Pluto TV Comedy Movies
-https://jmp2.uk/plu-62ea3d24b8e02600071fa296.m3u8
-#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/61c0b36d18447e000717d686/colorLogoPNG.png" group-title="Комедийное кино",Pluto TV Komedi
-https://jmp2.uk/plu-61c0b36d18447e000717d686.m3u8
-#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/61c1e3a679a4390007c78136/colorLogoPNG.png" group-title="Комедийное кино",Pluto TV Komedie
-https://jmp2.uk/plu-61c1e3a679a4390007c78136.m3u8
-#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/66337de656fc840008ff7a65/colorLogoPNG.png" group-title="Комедийное кино",Pluto TV Kult Comedies
-https://jmp2.uk/plu-66337de656fc840008ff7a65.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/Meew6eX.png" group-title="Комедийное кино",Rakuten TV Comedy Movies (1080p)
-https://71db867f03ce4d71a29e92155f07ab87.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6180/master.m3u8
->>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 group-title="dev4rev",Украина · iptv-org
 #EXTINF:-1 tvg-logo="" group-title="Украина",1+1 International HD
@@ -51,57 +50,3 @@ https://dash4.antik.sk/live/test_uatv/playlist.m3u8
 https://freedom.cdn-01.cosmonova.net.ua/mobile-app/main/freedom/master.m3u8
 #EXTINF:-1 tvg-logo="" group-title="Украина",GIT
 https://stream.uagit.tv/gittv.m3u8
-=======
-#EXTM3U
-#EXTINF:-1 group-title="dev4rev",Украина · iptv-org
-#EXTINF:-1 tvg-logo="" group-title="Украина",1+1 International HD
-https://dash2.antik.sk/live/test_one_plus_one_int_tizen/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",1+1 Marafon
-https://dash2.antik.sk/live/1plus1_marathon/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",11 Kanal
-https://11tv-dp.cdn-04.cosmonova.net.ua/hls/11tv-dp_ua_hi/index.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",24 Kanal
-https://cdn15.live-tv.cloud/ua_infinitas_tv/news24-abr/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",24 Канал
-https://streamvideol1.luxnet.ua/news24/smil:news24.stream.smil/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",36.6 TV
-https://dash2.antik.sk/live/test_tridsatsest_hd_atktv/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Apostrophe TV
-https://ext.cdn.nashnet.tv/228.0.2.165/index.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Army TV
-https://api-tv.ipnet.ua/api/v1/manifest/2118742632.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",ATR
-https://atr-live.cdn-01.cosmonova.net.ua/hls/atr_ua_hi/index.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Avers
-https://avers.pp.ua/hls/efir.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Black Sea TV
-https://ext.cdn.nashnet.tv/228.0.0.136/index.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Channel 5
-https://api-tv.ipnet.ua/api/v1/manifest/2118742539.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Channel 7 Ukraine
-https://cdn15.live-tv.cloud/ua_infinitas_tv/7tvod-abr/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Channel 8
-https://ext.cdn.nashnet.tv/228.0.0.138/index.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Cherniveckiy promin
-https://langate.tv/promin/live_720/index.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Dacha
-https://dash2.antik.sk/live/test_dacha_tv_atktv/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",DIM
-https://dash2.antik.sk/live/telekanal_dim/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Eko TV
-https://ext.cdn.nashnet.tv/228.0.1.60/index.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Espreso TV
-https://api-tv.ipnet.ua/api/v1/manifest/2118742594.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Espreso TV
-https://dash2.antik.sk/live/test_espresso/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",FilmUA Live
-https://dash2.antik.sk/live/test_film_life_atktv/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",FilmUADrama
-https://dash2.antik.sk/live/test_film_drama_atktv/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",FREEDOM
-https://dash4.antik.sk/live/test_uatv/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",Freedom (FREEДOM) (UATV)
-https://freedom.cdn-01.cosmonova.net.ua/mobile-app/main/freedom/master.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Украина",GIT
-https://stream.uagit.tv/gittv.m3u8
->>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b
