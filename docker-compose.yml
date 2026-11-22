@@ -1,0 +1,9 @@
+services:
+  tv-web:
+    build: .
+    container_name: tv-web-preview
+    ports:
+      - "999:80"
+    volumes:
+      - .:/usr/share/nginx/html:ro
+    restart: unless-stopped
