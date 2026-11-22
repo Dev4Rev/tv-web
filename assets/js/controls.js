@@ -418,6 +418,19 @@
       }
     });
 
+    // iOS: видео уходит в системный fullscreen без document.fullscreenElement.
+    // Сообщаем основному скрипту, чтобы он сохранил/вернул viewport и скролл.
+    video.addEventListener('webkitbeginfullscreen', function () {
+      if (window.dev4revApp && window.dev4revApp.syncFullscreenState) {
+        window.dev4revApp.syncFullscreenState(true);
+      }
+    });
+    video.addEventListener('webkitendfullscreen', function () {
+      if (window.dev4revApp && window.dev4revApp.syncFullscreenState) {
+        window.dev4revApp.syncFullscreenState(false);
+      }
+    });
+
     updatePlayState();
     updateVolume();
     updateSeek();

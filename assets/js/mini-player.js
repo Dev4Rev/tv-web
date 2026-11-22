@@ -20,6 +20,12 @@
                        document.webkitFullscreenElement === wrap));
   }
 
+  // На мобильных мини-плеер и кнопка «К плееру» закрывают слишком много
+  // контента — полностью отключаем этот режим.
+  function isMobileLayout() {
+    return !!(window.matchMedia && window.matchMedia('(max-width: 900px)').matches);
+  }
+
   function topbarHeight() {
     var v = parseFloat(getComputedStyle(document.documentElement)
       .getPropertyValue('--topbar-h'));
@@ -34,6 +40,7 @@
 
   function setMini(active) {
     if (!player || !slot) return;
+    if (active && isMobileLayout()) active = false;
     if (active && miniActive && !miniSuspended) { syncMiniHeight(); return; }
     if (!active && !miniActive) return;
 
@@ -82,6 +89,11 @@
     if (isFullscreen()) {
       // В fullscreen мини-плеер не нужен, но высоту слота сохраняем.
       if (toPlayerBtn) toPlayerBtn.classList.remove('is-visible', 'is-above-mini');
+      return;
+    }
+    if (isMobileLayout()) {
+      if (toPlayerBtn) toPlayerBtn.classList.remove('is-visible', 'is-above-mini');
+      if (miniActive) setMini(false);
       return;
     }
 
@@ -142,7 +154,7 @@
     } else {
       if (miniSuspended) {
         miniSuspended = false;
-        if (wasMiniBeforeFs && !dismissed) {
+        if (wasMiniBeforeFs && !dismissed && !isMobileLayout()) {
           player.classList.add('is-mini');
           document.body.classList.add('has-mini-player');
           syncMiniHeight();

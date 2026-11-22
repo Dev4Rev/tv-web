@@ -17,6 +17,7 @@
   var playerListOpen = false;
   var channelQuery = '';
   var channelGroup = '';
+  var attachedTorrentFile = null;
 
   var playEpoch = 0;
   var fatalRetries = 0;
@@ -383,6 +384,18 @@
     }
   }
 
+  function clearAttachedTorrent(clearInput) {
+    attachedTorrentFile = null;
+    var fileInput = document.getElementById('torrentFileInput');
+    var attachBtn = document.getElementById('attachTorrentBtn');
+    if (fileInput) fileInput.value = '';
+    if (attachBtn) attachBtn.classList.remove('is-active');
+    if (clearInput) {
+      var input = document.getElementById('playlistUrl');
+      if (input) input.value = '';
+    }
+  }
+
   function syncFsHead(name, group) {
     var t = document.getElementById('fsTitle');
     var g = document.getElementById('fsGroup');
@@ -409,7 +422,7 @@
 
     try { localStorage.setItem(LAST_CHANNEL_URL_KEY, ch.url); } catch (e) {}
 
-    window.dev4revPlayer.play(ch.url, idx);
+    window.dev4revPlayer.play(ch.file || ch.url, idx);
 
     var playerSection = document.getElementById('playerSection');
     var nowPlaying = document.getElementById('nowPlaying');
@@ -446,6 +459,44 @@
     }));
 
     showControls();
+  }
+
+  // Локальный .torrent из скрепки: показываем его как один «канал».
+  function playTorrentFile(file, idx) {
+    if (!file) return;
+    var idxNum = (typeof idx === 'number' && idx >= 0) ? idx : 0;
+    var fakeUrl = 'torrent-file:' + file.name;
+    var channel = {
+      _idx: idxNum,
+      name: String(file.name || 'Торрент').replace(/\.torrent$/i, ''),
+      url: fakeUrl,
+      file: file,
+      group: 'Файл',
+      logo: ''
+    };
+
+    allChannels = [channel];
+    visibleChannels = allChannels.slice();
+    currentPlaylistUrl = fakeUrl;
+    channelQuery = '';
+    channelGroup = '';
+    playerLoaded = true;
+
+    var input = document.getElementById('playlistUrl');
+    if (input) input.value = file.name;
+    buildGroups(allChannels);
+    filterChannels();
+
+    var playerSection = document.getElementById('playerSection');
+    var channelsSection = document.getElementById('channelsSection');
+    if (playerSection) playerSection.hidden = false;
+    if (channelsSection) channelsSection.hidden = false;
+
+    setStatus('Торрент-файл: ' + file.name, 'ok');
+    window.dispatchEvent(new CustomEvent('dev4rev:playlistchange', {
+      detail: { url: fakeUrl, count: 1, local: true }
+    }));
+    playChannel(idxNum);
   }
 
   // ── Выбор канала при пустом плеере ─────────────────────
@@ -510,6 +561,7 @@
   }
 
   function load(url) {
+    clearAttachedTorrent(false);
     var loadBtn = document.getElementById('loadBtn');
     var input = document.getElementById('playlistUrl');
     // Загружаем по относительным ./... путям (они работают и в локальном превью),
@@ -624,6 +676,10 @@
     }
   }
 
+  var fsScrollX = 0;
+  var fsScrollY = 0;
+  var fsWasActive = false;
+
   function isFullscreen() {
     var wrap = document.getElementById('playerWrap');
     if (!wrap) return false;
@@ -636,6 +692,50 @@
     var active = isFullscreen();
     btn.setAttribute('aria-label', active ? 'Выйти из полноэкранного режима' : 'На весь экран');
     btn.setAttribute('title', active ? 'Выйти из полноэкранного режима' : 'На весь экран');
+  }
+
+  // После выхода из fullscreen на мобильных браузерах layout viewport иногда
+  // остаётся «ландшафтным»: страница выглядит приближенной и сдвинутой.
+  // Пересоздаём viewport-meta и возвращаем предыдущую позицию скролла.
+  function restoreMobileViewport() {
+    if (!window.matchMedia || !window.matchMedia('(max-width: 900px)').matches) return;
+    var meta = document.head && document.head.querySelector('meta[name="viewport"]');
+    if (meta && meta.parentNode) {
+      var clone = meta.cloneNode(false);
+      meta.parentNode.replaceChild(clone, meta);
+    }
+    var x = fsScrollX;
+    var y = fsScrollY;
+    function finish() {
+      try { window.scrollTo(x, y); } catch (e) {}
+      window.dispatchEvent(new Event('resize'));
+    }
+    if (window.requestAnimationFrame) {
+      requestAnimationFrame(function () { requestAnimationFrame(finish); });
+    } else {
+      setTimeout(finish, 32);
+    }
+  }
+
+  function applyFullscreenState(active) {
+    updateFsIcon();
+    document.body.classList.toggle('player-immersive', active);
+
+    if (active) {
+      fsScrollX = window.pageXOffset || 0;
+      fsScrollY = window.pageYOffset || 0;
+      fsWasActive = true;
+      var ch = allChannels.find(function (c) { return c._idx === currentIdx; });
+      if (ch) syncFsHead(ch.name, ch.group);
+      if (window.dev4revControls) window.dev4revControls.show();
+    } else {
+      if (playerListOpen) setPlayerListOpen(false);
+      if (fsWasActive) {
+        fsWasActive = false;
+        restoreMobileViewport();
+      }
+    }
+    window.dispatchEvent(new CustomEvent('dev4rev:fullscreenchange', { detail: { active: active } }));
   }
 
   function toggleFullscreen() {
@@ -654,20 +754,9 @@
   }
 
   function handleFullscreenChange() {
-    updateFsIcon();
     var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
     var wrap = document.getElementById('playerWrap');
-    var active = fsEl === wrap;
-    document.body.classList.toggle('player-immersive', active);
-
-    if (active) {
-      var ch = allChannels.find(function (c) { return c._idx === currentIdx; });
-      if (ch) syncFsHead(ch.name, ch.group);
-      if (window.dev4revControls) window.dev4revControls.show();
-    } else {
-      if (playerListOpen) setPlayerListOpen(false);
-    }
-    window.dispatchEvent(new CustomEvent('dev4rev:fullscreenchange', { detail: { active: active } }));
+    applyFullscreenState(fsEl === wrap);
   }
 
   function showControls() {
@@ -703,6 +792,10 @@
 
     if (loadBtn) {
       loadBtn.addEventListener('click', function () {
+        if (attachedTorrentFile) {
+          playTorrentFile(attachedTorrentFile);
+          return;
+        }
         if (!input) return;
         var url = readPlaylistInput();
         if (!url) { setStatus('Введите ссылку на плейлист', 'error'); return; }
@@ -716,7 +809,127 @@
       });
       // Вставленную короткую форму tv.dev4rev.ru/... сразу показываем в полном виде.
       input.addEventListener('blur', readPlaylistInput);
+      input.addEventListener('input', function () {
+        if (attachedTorrentFile) clearAttachedTorrent(false);
+      });
     }
+
+    var attachBtn = document.getElementById('attachTorrentBtn');
+    var torrentFileInput = document.getElementById('torrentFileInput');
+    if (attachBtn && torrentFileInput) {
+      torrentFileInput.addEventListener('change', function () {
+        var files = torrentFileInput.files || [];
+        if (files.length > 1) {
+          clearAttachedTorrent(false);
+          setStatus('Можно приложить только один торрент-файл', 'error');
+          return;
+        }
+        var file = files[0];
+        if (!file) { clearAttachedTorrent(false); return; }
+        if (!/\.torrent$/i.test(file.name) && file.type !== 'application/x-bittorrent') {
+          clearAttachedTorrent(false);
+          setStatus('Нужен файл с расширением .torrent', 'error');
+          return;
+        }
+        attachedTorrentFile = file;
+        attachBtn.classList.add('is-active');
+        if (input) input.value = file.name;
+        setStatus('Торрент приложен: ' + file.name, 'ok');
+      });
+    }
+
+    (function () {
+      var wrap = document.getElementById('playlistLinksHelp');
+      var btn = document.getElementById('playlistLinksHelpBtn');
+      var tip = document.getElementById('playlistLinksHelpTip');
+      if (!wrap || !btn || !tip) return;
+
+      var tipParent = tip.parentNode;
+      var tipNext = tip.nextSibling;
+      var portaled = false;
+      var pinned = false;
+      var hideTimer = null;
+
+      // Подсказку переносим в <body>: внутри hero её перекрывают более поздние
+      // слои (шапка, плеер, кнопки). Так она всегда остаётся на переднем плане.
+      function place() {
+        var r = btn.getBoundingClientRect();
+        var margin = 12;
+        var width = Math.min(520, Math.max(240, window.innerWidth - margin * 2));
+        var left = Math.max(margin, Math.min(r.left + r.width / 2 - width / 2,
+          window.innerWidth - width - margin));
+        var top = r.bottom + 8;
+        tip.style.position = 'fixed';
+        tip.style.left = left + 'px';
+        tip.style.top = top + 'px';
+        tip.style.width = width + 'px';
+        tip.style.maxHeight = Math.max(160, window.innerHeight - top - margin) + 'px';
+        tip.style.overflowY = 'auto';
+        tip.style.transform = 'none';
+        tip.style.zIndex = '2147483647';
+      }
+
+      function show() {
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+        if (!portaled) { document.body.appendChild(tip); portaled = true; }
+        place();
+        tip.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      }
+
+      function restore() {
+        if (!portaled) return;
+        if (tipNext && tipNext.parentNode === tipParent) tipParent.insertBefore(tip, tipNext);
+        else tipParent.appendChild(tip);
+        portaled = false;
+        tip.removeAttribute('style');
+      }
+
+      function hide() {
+        if (pinned) return;
+        tip.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+        restore();
+      }
+
+      function scheduleHide() {
+        if (pinned) return;
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () { hideTimer = null; hide(); }, 140);
+      }
+
+      function close() {
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+        pinned = false;
+        tip.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+        restore();
+      }
+
+      wrap.addEventListener('mouseenter', show);
+      wrap.addEventListener('mouseleave', scheduleHide);
+      tip.addEventListener('mouseenter', show);
+      tip.addEventListener('mouseleave', scheduleHide);
+      btn.addEventListener('focus', show);
+      btn.addEventListener('blur', scheduleHide);
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (pinned) { close(); return; }
+        pinned = true;
+        show();
+      });
+      document.addEventListener('click', function (e) {
+        if (pinned && !wrap.contains(e.target) && !tip.contains(e.target)) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !tip.hidden) {
+          close();
+          btn.focus();
+        }
+      });
+      window.addEventListener('resize', function () { if (!tip.hidden) place(); });
+      window.addEventListener('scroll', function () { if (!tip.hidden) place(); }, { passive: true });
+    }());
 
     // Ссылка «поделиться плейлистом» может содержать ?playlist=... — загружаем её автоматически.
     try {
@@ -1007,6 +1220,7 @@
   // ── Публичный API для кинотеатра ──────────────────────────
   window.dev4revApp = {
     load: function (url) { return load(url); },
+    playTorrentFile: playTorrentFile,
     loadChannels: loadChannels,
     playChannel: playChannel,
     next: nextChannel,
@@ -1025,6 +1239,7 @@
       var input = document.getElementById('playlistUrl');
       return currentPlaylistUrl || (input ? input.value.trim() : '');
     },
-    setStatus: setStatus
+    setStatus: setStatus,
+    syncFullscreenState: function (active) { applyFullscreenState(!!active); }
   };
 })();

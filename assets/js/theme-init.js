@@ -39,6 +39,28 @@
   } catch (e) {}
 })();
 
+// Держим фиксированные панели в пределах визуального вьюпорта. После выхода
+// из fullscreen на мобильных layout viewport может остаться шире экрана,
+// и кнопки в шапке «уезжают» вправо.
+(function () {
+  function sync() {
+    var vv = window.visualViewport;
+    var root = document.documentElement;
+    root.style.setProperty('--vv-w', Math.round((vv && vv.width) || window.innerWidth || 0) + 'px');
+    root.style.setProperty('--vv-h', Math.round((vv && vv.height) || window.innerHeight || 0) + 'px');
+    root.style.setProperty('--vv-x', Math.round((vv && vv.offsetLeft) || 0) + 'px');
+    root.style.setProperty('--vv-y', Math.round((vv && vv.offsetTop) || 0) + 'px');
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync);
+  else sync();
+  window.addEventListener('resize', sync);
+  window.addEventListener('orientationchange', sync);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', sync);
+    window.visualViewport.addEventListener('scroll', sync);
+  }
+})();
+
 // Публичные ссылки на плейлисты всегда ведут на канонический хост сайта.
 // Относительные пути и короткая форма tv.dev4rev.ru/... превращаются в
 // https://tv.dev4rev.ru/{путь до плейлиста}.m3u.

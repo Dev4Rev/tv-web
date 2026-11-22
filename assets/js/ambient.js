@@ -107,7 +107,7 @@
     if (!rgb) return null;
     var r = rgb[0], g = rgb[1], b = rgb[2];
     var avg = (r + g + b) / 3;
-    var f = 1.45;
+    var f = 2.2;
     r = clamp(avg + (r - avg) * f, 0, 255);
     g = clamp(avg + (g - avg) * f, 0, 255);
     b = clamp(avg + (b - avg) * f, 0, 255);

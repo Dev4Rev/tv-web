@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Открытое кино: легальные торрент-раздачи с web-сидами
+#EXTINF:-1 tvg-id="open-torrent-sintel" group-title="Открытое кино;Торренты",Sintel (2010) — открытый фильм, русские субтитры
+./assets/data/torrents/sintel.torrent
+#EXTINF:-1 tvg-id="open-torrent-tears" group-title="Открытое кино;Торренты",Tears of Steel (2012) — открытый фильм, русские субтитры
+./assets/data/torrents/tears-of-steel.torrent
+#EXTINF:-1 tvg-id="open-torrent-bbb" group-title="Открытое кино;Торренты",Big Buck Bunny (2008) — открытый мультфильм
+./assets/data/torrents/big-buck-bunny.torrent

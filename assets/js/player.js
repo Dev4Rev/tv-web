@@ -7,6 +7,9 @@
   var hls = null;
   var dash = null;
   var mpegts = null;
+  var torrentClient = null;
+  var torrent = null;
+  var torrentSwRegistration = null;
   var currentIdx = -1;
   var currentFormat = 'unknown';
   var onFatal = null;
@@ -14,12 +17,15 @@
   // Библиотеки подключаются только при реальной необходимости.
   var CDN = {
     dash: 'https://cdn.jsdelivr.net/npm/dashjs@4.7.4/dist/dash.all.min.js',
-    ts: 'https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.min.js'
+    ts: 'https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.min.js',
+    torrent: './assets/vendor/webtorrent.min.js'
   };
+  var TORRENT_RESUME_KEY = 'dev4rev.torrentResume';
 
   // Токен сессии: каждое play() увеличивает его.
   var sessionToken = 0;
   var watchdogTimer = null;
+  var torrentPeerTimer = null;
 
   // Качество
   var qualityLevels = [];
@@ -38,6 +44,37 @@
     var name = err.name || '';
     var msg = err.message || '';
     return name === 'AbortError' || msg.indexOf('interrupted') !== -1;
+  }
+
+  function isTorrentFile(src) {
+    return typeof File !== 'undefined' && src instanceof File && /\.torrent$/i.test(src.name);
+  }
+
+  function stopTorrentPeerTimer() {
+    if (torrentPeerTimer) {
+      clearInterval(torrentPeerTimer);
+      torrentPeerTimer = null;
+    }
+  }
+
+  function fileToDataUrl(file) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function () { resolve(String(reader.result || '')); };
+      reader.onerror = function () { reject(reader.error || new Error('Не удалось прочитать торрент-файл')); };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function dataUrlToFile(dataUrl, name) {
+    var m = /^data:([^;,]*)(;base64)?,([\s\S]*)$/.exec(String(dataUrl || ''));
+    if (!m || !m[2]) throw new Error('Invalid torrent data URL');
+    var binary = atob(m[3]);
+    var bytes = new Uint8Array(binary.length);
+    for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return new File([bytes], name || 'torrent.torrent', {
+      type: m[1] || 'application/x-bittorrent'
+    });
   }
 
   function normalizeUrl(url) {
@@ -66,6 +103,7 @@
       clearTimeout(watchdogTimer);
       watchdogTimer = null;
     }
+    stopTorrentPeerTimer();
     if (hls) {
       try { hls.stopLoad(); } catch (e) {}
       try { hls.detachMedia(); } catch (e) {}
@@ -81,6 +119,13 @@
       try { mpegts.destroy(); } catch (e) {}
       mpegts = null;
     }
+    if (torrentClient) {
+      try { torrentClient.destroy(); } catch (e) {}
+      torrentClient = null;
+    }
+    torrent = null;
+    // Service Worker оставляем зарегистрированным: он нужен для streamTo()
+    // и не хранит состояние самой раздачи.
     if (video) {
       try { video.pause(); } catch (e) {}
       try { video.removeAttribute('src'); } catch (e) {}
@@ -108,6 +153,7 @@
 
   function failCurrent(reason, token) {
     if (!isActual(token)) return;
+    stopTorrentPeerTimer();
     showOverlay(reason);
     if (typeof onFatal === 'function') onFatal(currentIdx, reason);
   }
@@ -130,8 +176,11 @@
   var RE_DASH = /\.mpd(?![a-z0-9])/i;
   var RE_TS = /\.ts(?![a-z0-9])/i;
   var RE_NATIVE = /\.(?:mp4|m4v|webm|ogv|ogg|mov)(?![a-z0-9])/i;
+  var RE_TORRENT = /^magnet:\?/i;
+  var RE_TORRENT_FILE = /\.torrent(?![a-z0-9])/i;
 
   function detectFormat(url) {
+    if (RE_TORRENT.test(url) || RE_TORRENT_FILE.test(url)) return 'torrent';
     if (RE_HLS.test(url)) return 'hls';
     if (RE_DASH.test(url)) return 'dash';
     if (RE_TS.test(url)) return 'ts';
@@ -181,9 +230,12 @@
   function ensureLibrary(name, token) {
     if (name === 'dash' && window.dashjs) return Promise.resolve(true);
     if (name === 'ts' && window.mpegts) return Promise.resolve(true);
+    if (name === 'torrent' && window.WebTorrent) return Promise.resolve(true);
     return loadScript(CDN[name]).then(function () {
       if (!isActual(token)) return false;
-      var ok = (name === 'dash') ? !!window.dashjs : !!window.mpegts;
+      var ok = (name === 'dash') ? !!window.dashjs
+        : (name === 'ts') ? !!window.mpegts
+        : !!window.WebTorrent;
       if (!ok) throw new Error('Библиотека не инициализировалась');
       return true;
     });
@@ -327,14 +379,30 @@
   }
 
   // ─── Play ──────────────────────────────────────────────
-  function play(url, idx) {
+  function play(source, idx) {
     if (!video) return;
 
     var token = nextToken();
     destroy();
     currentIdx = (typeof idx === 'number') ? idx : -1;
 
-    url = normalizeUrl(url);
+    // Локальный .torrent из скрепки: WebTorrent принимает File напрямую.
+    if (isTorrentFile(source)) {
+      currentFormat = 'torrent';
+      startWatchdog('torrent', token);
+      showOverlay('Загружаем торрент-файл…');
+      ensureLibrary('torrent', token).then(function (ok) {
+        if (!isActual(token) || !ok) return;
+        playTorrent(source, token);
+      }).catch(function (e) {
+        if (!isActual(token)) return;
+        log('torrent-lib', e);
+        failCurrent('Не удалось загрузить поддержку торрентов.', token);
+      });
+      return;
+    }
+
+    var url = normalizeUrl(source);
 
     if (!url) {
       showOverlay('Некорректная ссылка на поток.');
@@ -343,14 +411,6 @@
     }
 
     showOverlay('Загружаем канал…');
-
-    if (watchdogTimer) clearTimeout(watchdogTimer);
-    watchdogTimer = setTimeout(function () {
-      if (!isActual(token)) return;
-      if (!video || video.paused || video.readyState < 2) {
-        failCurrent('Поток не отвечает. Переходим к следующему каналу…', token);
-      }
-    }, 15000);
 
     var format = detectFormat(url);
     if (format === 'unknown') {
@@ -363,9 +423,34 @@
     route(format, url, token);
   }
 
+  function startWatchdog(format, token) {
+    if (watchdogTimer) clearTimeout(watchdogTimer);
+    watchdogTimer = setTimeout(function () {
+      if (!isActual(token)) return;
+      if (!video || video.paused || video.readyState < 2) {
+        failCurrent(format === 'torrent'
+          ? 'Торрент не отвечает. Нужен web-сид или web-пиры…'
+          : 'Поток не отвечает. Переходим к следующему каналу…', token);
+      }
+    }, format === 'torrent' ? 45000 : 15000);
+  }
+
   function route(format, url, token) {
     if (!isActual(token)) return;
     currentFormat = format;
+    startWatchdog(format, token);
+
+    if (format === 'torrent') {
+      ensureLibrary('torrent', token).then(function (ok) {
+        if (!isActual(token) || !ok) return;
+        playTorrent(url, token);
+      }).catch(function (e) {
+        if (!isActual(token)) return;
+        log('torrent-lib', e);
+        failCurrent('Не удалось загрузить поддержку торрентов.', token);
+      });
+      return;
+    }
 
     if (format === 'hls') {
       waitForHls(3000).then(function (available) {
@@ -414,6 +499,220 @@
     }
 
     playNative(url, token);
+  }
+
+  // ─── Торренты (только легальные раздачи) ───────────────
+  // Browser-сборка WebTorrent отдаёт файл в <video> через MediaSource
+  // (file.streamTo). Обычные TCP/UDP-пиры недоступны — нужны web-сиды
+  // или webtorrent-пиры. wss-трекеры лишь дополняют список из раздачи.
+  var WEB_TRACKERS = [
+    'wss://tracker.webtorrent.dev'
+  ];
+
+  // Service Worker начинает управлять страницей только после навигации.
+  // При первом торрент-канале сохраняем состояние и перезагружаем страницу
+  // один раз, затем resumePendingTorrent() возвращает зрителя к каналу.
+  function prepareTorrentReload(token, source) {
+    var playlistUrl = '';
+    try {
+      playlistUrl = window.dev4revApp && typeof window.dev4revApp.getPlaylistUrl === 'function'
+        ? window.dev4revApp.getPlaylistUrl()
+        : ((document.getElementById('playlistUrl') || {}).value || '');
+    } catch (e) {}
+
+    var payload = {
+      playlistUrl: playlistUrl,
+      idx: currentIdx,
+      kind: isTorrentFile(source) ? 'file' : 'url',
+      ts: Date.now()
+    };
+
+    var storing = Promise.resolve();
+    if (payload.kind === 'file') {
+      storing = fileToDataUrl(source).then(function (dataUrl) {
+        payload.fileData = dataUrl;
+        payload.fileName = source.name;
+      });
+    } else {
+      payload.url = source;
+    }
+
+    return storing.then(function () {
+      sessionStorage.setItem(TORRENT_RESUME_KEY, JSON.stringify(payload));
+      showOverlay('Перезапуск плеера для торрентов…');
+
+      var registration = torrentSwRegistration
+        ? Promise.resolve(torrentSwRegistration)
+        : navigator.serviceWorker.register('./sw.min.js', { scope: './' });
+
+      return registration.then(function (reg) {
+        if (!isActual(token)) return false;
+        torrentSwRegistration = reg;
+        return navigator.serviceWorker.ready.then(function () {
+          if (!isActual(token)) return false;
+          window.location.reload();
+          return false;
+        });
+      });
+    }).catch(function (e) {
+      try { sessionStorage.removeItem(TORRENT_RESUME_KEY); } catch (err) {}
+      throw e;
+    });
+  }
+
+  function waitForSwController(timeout) {
+    if (navigator.serviceWorker.controller) return Promise.resolve(true);
+    return new Promise(function (resolve) {
+      var done = false;
+      var timer = setTimeout(function () {
+        finish(!!navigator.serviceWorker.controller);
+      }, timeout);
+      var poll = setInterval(function () {
+        if (navigator.serviceWorker.controller) finish(true);
+      }, 100);
+
+      function finish(ok) {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        clearInterval(poll);
+        navigator.serviceWorker.removeEventListener('controllerchange', onChange);
+        resolve(ok);
+      }
+      function onChange() {
+        if (navigator.serviceWorker.controller) finish(true);
+      }
+      navigator.serviceWorker.addEventListener('controllerchange', onChange);
+    });
+  }
+
+  function ensureTorrentWorker(token, source) {
+    if (!('serviceWorker' in navigator) || typeof torrentClient.loadWorker !== 'function') {
+      return Promise.reject(new Error('Service Worker unsupported'));
+    }
+    if (!navigator.serviceWorker.controller) {
+      return prepareTorrentReload(token, source);
+    }
+    var registration = torrentSwRegistration
+      ? Promise.resolve(torrentSwRegistration)
+      : navigator.serviceWorker.register('./sw.min.js', { scope: './' });
+
+    return registration.then(function (reg) {
+      if (!isActual(token)) return false;
+      torrentSwRegistration = reg;
+      return navigator.serviceWorker.ready.then(function () {
+        if (!isActual(token)) return false;
+        return waitForSwController(10000).then(function (controlled) {
+          if (!isActual(token)) return false;
+          var worker = navigator.serviceWorker.controller || reg.active;
+          if (!controlled || !worker || worker.state !== 'activated') {
+            throw new Error('Service Worker is not controlling the page');
+          }
+          if (torrentClient.serviceWorker !== worker) {
+            torrentClient.loadWorker(worker);
+          }
+          return true;
+        });
+      });
+    });
+  }
+
+  function playTorrent(source, token) {
+    try {
+      torrentClient = new window.WebTorrent({ maxConns: 40 });
+    } catch (e) {
+      log('torrent-client', e);
+      failCurrent('Не удалось запустить торрент-клиент.', token);
+      return;
+    }
+
+    torrentClient.on('error', function (e) {
+      if (!isActual(token)) return;
+      log('torrent-client-error', e);
+      failCurrent('Ошибка торрент-клиента.', token);
+    });
+
+    ensureTorrentWorker(token, source).then(function (ok) {
+      if (!isActual(token) || !ok) return;
+      showOverlay('Торрент: получаем метаданные…');
+
+      // File из скрепки скармливаем WebTorrent как есть. Для строк
+      // parse-torrent в браузере принимает только абсолютный URL.
+      var torrentId = source;
+      if (!isTorrentFile(torrentId) && !/^magnet:\?/i.test(torrentId)) {
+        try { torrentId = new URL(torrentId, window.location.href).href; } catch (e) {}
+      }
+
+      try {
+        torrentClient.add(torrentId, { announce: WEB_TRACKERS }, function (t) {
+          if (!isActual(token)) return;
+          torrent = t;
+
+          t.on('error', function (e) {
+            if (!isActual(token)) return;
+            log('torrent-error', e);
+            stopTorrentPeerTimer();
+            failCurrent('Ошибка раздачи. Переходим к следующему…', token);
+          });
+
+          var file = t.files.filter(function (f) {
+            return /\.(mp4|m4v|webm|ogv|mov|mkv)$/i.test(f.name);
+          }).sort(function (a, b) { return b.length - a.length; })[0] || t.files[0];
+
+          if (!file) {
+            failCurrent('В раздаче нет видеофайла.', token);
+            return;
+          }
+
+          var hasWebSeeds = !!(t.urlList && t.urlList.length);
+          function showTorrentProgress() {
+            var pct = Math.round((file.progress || 0) * 100);
+            var peers = t.numPeers || 0;
+            showOverlay(hasWebSeeds
+              ? 'Торрент: ' + pct + '% · пиров: ' + peers
+              : 'Торрент: ' + pct + '% · пиров: ' + peers + ' · web-сидов нет');
+          }
+
+          showTorrentProgress();
+          stopTorrentPeerTimer();
+          torrentPeerTimer = setInterval(function () {
+            if (!isActual(token) || !video) { stopTorrentPeerTimer(); return; }
+            if (video.readyState >= 2) { stopTorrentPeerTimer(); return; }
+            showTorrentProgress();
+          }, 1000);
+
+          t.on('download', function () {
+            if (!isActual(token) || !video || video.readyState >= 2) return;
+            showTorrentProgress();
+          });
+
+          try {
+            file.streamTo(video);
+          } catch (e) {
+            log('torrent-stream', e);
+            stopTorrentPeerTimer();
+            failCurrent('Не удалось подключить видео из раздачи.', token);
+            return;
+          }
+
+          video.play().catch(function (err) {
+            if (!isAbort(err) && isActual(token)) {
+              log('torrent-autoplay', err);
+              stopTorrentPeerTimer();
+              showOverlay('Нажмите Play, чтобы начать воспроизведение');
+              if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
+            }
+          });
+        });
+      } catch (e) {
+        log('torrent-add', e);
+        failCurrent('Не удалось открыть раздачу.', token);
+      }
+    }).catch(function (e) {
+      if (!isActual(token)) return;
+      log('torrent-worker', e);
+      failCurrent('Торрент-плеер требует HTTPS и Service Worker.', token);
+    });
   }
 
   function playHls(url, token) {
@@ -708,6 +1007,66 @@
     });
   }
 
+  function resumePendingTorrent() {
+    var raw = null;
+    try {
+      raw = sessionStorage.getItem(TORRENT_RESUME_KEY);
+      sessionStorage.removeItem(TORRENT_RESUME_KEY);
+    } catch (e) { return; }
+    if (!raw || !navigator.serviceWorker || !navigator.serviceWorker.controller) return;
+
+    var pending = null;
+    try { pending = JSON.parse(raw); } catch (e) { return; }
+    if (!pending || Date.now() - (pending.ts || 0) > 120000) return;
+
+    var source = pending.url;
+    if (pending.kind === 'file' && pending.fileData) {
+      try {
+        source = dataUrlToFile(pending.fileData, pending.fileName || 'torrent.torrent');
+      } catch (e) {
+        log('torrent-resume', e);
+        return;
+      }
+    }
+
+    var waited = 0;
+    var timer = setInterval(function () {
+      waited += 100;
+      var app = window.dev4revApp;
+      if (!app || typeof app.load !== 'function' || typeof app.getChannels !== 'function') {
+        if (waited > 15000) clearInterval(timer);
+        return;
+      }
+      clearInterval(timer);
+
+      var loading = Promise.resolve();
+      if (pending.playlistUrl && pending.kind !== 'file') {
+        loading = Promise.resolve(app.load(pending.playlistUrl));
+      }
+      loading.then(function () {
+        if (isTorrentFile(source)) {
+          if (typeof app.playTorrentFile === 'function') app.playTorrentFile(source, pending.idx);
+          return;
+        }
+        var channels = app.getChannels();
+        var idx = -1;
+        if (typeof pending.idx === 'number' && channels[pending.idx]) {
+          idx = pending.idx;
+        }
+        if (idx < 0) {
+          for (var i = 0; i < channels.length; i++) {
+            if (channels[i].url === pending.url) { idx = i; break; }
+          }
+        }
+        if (idx >= 0 && typeof app.playChannel === 'function') {
+          app.playChannel(idx);
+        }
+      }).catch(function (e) {
+        log('torrent-resume', e);
+      });
+    }, 100);
+  }
+
   // ─── Public API ────────────────────────────────────────
   window.dev4revPlayer = {
     play: play,
@@ -723,6 +1082,8 @@
     getQualityLevels: function () { return qualityLevels.slice(); },
     setQuality: setQuality
   };
+
+  resumePendingTorrent();
 
   // Поиск в панели каналов (fullscreen)
   (function () {
