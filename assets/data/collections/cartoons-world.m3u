@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 group-title="dev4rev",Мультфильмы мира
 #EXTINF:-1 tvg-logo="https://i.imgur.com/GWDRR1t.png" group-title="Australia",ABC Kids
@@ -68,3 +69,75 @@ https://streamer1.streamhost.org/salive/logoskidsH/playlist.m3u8
 https://web12.mdn.ors.at/orf/web12/qxa/manifest.mpd
 #EXTINF:-1 tvg-logo="" group-title="Хорватия",Bravo! Kids TV
 https://streaming.radiohub.hr/RadioHub_WEB_streaming/BHWUC27pGZ/3.m3u8
+=======
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Мультфильмы мира
+#EXTINF:-1 tvg-logo="https://i.imgur.com/GWDRR1t.png" group-title="Australia",ABC Kids
+https://c.mjh.nz/abc-kids.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/irTDbpn.png" group-title="Bosnia and Herzegovina",TNT Kids
+https://restreamer1.tnt.ba/hls/tntkids.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/m6y9AMe.png" group-title="Chile",13 Kids
+https://origin.dpsgo.com/ssai/event/LhHrVtyeQkKZ-Ye_xEU75g/master.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/XkSR66q.png" group-title="Greece",ERT Kids Ⓖ
+https://ert-ucdn.broadpeak-aas.com/bpk-tv/ERTKids/default/index.mpd
+#EXTINF:-1 tvg-logo="https://i.imgur.com/oK2DcDJ.png" group-title="Italy",Cartoonito Ⓖ
+https://live02-seg.msf.cdn.mediaset.net/live/ch-la/la-clr.isml/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/zuR9Go5.png" group-title="Italy",BeJoy.Kids
+https://stream.paroledivita.org/bejoy.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/62oo8Bx.png" group-title="Korea",EBS Kids
+https://ebsonair.ebs.co.kr/ebsufamilypc/familypc1m/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/2JO5Y8c.png" group-title="Poland",4 Fun Kids
+https://stream.4fun.tv:8889/hls/4fk.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/bb/Cartoon_Network_Arabic_logo.png" group-title="United Arab Emirates",Cartoon Network Arabic
+https://shls-cartoon-net-prod-dub.shahid.net/out/v1/dc4aa87372374325a66be458f29eab0f/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/rOl7HfS.png" group-title="VOD Italy",Yamato Animation
+https://yamatovideo-yamatoanimation-1-it.samsung.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/DMqKFIM.png" group-title="VOD Italy",MONDO TV KIDS
+https://mondotv-mondotvkids-1-it.samsung.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",RU.TV Kids
+https://rutvkids.ru/live/efir/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Cartoon Network [Not 24/7;Geo-blocked]
+https://turnerlive.warnermediacdn.com/hls/live/2023160/tooneast/noslate/VIDEO_3_1928000.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Cartoon Network Latin America
+https://bantel-cdn1.iptvperu.tv:1936/btnscrtn/cartoonnetwork.stream/chunks.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",HappyKids
+https://mumbai-edge.smartplaytv.in/HappyKids/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",Maxcine Kids
+https://183.giatvcdn.com/giatvplayout7/giatv-209909/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",PBS Kids
+https://livestream.pbskids.org/out/v1/14507d931bbe48a69287e4850e53443c/est.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",PBS Kids Hawaii
+https://livestream.pbskids.org/out/v1/aa31792fee094b24b09045483f04d150/hast.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Канада",CBC Kids Channel (1080p) [Geo-blocked]
+https://amagi-streams.akamaized.net/hls/live/2120483/cbckids/master.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Канада",TVOKids
+https://fastly.live.brightcove.com/6369851620112/us-east-1/15364602001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoicGZncmlmLmVncmVzcy50N2M3emwiLCJhY2NvdW50X2lkIjoiMTUzNjQ2MDIwMDEiLCJlaG4iOiJmYXN0bHkubGl2ZS5icmlnaHRjb3ZlLmNvbSIsImlzcyI6ImJsaXZlLXBsYXliYWNrLXNvdXJjZS1hcGkiLCJzdWIiOiJwYXRobWFwdG9rZW4iLCJhdWQiOlsiMTUzNjQ2MDIwMDEiXSwianRpIjoiNjM2OTg1MTYyMDExMiJ9.zRE6fD9JwdbNLUIK5zgvlTAvXCQ3HeeE5p0yH0Pd3-Q/playlist-hls.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",Gospel Cartoon
+https://stmv1.srvif.com/gospelcartoon/gospelcartoon/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",Kuriakos Kids
+https://w2.manasat.com/kkids/smil:kkids.smil/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",Retro Cartoon
+https://stmv1.video.brstream.com.br/retrotv/retrotv/chunklist_w1069200121.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",SBT Kids (1080p) [Geo-blocked]
+https://8994803e454548319ffc0775bc04e0c1.mediatailor.us-east-1.amazonaws.com/v1/master/215c0da80606fed29372070168106400a6ca7e1a/SSAI-TVZyn/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Аргентина",Xtrema Cartoons
+https://stmv6.voxtvhd.com.br/xtremacartoons/xtremacartoons/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Эквадор",Multicanal Catamayo (720p) [Not 24/7]
+https://multicanal.streamseguro.com:5443/LiveApp/streams/streaming.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Коста-Рика",Extrema Kids TV (1080p) [Not 24/7]
+https://627bb251f23c7.streamlock.net:444/ExtremaKids/ExtremaKids/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Гватемала",Peniel Kids & Young
+https://s.emisoras.tv:8081/penielkids/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Великобритания",Cartoon Network Western Europe Portugal
+https://vuvuu-geil-m3u8.yaskar661.workers.dev/?url=https%3A%2F%2Fvavoo.to%2Fvavoo-iptv%2Fplay%2F327818589842dbaee1327c
+#EXTINF:-1 tvg-logo="" group-title="Великобритания",Moonbug Kids
+https://mumbai-edge.smartplaytv.in/Moonbug/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Италия",Cartoonito HD
+https://boing.akamaized.net/6380673432112/eu-central-1/6284318116001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0Ijoib3dwbnN1LmVncmVzcy5haGc3NmwiLCJhY2NvdW50X2lkIjoiNjI4NDMxODExNjAwMSIsImVobiI6ImJvaW5nLmFrYW1haXplZC5uZXQiLCJpc3MiOiJibGl2ZS1wbGF5YmFjay1zb3VyY2UtYXBpIiwic3ViIjoicGF0aG1hcHRva2VuIiwiYXVkIjpbIjYyODQzMTgxMTYwMDEiXSwianRpIjoiNjM4MDY3MzQzMjExMiJ9.WACYETOZxZYmZHRpxwRrATxVZQBdSoeaWdfhtLKx1kI/playlist-hls.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Испания",Logos TV Kids (720p) [Not 24/7]
+https://streamer1.streamhost.org/salive/logoskidsH/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Австрия",ORF Kids
+https://web12.mdn.ors.at/orf/web12/qxa/manifest.mpd
+#EXTINF:-1 tvg-logo="" group-title="Хорватия",Bravo! Kids TV
+https://streaming.radiohub.hr/RadioHub_WEB_streaming/BHWUC27pGZ/3.m3u8
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

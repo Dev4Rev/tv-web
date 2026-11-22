@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "version": 2,
   "updated": "2026-11-22",
@@ -1003,3 +1004,1010 @@
     }
   ]
 }
+=======
+{
+  "version": 2,
+  "updated": "2026-11-22",
+  "note": "Тематические подборки с переключателем плейлистов. Сезонные подборки не скрываются: в свои даты они поднимаются выше. Первая подборка — русскоязычная. M3U — статические снимки публичных HTTPS-источников (iptv-org, ngrch, LoganetX, Free-TV/IPTV) для GitHub Pages. Отдельные franchise-плейлисты добавлены как тематические подборки без non-HTTPS и JWT-ссылок.",
+  "sources": [
+    {
+      "name": "iptv-org",
+      "url": "https://github.com/iptv-org/iptv"
+    },
+    {
+      "name": "ngrch",
+      "url": "https://github.com/ngrch/iptv"
+    },
+    {
+      "name": "LoganetX",
+      "url": "https://github.com/blackbirdstudiorus/LoganetXIPTV"
+    },
+    {
+      "name": "Free-TV/IPTV",
+      "url": "https://github.com/Free-TV/IPTV"
+    }
+  ],
+  "collections": [
+    {
+      "id": "ru-audience",
+      "title": "Русскоязычное ТВ · всё сразу",
+      "icon": "russian",
+      "desc": "Подборка для русскоязычных зрителей: эфирные каналы России и СНГ, кино, мультфильмы, спорт, новости и музыка",
+      "seasonLabel": "всегда",
+      "accent": "#f43f5e",
+      "accent2": "#60a5fa",
+      "tags": [
+        "русскоязычное",
+        "русские каналы",
+        "россия",
+        "снг",
+        "для русскоязычных",
+        "рф",
+        "беларусь",
+        "казахстан",
+        "украина"
+      ],
+      "playlists": [
+        {
+          "id": "ru-audience-tv",
+          "name": "Россия · iptv-org",
+          "file": "./assets/data/collections/ru-iptvorg.m3u",
+          "count": 40
+        },
+        {
+          "id": "ru-audience-ngrch",
+          "name": "Россия · ngrch",
+          "file": "./assets/data/collections/ru-ngrch.m3u",
+          "count": 40
+        },
+        {
+          "id": "ru-audience-logan",
+          "name": "Россия · LoganetX",
+          "file": "./assets/data/collections/ru-logan.m3u",
+          "count": 40
+        },
+        {
+          "id": "ru-audience-cis",
+          "name": "СНГ · микс",
+          "file": "./assets/data/collections/cis-mix.m3u",
+          "count": 40
+        },
+        {
+          "id": "ru-audience-popular",
+          "name": "Популярное ТВ",
+          "file": "./assets/data/collections/tv.m3u",
+          "count": 32
+        },
+        {
+          "id": "ru-audience-movies",
+          "name": "Кино",
+          "file": "./assets/data/collections/movies.m3u",
+          "count": 30
+        },
+        {
+          "id": "ru-audience-cartoons",
+          "name": "Мультфильмы",
+          "file": "./assets/data/collections/cartoons.m3u",
+          "count": 28
+        },
+        {
+          "id": "ru-audience-sport",
+          "name": "Спорт",
+          "file": "./assets/data/collections/sports.m3u",
+          "count": 30
+        },
+        {
+          "id": "ru-audience-news",
+          "name": "Новости",
+          "file": "./assets/data/collections/news.m3u",
+          "count": 30
+        },
+        {
+          "id": "ru-audience-music",
+          "name": "Музыка",
+          "file": "./assets/data/collections/music.m3u",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "franchise-films",
+      "title": "Киносерии и мультфраншизы",
+      "icon": "star",
+      "desc": "Плейлисты для тех, кто ищет знакомые истории и героев: киносерии, мультфильмы, семейное кино и аниме. Отдельных легальных 24/7-каналов «Гарри Поттер» или «Шрек» в стабильных HTTPS-плейлистах нет, поэтому здесь собраны тематические подборки.",
+      "seasonLabel": "всегда",
+      "accent": "#f59e0b",
+      "accent2": "#8b5cf6",
+      "tags": [
+        "киносерии",
+        "франшизы",
+        "гарри поттер",
+        "шрек",
+        "фильмы",
+        "мультфильмы",
+        "семейное кино",
+        "сериалы",
+        "аниме"
+      ],
+      "playlists": [
+        {
+          "id": "franchise-movies-world",
+          "name": "Мировое кино",
+          "file": "./assets/data/collections/movies-world.m3u",
+          "count": 34,
+          "note": "Киноканалы, где чаще всего идут экранизации и сиквелы"
+        },
+        {
+          "id": "franchise-cartoons-world",
+          "name": "Мультфильмы мира",
+          "file": "./assets/data/collections/cartoons-world.m3u",
+          "count": 34,
+          "note": "Большие мультстудии и детские франшизы"
+        },
+        {
+          "id": "franchise-family",
+          "name": "Семейное кино",
+          "file": "./assets/data/collections/family-world.m3u",
+          "count": 34,
+          "note": "Приключения, фэнтези и семейные серии фильмов"
+        },
+        {
+          "id": "franchise-series-world",
+          "name": "Сериалы мира",
+          "file": "./assets/data/collections/series-world.m3u",
+          "count": 19,
+          "note": "Долгоиграющие сериальные истории"
+        },
+        {
+          "id": "franchise-anime",
+          "name": "Аниме и анимация",
+          "file": "./assets/data/collections/anime-world.m3u",
+          "count": 22,
+          "note": "Японские анимационные франшизы"
+        },
+        {
+          "id": "franchise-cartoons-ru",
+          "name": "Мультфильмы · ngrch",
+          "file": "./assets/data/collections/cartoons-ngrch.m3u",
+          "count": 40,
+          "note": "Русскоязычные мультканалы, включая Disney XD"
+        }
+      ]
+    },
+    {
+      "id": "tv",
+      "title": "ТВ",
+      "icon": "tv",
+      "desc": "Популярные российские и международные телеканалы",
+      "seasonLabel": "всегда",
+      "accent": "#60a5fa",
+      "accent2": "#a78bfa",
+      "tags": [
+        "тв",
+        "телевидение",
+        "русские каналы",
+        "каналы",
+        "iptv",
+        "эфир"
+      ],
+      "playlists": [
+        {
+          "id": "tv-main",
+          "name": "Популярное ТВ",
+          "file": "./assets/data/collections/tv.m3u",
+          "count": 32
+        },
+        {
+          "id": "tv-org",
+          "name": "Россия · iptv-org",
+          "file": "./assets/data/collections/ru-iptvorg.m3u",
+          "count": 40
+        },
+        {
+          "id": "tv-world",
+          "name": "Мир · Free-TV",
+          "file": "./assets/data/collections/world-mix.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "russian",
+      "title": "Русскоязычное ТВ",
+      "icon": "russian",
+      "desc": "Российские, белорусские, казахстанские и украинские каналы",
+      "seasonLabel": "всегда",
+      "accent": "#f87171",
+      "accent2": "#60a5fa",
+      "tags": [
+        "русские каналы",
+        "россия",
+        "беларусь",
+        "казахстан",
+        "украина",
+        "снг"
+      ],
+      "playlists": [
+        {
+          "id": "ru-org",
+          "name": "Россия · iptv-org",
+          "file": "./assets/data/collections/ru-iptvorg.m3u",
+          "count": 40
+        },
+        {
+          "id": "ru-ngrch",
+          "name": "Россия · ngrch",
+          "file": "./assets/data/collections/ru-ngrch.m3u",
+          "count": 40
+        },
+        {
+          "id": "ru-logan",
+          "name": "Россия · LoganetX",
+          "file": "./assets/data/collections/ru-logan.m3u",
+          "count": 40
+        },
+        {
+          "id": "by",
+          "name": "Беларусь",
+          "file": "./assets/data/collections/by-iptvorg.m3u",
+          "count": 17
+        },
+        {
+          "id": "kz",
+          "name": "Казахстан",
+          "file": "./assets/data/collections/kz-iptvorg.m3u",
+          "count": 25
+        },
+        {
+          "id": "ua",
+          "name": "Украина",
+          "file": "./assets/data/collections/ua-iptvorg.m3u",
+          "count": 25
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "title": "ТВ мира",
+      "icon": "world",
+      "desc": "Каналы Европы, Азии и Америки — переключайтесь между регионами",
+      "seasonLabel": "всегда",
+      "accent": "#22d3ee",
+      "accent2": "#a78bfa",
+      "tags": [
+        "мир",
+        "европа",
+        "азия",
+        "америка",
+        "зарубежные каналы",
+        "world"
+      ],
+      "playlists": [
+        {
+          "id": "europe",
+          "name": "Европа",
+          "file": "./assets/data/collections/world-europe.m3u",
+          "count": 34
+        },
+        {
+          "id": "asia",
+          "name": "Азия",
+          "file": "./assets/data/collections/world-asia.m3u",
+          "count": 34
+        },
+        {
+          "id": "americas",
+          "name": "Америка",
+          "file": "./assets/data/collections/world-americas.m3u",
+          "count": 34
+        },
+        {
+          "id": "world-mix",
+          "name": "Избранное · Free-TV",
+          "file": "./assets/data/collections/world-mix.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "cartoons",
+      "title": "Мультфильмы",
+      "icon": "cartoons",
+      "desc": "Любимые мультфильмы и анимационные истории",
+      "seasonLabel": "всегда",
+      "accent": "#f472b6",
+      "accent2": "#38bdf8",
+      "tags": [
+        "мультфильмы",
+        "мультики",
+        "анимация",
+        "мультфильмы онлайн"
+      ],
+      "playlists": [
+        {
+          "id": "cartoon-main",
+          "name": "Мультфильмы",
+          "file": "./assets/data/collections/cartoons.m3u",
+          "count": 28
+        },
+        {
+          "id": "cartoon-ngrch",
+          "name": "Мультфильмы · ngrch",
+          "file": "./assets/data/collections/cartoons-ngrch.m3u",
+          "count": 40
+        },
+        {
+          "id": "cartoon-world",
+          "name": "Мультфильмы мира",
+          "file": "./assets/data/collections/cartoons-world.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "title": "Детям",
+      "icon": "kids",
+      "desc": "Детские каналы и мультфильмы для всей семьи",
+      "seasonLabel": "1 июня",
+      "accent": "#facc15",
+      "accent2": "#34d399",
+      "tags": [
+        "дети",
+        "детям",
+        "детские каналы",
+        "мультфильмы",
+        "семейное"
+      ],
+      "playlists": [
+        {
+          "id": "kids-main",
+          "name": "Детские каналы",
+          "file": "./assets/data/collections/kids.m3u",
+          "count": 30
+        },
+        {
+          "id": "kids-world",
+          "name": "Детское ТВ мира",
+          "file": "./assets/data/collections/kids-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "kids-cartoon",
+          "name": "Мультфильмы · ngrch",
+          "file": "./assets/data/collections/cartoons-ngrch.m3u",
+          "count": 40
+        }
+      ],
+      "season": [
+        {
+          "from": "05-25",
+          "to": "06-05"
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "title": "Семейное кино",
+      "icon": "family",
+      "desc": "Фильмы и мультфильмы, которые удобно смотреть всей семьёй",
+      "seasonLabel": "всегда",
+      "accent": "#fbbf24",
+      "accent2": "#f472b6",
+      "tags": [
+        "семейное кино",
+        "семья",
+        "фильмы",
+        "мультфильмы",
+        "детям"
+      ],
+      "playlists": [
+        {
+          "id": "family",
+          "name": "Семейное кино",
+          "file": "./assets/data/collections/family-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "family-cartoon",
+          "name": "Мультфильмы мира",
+          "file": "./assets/data/collections/cartoons-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "family-movies",
+          "name": "Фильмы",
+          "file": "./assets/data/collections/movies.m3u",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "movies",
+      "title": "Фильмы",
+      "icon": "movies",
+      "desc": "Круглосуточные кино-каналы и фильмы на любой вкус",
+      "seasonLabel": "всегда",
+      "accent": "#f87171",
+      "accent2": "#fbbf24",
+      "tags": [
+        "фильмы",
+        "кино",
+        "кино онлайн",
+        "фильмы смотреть",
+        "кино каналы"
+      ],
+      "playlists": [
+        {
+          "id": "movies-main",
+          "name": "Кино-каналы",
+          "file": "./assets/data/collections/movies.m3u",
+          "count": 30
+        },
+        {
+          "id": "movies-world",
+          "name": "Мировое кино",
+          "file": "./assets/data/collections/movies-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "movies-vod",
+          "name": "Кино · Free-TV",
+          "file": "./assets/data/collections/world-mix.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "series",
+      "title": "Сериалы",
+      "icon": "series",
+      "desc": "Каналы с сериалами, драмами и телешоу",
+      "seasonLabel": "всегда",
+      "accent": "#c084fc",
+      "accent2": "#f472b6",
+      "tags": [
+        "сериалы",
+        "сериалы онлайн",
+        "драмы",
+        "телесериалы"
+      ],
+      "playlists": [
+        {
+          "id": "series-main",
+          "name": "Сериалы",
+          "file": "./assets/data/collections/series.m3u",
+          "count": 30
+        },
+        {
+          "id": "series-world",
+          "name": "Сериалы мира",
+          "file": "./assets/data/collections/series-world.m3u",
+          "count": 19
+        }
+      ]
+    },
+    {
+      "id": "anime",
+      "title": "Аниме",
+      "icon": "anime",
+      "desc": "Японская анимация, аниме и мультфильмы Азии",
+      "seasonLabel": "всегда",
+      "accent": "#f472b6",
+      "accent2": "#22d3ee",
+      "tags": [
+        "аниме",
+        "японская анимация",
+        "мага",
+        "анимация",
+        "япония"
+      ],
+      "playlists": [
+        {
+          "id": "anime",
+          "name": "Аниме и анимация",
+          "file": "./assets/data/collections/anime-world.m3u",
+          "count": 22
+        },
+        {
+          "id": "jp",
+          "name": "Япония · iptv-org",
+          "file": "./assets/data/collections/jp-iptvorg.m3u",
+          "count": 24
+        },
+        {
+          "id": "anime-asia",
+          "name": "Азия",
+          "file": "./assets/data/collections/world-asia.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "sports",
+      "title": "Спорт",
+      "icon": "sports",
+      "desc": "Матчи, турниры и спортивные трансляции",
+      "seasonLabel": "всегда",
+      "accent": "#34d399",
+      "accent2": "#facc15",
+      "tags": [
+        "спорт",
+        "спорт онлайн",
+        "матчи",
+        "футбол",
+        "хоккей",
+        "трансляции"
+      ],
+      "playlists": [
+        {
+          "id": "sports-main",
+          "name": "Спорт",
+          "file": "./assets/data/collections/sports.m3u",
+          "count": 30
+        },
+        {
+          "id": "sports-world",
+          "name": "Спорт мира",
+          "file": "./assets/data/collections/sports-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "sports-org",
+          "name": "Спорт · iptv-org",
+          "file": "./assets/data/collections/sports-iptvorg.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "title": "Новости",
+      "icon": "news",
+      "desc": "Новостные каналы и круглосуточные эфиры",
+      "seasonLabel": "всегда",
+      "accent": "#38bdf8",
+      "accent2": "#818cf8",
+      "tags": [
+        "новости",
+        "новости онлайн",
+        "эфир",
+        "информация"
+      ],
+      "playlists": [
+        {
+          "id": "news-main",
+          "name": "Новости",
+          "file": "./assets/data/collections/news.m3u",
+          "count": 30
+        },
+        {
+          "id": "news-world",
+          "name": "Новости мира",
+          "file": "./assets/data/collections/news-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "news-org",
+          "name": "Новости · эфир",
+          "file": "./assets/data/collections/world-mix.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "music",
+      "title": "Музыка",
+      "icon": "music",
+      "desc": "Музыкальные каналы, клипы и радио",
+      "seasonLabel": "всегда",
+      "accent": "#a78bfa",
+      "accent2": "#f472b6",
+      "tags": [
+        "музыка",
+        "музыка онлайн",
+        "клипы",
+        "радио",
+        "музыкальные каналы"
+      ],
+      "playlists": [
+        {
+          "id": "music-main",
+          "name": "Музыка",
+          "file": "./assets/data/collections/music.m3u",
+          "count": 30
+        },
+        {
+          "id": "music-ngrch",
+          "name": "Музыка · ngrch",
+          "file": "./assets/data/collections/music-ngrch.m3u",
+          "count": 40
+        },
+        {
+          "id": "music-world",
+          "name": "Музыка мира",
+          "file": "./assets/data/collections/music-world.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "documentary",
+      "title": "Документальные",
+      "icon": "documentary",
+      "desc": "Познавательные каналы о природе, истории и науке",
+      "seasonLabel": "всегда",
+      "accent": "#94a3b8",
+      "accent2": "#22d3ee",
+      "tags": [
+        "документальные",
+        "документальные фильмы",
+        "наука",
+        "история",
+        "природа"
+      ],
+      "playlists": [
+        {
+          "id": "doc-main",
+          "name": "Документальные",
+          "file": "./assets/data/collections/documentary.m3u",
+          "count": 30
+        },
+        {
+          "id": "doc-world",
+          "name": "Документальные мира",
+          "file": "./assets/data/collections/doc-world.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "entertainment",
+      "title": "Развлечения",
+      "icon": "entertainment",
+      "desc": "Шоу, юмор, реалити и лёгкое телевидение",
+      "seasonLabel": "всегда",
+      "accent": "#fb923c",
+      "accent2": "#facc15",
+      "tags": [
+        "развлечения",
+        "шоу",
+        "юмор",
+        "реалити",
+        "телешоу"
+      ],
+      "playlists": [
+        {
+          "id": "ent-main",
+          "name": "Развлечения",
+          "file": "./assets/data/collections/entertainment.m3u",
+          "count": 30
+        },
+        {
+          "id": "ent-world",
+          "name": "Шоу мира",
+          "file": "./assets/data/collections/ent-world.m3u",
+          "count": 34
+        }
+      ]
+    },
+    {
+      "id": "classic",
+      "title": "Классика кино",
+      "icon": "classic",
+      "desc": "Золотая коллекция, ретро-каналы и старое доброе кино",
+      "seasonLabel": "всегда",
+      "accent": "#d6a45f",
+      "accent2": "#8b5cf6",
+      "tags": [
+        "классика",
+        "ретро",
+        "старое кино",
+        "золотая коллекция",
+        "кино"
+      ],
+      "playlists": [
+        {
+          "id": "classic-main",
+          "name": "Классика",
+          "file": "./assets/data/collections/classic.m3u",
+          "count": 14
+        },
+        {
+          "id": "classic-world",
+          "name": "Классика мира",
+          "file": "./assets/data/collections/classic-world.m3u",
+          "count": 30
+        }
+      ]
+    },
+    {
+      "id": "comedy",
+      "title": "Комедийное кино",
+      "icon": "comedy",
+      "desc": "Комедии, юмор и лёгкое кино на каждый день",
+      "seasonLabel": "всегда",
+      "accent": "#facc15",
+      "accent2": "#22c55e",
+      "tags": [
+        "комедия",
+        "юмор",
+        "смех",
+        "фильмы",
+        "кино"
+      ],
+      "playlists": [
+        {
+          "id": "comedy-main",
+          "name": "Комедии",
+          "file": "./assets/data/collections/comedy.m3u",
+          "count": 14
+        },
+        {
+          "id": "comedy-world",
+          "name": "Комедии мира",
+          "file": "./assets/data/collections/comedy-world.m3u",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "id": "new-year",
+      "title": "Новогоднее кино",
+      "icon": "new-year",
+      "desc": "Рождественские каналы, семейные комедии, мультфильмы и праздничная музыка",
+      "seasonLabel": "25.12 — 15.01",
+      "accent": "#ff3b5c",
+      "accent2": "#22c55e",
+      "tags": [
+        "новый год",
+        "рождество",
+        "праздник",
+        "семья",
+        "зима",
+        "дети"
+      ],
+      "playlists": [
+        {
+          "id": "ny-main",
+          "name": "Новогоднее кино",
+          "file": "./assets/data/collections/new-year.m3u",
+          "count": 18
+        },
+        {
+          "id": "ny-family",
+          "name": "Семейное кино",
+          "file": "./assets/data/collections/family-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "ny-cartoon",
+          "name": "Мультфильмы",
+          "file": "./assets/data/collections/cartoons.m3u",
+          "count": 28
+        }
+      ],
+      "season": [
+        {
+          "from": "12-15",
+          "to": "01-15"
+        }
+      ]
+    },
+    {
+      "id": "valentine",
+      "title": "День святого Валентина",
+      "icon": "valentine",
+      "desc": "Романтические фильмы, мелодрамы и истории о любви",
+      "seasonLabel": "8 — 14 февраля",
+      "accent": "#ff4d6d",
+      "accent2": "#ff8fa3",
+      "tags": [
+        "валентин",
+        "любовь",
+        "романтика",
+        "мелодрама",
+        "14 февраля"
+      ],
+      "playlists": [
+        {
+          "id": "val-main",
+          "name": "О любви",
+          "file": "./assets/data/collections/valentine.m3u",
+          "count": 16
+        },
+        {
+          "id": "val-movies",
+          "name": "Мировое кино",
+          "file": "./assets/data/collections/movies-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "val-music",
+          "name": "Музыка",
+          "file": "./assets/data/collections/music.m3u",
+          "count": 30
+        }
+      ],
+      "season": [
+        {
+          "from": "02-07",
+          "to": "02-15"
+        }
+      ]
+    },
+    {
+      "id": "defender",
+      "title": "23 Февраля · мужское кино",
+      "icon": "defender",
+      "desc": "Боевики, приключения, мужское кино и военные истории",
+      "seasonLabel": "18 — 23 февраля",
+      "accent": "#f59e0b",
+      "accent2": "#ef4444",
+      "tags": [
+        "23 февраля",
+        "защитник отечества",
+        "боевик",
+        "мужское",
+        "армия",
+        "война"
+      ],
+      "playlists": [
+        {
+          "id": "def-main",
+          "name": "Мужское кино",
+          "file": "./assets/data/collections/defender.m3u",
+          "count": 16
+        },
+        {
+          "id": "def-movies",
+          "name": "Боевики и кино",
+          "file": "./assets/data/collections/movies.m3u",
+          "count": 30
+        },
+        {
+          "id": "def-sport",
+          "name": "Спорт",
+          "file": "./assets/data/collections/sports.m3u",
+          "count": 30
+        }
+      ],
+      "season": [
+        {
+          "from": "02-16",
+          "to": "02-24"
+        }
+      ]
+    },
+    {
+      "id": "women",
+      "title": "8 Марта · кино для всех",
+      "icon": "women",
+      "desc": "Семейные истории, комедии, мелодрамы и любимое кино",
+      "seasonLabel": "5 — 8 марта",
+      "accent": "#ec4899",
+      "accent2": "#fbbf24",
+      "tags": [
+        "8 марта",
+        "женский день",
+        "семья",
+        "комедия",
+        "мелодрама",
+        "весна"
+      ],
+      "playlists": [
+        {
+          "id": "women-main",
+          "name": "Кино для всех",
+          "file": "./assets/data/collections/women.m3u",
+          "count": 16
+        },
+        {
+          "id": "women-family",
+          "name": "Семейное кино",
+          "file": "./assets/data/collections/family-world.m3u",
+          "count": 34
+        },
+        {
+          "id": "women-comedy",
+          "name": "Комедии",
+          "file": "./assets/data/collections/comedy.m3u",
+          "count": 14
+        }
+      ],
+      "season": [
+        {
+          "from": "03-04",
+          "to": "03-09"
+        }
+      ]
+    },
+    {
+      "id": "victory",
+      "title": "9 Мая · кино о войне",
+      "icon": "victory",
+      "desc": "Фильмы о войне, исторические каналы и классика кино",
+      "seasonLabel": "7 — 9 мая",
+      "accent": "#ef4444",
+      "accent2": "#fbbf24",
+      "tags": [
+        "9 мая",
+        "победа",
+        "война",
+        "история",
+        "память",
+        "классика"
+      ],
+      "playlists": [
+        {
+          "id": "victory-main",
+          "name": "Кино о войне",
+          "file": "./assets/data/collections/victory.m3u",
+          "count": 13
+        },
+        {
+          "id": "victory-doc",
+          "name": "Документальные",
+          "file": "./assets/data/collections/documentary.m3u",
+          "count": 30
+        },
+        {
+          "id": "victory-classic",
+          "name": "Классика кино",
+          "file": "./assets/data/collections/classic.m3u",
+          "count": 14
+        }
+      ],
+      "season": [
+        {
+          "from": "05-05",
+          "to": "05-10"
+        }
+      ]
+    },
+    {
+      "id": "halloween",
+      "title": "Хэллоуин · ужасы",
+      "icon": "halloween",
+      "desc": "Хоррор, триллеры, мистика и жуткие истории",
+      "seasonLabel": "25 — 31 октября",
+      "accent": "#f97316",
+      "accent2": "#7c3aed",
+      "tags": [
+        "хэллоуин",
+        "ужасы",
+        "хоррор",
+        "триллер",
+        "мистика",
+        "31 октября"
+      ],
+      "playlists": [
+        {
+          "id": "hw-main",
+          "name": "Ужасы",
+          "file": "./assets/data/collections/halloween.m3u",
+          "count": 12
+        },
+        {
+          "id": "hw-series",
+          "name": "Сериалы и драмы",
+          "file": "./assets/data/collections/series-world.m3u",
+          "count": 19
+        },
+        {
+          "id": "hw-movies",
+          "name": "Кино",
+          "file": "./assets/data/collections/movies-world.m3u",
+          "count": 34
+        }
+      ],
+      "season": [
+        {
+          "from": "10-24",
+          "to": "10-31"
+        }
+      ]
+    }
+  ]
+}
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

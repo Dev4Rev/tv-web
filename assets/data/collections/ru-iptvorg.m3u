@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 group-title="dev4rev",Россия · iptv-org
 #EXTINF:-1 tvg-logo="" group-title="Россия",1HD Music Television
@@ -80,3 +81,87 @@ https://fs.uplink.kz/dom_kino_premium/mono.m3u8?token=onlinetv
 https://fs.uplink.kz/domashnie_zhivotnie/mono.m3u8?token=onlinetv
 #EXTINF:-1 tvg-logo="" group-title="Россия",Domashnie Zhivotnye
 https://stream8.cinerama.uz/1426/tracks-v1a1/mono.m3u8
+=======
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Россия · iptv-org
+#EXTINF:-1 tvg-logo="" group-title="Россия",1HD Music Television
+https://stream8.cinerama.uz/1267/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",5 minut tishiny
+https://cdn-dvr.ntv.ru/5_minut_tishiny/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",360°
+https://cdn-evacoder-tv.facecast.io/evacoder_hls_hi/CkxfR1xNUAJwTgtXTBZTAJli/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",360°
+https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/0.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",360° (576p) [Geo-blocked]
+https://streaming.thestream.cyou/live/7000.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",360° Новости
+https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",365 days TV
+https://fs.uplink.kz/365_dney/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",365 days TV
+https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Afontovo
+https://stream.afontovo.ru/hd.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Arsenal
+https://stream8.cinerama.uz/1414/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Auto Plus
+https://stream8.cinerama.uz/1036/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Avto24
+https://fs.uplink.kz/avto24/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Baby Time
+https://fs.uplink.kz/baby_time/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Balabol
+https://cdn-dvr.ntv.ru/Balabol/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Big Planet
+https://fs.uplink.kz/big_planet/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Bober
+https://fs.uplink.kz/bober/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",BRIDGE Classic
+https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Carousel
+https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Carousel International
+https://fs.uplink.kz/karusel/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel 5 International
+https://cdn4.skygo.mn/live/disk1/Channel_5/HLSv3-FTA/Channel_5.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel 5 International
+https://fs.uplink.kz/5_kanal/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel 8
+https://v4.proofix.ru/8tv-russia/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel 8 Novosibirsk
+https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel 12 (576p) [Geo-blocked]
+https://streaming.thestream.cyou/live/7004.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel One CIS
+https://fs.uplink.kz/perviy_kanal_sng/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel One Europa
+https://streaming.thestream.cyou/live/210-req_offset_28000000-req_window_0-1k_v5.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel One HD
+https://edge1.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd
+#EXTINF:-1 tvg-logo="" group-title="Россия",Channel One HD
+https://stream8.cinerama.uz/1214/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Cinema
+https://stream8.cinerama.uz/1227/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Da Vinci
+https://stream8.cinerama.uz/1231/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Da Vinci
+https://fs.uplink.kz/da_vinci/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Detskiy
+https://stream8.cinerama.uz/1033/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Detvora+
+https://cdn.rostelekom-tv.xyz/live/WAYU4PTJ_VVz4wAQ.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Dikij
+https://stream3.cinerama.uz/1230/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Doctor
+https://stream8.cinerama.uz/1409/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Dom kino
+https://stream8.cinerama.uz/1054/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Dom kino International
+https://fs.uplink.kz/dom_kino/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Dom kino Premium HD
+https://fs.uplink.kz/dom_kino_premium/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Domashnie Zhivotnye
+https://fs.uplink.kz/domashnie_zhivotnie/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Россия",Domashnie Zhivotnye
+https://stream8.cinerama.uz/1426/tracks-v1a1/mono.m3u8
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

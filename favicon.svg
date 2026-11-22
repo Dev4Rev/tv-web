@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#0a0a0f"/>
   <rect x="9" y="17" width="46" height="32" rx="6" fill="none" stroke="#ff4d6d" stroke-width="4"/>
   <path d="M27 26l12 7-12 7z" fill="#ff4d6d"/>
 </svg>
+=======
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0a0a0f"/>
+  <rect x="9" y="17" width="46" height="32" rx="6" fill="none" stroke="#ff4d6d" stroke-width="4"/>
+  <path d="M27 26l12 7-12 7z" fill="#ff4d6d"/>
+</svg>
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

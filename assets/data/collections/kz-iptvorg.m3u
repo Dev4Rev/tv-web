@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 group-title="dev4rev",Казахстан · iptv-org
 #EXTINF:-1 tvg-logo="" group-title="Казахстан",24KZ
@@ -50,3 +51,57 @@ https://fs.uplink.kz/kinoboevik/mono.m3u8?token=onlinetv
 https://stream.kaztrk.kz/regional/kokshetautv/index.m3u8
 #EXTINF:-1 tvg-logo="" group-title="Казахстан",KTK
 https://fs.uplink.kz/ktk/mono.m3u8?token=onlinetv
+=======
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Казахстан · iptv-org
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",24KZ
+https://fs.uplink.kz/24KZ/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",31 Kanal
+https://fs.uplink.kz/31kanal/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",31 Kanal
+https://streams.adapto.kz/hls/live/31kz/main_stream.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Abai TV
+https://abaitv-stream.qazcdn.com/abaitv/abaitv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Abai TV
+https://fs.uplink.kz/abai_tv/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Alau TV
+https://otv.wotom.net/alau/stream.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Almaty TV
+https://fs.uplink.kz/almaty/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Aqjaiyq
+https://stream.kaztrk.kz/regional/oraltv/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Aqtóbe
+https://stream.kaztrk.kz/regional/aktobetv/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Astana TV
+https://fs.uplink.kz/astana/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Atameken Business
+https://fs.uplink.kz/atameken/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Atyraý
+https://stream.kaztrk.kz/regional/atyrautv/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Balapan
+https://fs.uplink.kz/balapan/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Balapan HD
+https://balapantv-stream.qazcdn.com/balapantv/balapantv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Balapan International
+https://live-3.otcnet.ru/Balapan/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Channel 7
+https://fs.uplink.kz/7_kanal/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Channel One Eurasia
+https://fs.uplink.kz/perviy_kanal_evrasia/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Ertis (1080p) [Not 24/7]
+https://stream.kaztrk.kz/regional/pavlodartv/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Jambyl (360p) [Not 24/7]
+https://stream.kaztrk.kz/regional/taraztv/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Jibek Joly
+https://fs.uplink.kz/jibek_joly/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Jibek Joly HD
+https://stream.qazcdn.net/ex6r514/jjtv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Khabar
+https://fs.uplink.kz/habar/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",KinoBoevik
+https://fs.uplink.kz/kinoboevik/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",Kókshe (720p) [Not 24/7]
+https://stream.kaztrk.kz/regional/kokshetautv/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Казахстан",KTK
+https://fs.uplink.kz/ktk/mono.m3u8?token=onlinetv
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

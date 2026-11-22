@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 group-title="dev4rev",Мультфильмы — сборник
 #EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (1)
@@ -56,3 +57,63 @@ https://mults.info/mp4/ostrov_sokrovish_part1.mp4
 https://mults.info/mp4/ostrov_sokrovish_part2.mp4
 #EXTINF:-1 group-title="Мультфильмы", Возвращение блудного попугая (1)
 https://mults.info/mp4/vozvr_bl_popugaya_1.mp4
+=======
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Мультфильмы — сборник
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (1)
+https://mults.info/mp4/nu_pogodi_01.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (2)
+https://mults.info/mp4/nu_pogodi_02.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (3)
+https://mults.info/mp4/nu_pogodi_03.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (4)
+https://mults.info/mp4/nu_pogodi_04.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (5)
+https://mults.info/mp4/nu_pogodi_05.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (6)
+https://mults.info/mp4/nu_pogodi_06.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (7)
+https://mults.info/mp4/nu_pogodi_07.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (8)
+https://mults.info/mp4/nu_pogodi_08.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (9)
+https://mults.info/mp4/nu_pogodi_09.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (10)
+https://mults.info/mp4/nu_pogodi_10.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (11)
+https://mults.info/mp4/nu_pogodi_11.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (12)
+https://mults.info/mp4/nu_pogodi_12.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (13)
+https://mults.info/mp4/nu_pogodi_13.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (14)
+https://mults.info/mp4/nu_pogodi_14.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (15)
+https://mults.info/mp4/nu_pogodi_15.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (16)
+https://mults.info/mp4/nu_pogodi_16.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (17)
+https://mults.info/mp4/nu_pogodi_17.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (18)
+https://mults.info/mp4/nu_pogodi_18.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (19)
+https://mults.info/mp4/nu_pogodi_19.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (20)
+https://mults.info/mp4/nu_pogodi_20.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (телевыпуск 1)
+https://mults.info/mp4/nu_pogodi_tv_1.mp4
+#EXTINF:-1 group-title="Мультфильмы", Ну, Погоди! (телевыпуск 2)
+https://mults.info/mp4/nu_pogodi_tv.mp4
+#EXTINF:-1 group-title="Мультфильмы", Незнайка на Луне (1)
+https://mults.info/mp4/neznayka_na_lune_1.mp4
+#EXTINF:-1 group-title="Мультфильмы", Незнайка на Луне (2)
+https://mults.info/mp4/neznayka_na_lune_2.mp4
+#EXTINF:-1 group-title="Мультфильмы", Незнайка на Луне (3)
+https://mults.info/mp4/neznayka_na_lune_3.mp4
+#EXTINF:-1 group-title="Мультфильмы", Остров сокровищ (1)
+https://mults.info/mp4/ostrov_sokrovish_part1.mp4
+#EXTINF:-1 group-title="Мультфильмы", Остров сокровищ (2)
+https://mults.info/mp4/ostrov_sokrovish_part2.mp4
+#EXTINF:-1 group-title="Мультфильмы", Возвращение блудного попугая (1)
+https://mults.info/mp4/vozvr_bl_popugaya_1.mp4
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

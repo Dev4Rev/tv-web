@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/pobeda.png" group-title="9 мая · кино о войне",Победа
 https://streaming.thestream.cyou/live/43.m3u8
@@ -25,3 +26,32 @@ https://stream.smotrim.ru/hls3/fasttv03/playlist_3.m3u8
 https://cityeden.catcast.tv/content/34185/index.m3u8
 #EXTINF:-1 group-title="9 мая · кино о войне",Сити Эдем — Киноклассика
 https://autopilot.catcast.tv/content/34185/index.m3u8?password=promolive
+=======
+#EXTM3U
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/pobeda.png" group-title="9 мая · кино о войне",Победа
+https://streaming.thestream.cyou/live/43.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",Ретро (2)
+https://stream8.cinerama.uz/1047/index.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",Классика Кино
+https://serv25.vintera.tv/dai/k_kino_dai_scte-35/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/viju_history.png" group-title="9 мая · кино о войне",Viju History
+https://stream8.cinerama.uz/1046/index.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/istoriya.png" group-title="9 мая · кино о войне",История
+https://stream8.cinerama.uz/1266/index.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",Retrovision
+https://lbgo.bozztv.com/07/ushba-rvision/index.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",Retrovision Motor
+https://lbgo.bozztv.com/07/ushba-rvisionmotor/index.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",Retrovision Кинопанорама
+https://lbgo.bozztv.com/07/ushba-rvisionkinopanorama/index.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",Retrovision Movies
+https://lbgo.bozztv.com/07/ushba-rvisionmovies/index.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",Retrovision Classic
+https://lbgo.bozztv.com/07/ushba-rvisionclassic/index.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",100% Классика
+https://stream.smotrim.ru/hls3/fasttv03/playlist_3.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",КиноКлассика
+https://cityeden.catcast.tv/content/34185/index.m3u8
+#EXTINF:-1 group-title="9 мая · кино о войне",Сити Эдем — Киноклассика
+https://autopilot.catcast.tv/content/34185/index.m3u8?password=promolive
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

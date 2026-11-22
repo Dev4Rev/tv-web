@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 group-title="8 марта · кино для всех",Киносемья
 https://stream8.cinerama.uz/1234/index.m3u8
@@ -31,3 +32,38 @@ https://jmp2.uk/plu-62ea3d24b8e02600071fa296.m3u8
 https://jmp2.uk/plu-61c0b36d18447e000717d686.m3u8
 #EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/61c1e3a679a4390007c78136/colorLogoPNG.png" group-title="8 марта · кино для всех",Pluto TV Komedie
 https://jmp2.uk/plu-61c1e3a679a4390007c78136.m3u8
+=======
+#EXTM3U
+#EXTINF:-1 group-title="8 марта · кино для всех",Киносемья
+https://stream8.cinerama.uz/1234/index.m3u8
+#EXTINF:-1 group-title="8 марта · кино для всех",Сити Эдем — Киносемья
+https://autopilot.catcast.tv/content/38128/index.m3u8?password=promolive
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/dom_kino.png" group-title="8 марта · кино для всех",Дом Кино
+https://streaming.thestream.cyou/live/44.m3u8
+#EXTINF:-1 group-title="8 марта · кино для всех",Киносвидание (2)
+https://stream8.cinerama.uz/1203/index.m3u8
+#EXTINF:-1 tvg-logo="https://ngrch.github.io/iptv/logos/kinokomedia.png" group-title="8 марта · кино для всех",Кинокомедия
+https://stream8.cinerama.uz/1232/index.m3u8
+#EXTINF:-1 group-title="8 марта · кино для всех",Комедии
+https://kinowalk.hopto.org/cmexye4ku_live
+#EXTINF:-1 group-title="8 марта · кино для всех",Viju+ Comedy
+https://stream8.cinerama.uz/1061/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/146OgfU.png" group-title="8 марта · кино для всех",alpha Cinema (1080p)
+https://live.15plusmg.ru/memfs/b389173a-df4e-4171-8904-e249893e71eb.m3u8
+#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/68c32d88f56983aba40052bd/colorLogoPNG_1759246622596.png" group-title="8 марта · кино для всех",BET Comedy Movies
+https://jmp2.uk/plu-68c32d88f56983aba40052bd.m3u8
+#EXTINF:-1 tvg-logo="https://spiintl.com/data/files/kcfinderUploadDir/images/filmboxplus/filmbox%2Bcomedy.png" group-title="8 марта · кино для всех",FILMBOX+ Comedy Romania
+https://nosignal1.antenaplay.ro/hls/fb-comedy-hd/index.m3u8
+#EXTINF:-1 tvg-logo="https://gia.tv/streams/pptv/208730.png" group-title="8 марта · кино для всех",Maxcine Comedy (720p)
+https://183.giatvcdn.com/giatvplayout7/giatv-208730/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/655b5d865812e80008843bd1/colorLogoPNG_1747044085522.png" group-title="8 марта · кино для всех",Pluto TV Comedias Romanticas
+https://jmp2.uk/plu-655b5d865812e80008843bd1.m3u8
+#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/67b4b2d976a934282e92d71c/colorLogoPNG.png" group-title="8 марта · кино для всех",Pluto TV Comedies Cultes
+https://jmp2.uk/plu-67b4b2d976a934282e92d71c.m3u8
+#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/62ea3d24b8e02600071fa296/colorLogoPNG.png" group-title="8 марта · кино для всех",Pluto TV Comedy Movies
+https://jmp2.uk/plu-62ea3d24b8e02600071fa296.m3u8
+#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/61c0b36d18447e000717d686/colorLogoPNG.png" group-title="8 марта · кино для всех",Pluto TV Komedi
+https://jmp2.uk/plu-61c0b36d18447e000717d686.m3u8
+#EXTINF:-1 tvg-logo="https://images.pluto.tv/channels/61c1e3a679a4390007c78136/colorLogoPNG.png" group-title="8 марта · кино для всех",Pluto TV Komedie
+https://jmp2.uk/plu-61c1e3a679a4390007c78136.m3u8
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b

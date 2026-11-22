@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #EXTM3U
 #EXTINF:-1 group-title="dev4rev",Сериалы мира
 #EXTINF:-1 tvg-logo="https://i.imgur.com/aJMBnse.png" group-title="Chile",13 Teleseries
@@ -38,3 +39,45 @@ https://freem3u.xyz/api/live/play.m3u8?vid=177
 https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-drama/567b703c19ede6598222de81b0e4508b/index.m3u8
 #EXTINF:-1 tvg-logo="" group-title="Турция",Kanal D Drama
 https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01602-themahqfrance-vivekanald-samsungspain/playlist.m3u8
+=======
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Сериалы мира
+#EXTINF:-1 tvg-logo="https://i.imgur.com/aJMBnse.png" group-title="Chile",13 Teleseries
+https://origin.dpsgo.com/ssai/event/f4TrySe8SoiGF8Lu3EIq1g/master.m3u8
+#EXTINF:-1 tvg-logo="https://cdn-st1.smotrim.ru/vh/pictures/r/456/967/6.png" group-title="Russia",Смотрим: Мелодрамы
+https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-02.smil/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/btnhPjZ.png" group-title="Saudi Arabia",Rotana Drama
+https://rotana.hibridcdn.net/rotananet/drama_net-7Y83PP5adWixDF93/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/g5PWnqp.png" group-title="United Arab Emirates",MBC Drama
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama/2c28a458e2f3253e678b07ac7d13fe71/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/hY1M4hL.jpg" group-title="VOD Italy",BBC Drama
+https://amg00793-amg00793c41-rakuten-it-5445.playouts.now.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Velvet. Series Hits
+https://cdn.rostelekom-tv.xyz/live/DeWr3Sgw1Aj2lJd0.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Россия",Velvet. World Series
+https://cdn.rostelekom-tv.xyz/live/2RR44py-yGlIWQIp.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Украина",FilmUADrama
+https://dash2.antik.sk/live/test_film_drama_atktv/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",AMC Series Latin America
+https://streaming.onnethn.com/AMC/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",MBC Drama USA
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama-usa/ea2f5db904aff224b7066e59c7f585a2/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="США",TNT Series Latin America South
+https://bantel-cdn1.iptvperu.tv:1936/btnscrtn/TNTseries.stream/chunks.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",Series Classic
+https://cdn-tiva-video10-logicahost-com-br.smartbit.co/serieclassic/serieclassic/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Бразилия",TV Series 1 As Panteras
+https://stmv1.srvif.com/tvserie/tvserie/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Франция",TF1 Series Films
+https://r.eu.cdn-redge.media/livehls/oeu/mt/live/tf1_series_films/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Испания",Atreseries
+https://cdn.jsdelivr.net/gh/Ignac16/voxel-tv@main/src/constants/channels/a3s.mpd
+#EXTINF:-1 tvg-logo="" group-title="Испания",Atreseries HD
+https://ignac16.github.io/voxel-tv-streams/a3s.mpd
+#EXTINF:-1 tvg-logo="" group-title="Вьетнам",ON Vie Dramas
+https://freem3u.xyz/api/live/play.m3u8?vid=177
+#EXTINF:-1 tvg-logo="" group-title="Саудовская Аравия",MBC Masr Drama
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-drama/567b703c19ede6598222de81b0e4508b/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="Турция",Kanal D Drama
+https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01602-themahqfrance-vivekanald-samsungspain/playlist.m3u8
+>>>>>>> fa09caa38472ef2dddf00f9d78923b2caab7247b
