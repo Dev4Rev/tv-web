@@ -1,0 +1,18 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Гарри Поттер — неофициальные полные фильмы в русском дубляже
+#EXTINF:-1 tvg-id="hp1-ru" group-title="Полные фильмы;Неофициально",Гарри Поттер и Философский камень (2001) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/383
+#EXTINF:-1 tvg-id="hp2-ru" group-title="Полные фильмы;Неофициально",Гарри Поттер и Тайная комната (2002) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/384
+#EXTINF:-1 tvg-id="hp3-ru" group-title="Полные фильмы;Неофициально",Гарри Поттер и Узник Азкабана (2004) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/385
+#EXTINF:-1 tvg-id="hp4-ru" group-title="Полные фильмы;Неофициально",Гарри Поттер и Кубок огня (2005) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/386
+#EXTINF:-1 tvg-id="hp5-ru" group-title="Полные фильмы;Неофициально",Гарри Поттер и Орден Феникса (2007) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/kp/48356
+#EXTINF:-1 tvg-id="hp6-ru" group-title="Полные фильмы;Неофициально",Гарри Поттер и Принц-полукровка (2009) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/388
+#EXTINF:-1 tvg-id="hp7a-ru" group-title="Полные фильмы;Неофициально",Гарри Поттер и Дары смерти: часть 1 (2010) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/389
+#EXTINF:-1 tvg-id="hp7b-ru" group-title="Полные фильмы;Неофициально",Гарри Поттер и Дары смерти: часть 2 (2011) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/kp/407636

@@ -1,0 +1,10 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Шрек — неофициальные полные фильмы в русском дубляже
+#EXTINF:-1 tvg-id="shrek1-ru" group-title="Полные фильмы;Неофициально",Шрек (2001) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/2209
+#EXTINF:-1 tvg-id="shrek2-ru" group-title="Полные фильмы;Неофициально",Шрек 2 (2004) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/2210
+#EXTINF:-1 tvg-id="shrek3-ru" group-title="Полные фильмы;Неофициально",Шрек 3 (2007) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/2211
+#EXTINF:-1 tvg-id="shrek4-ru" group-title="Полные фильмы;Неофициально",Шрек навсегда / Шрек 4 (2010) — полный фильм, русский дубляж
+https://api.nextembed.ws/embed/movie/2212

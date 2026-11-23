@@ -34,9 +34,7 @@
       try { localStorage.removeItem(TV_KEY); } catch (e) {}
       var ua = navigator.userAgent || '';
       var isTvUA = /SmartTV|Tizen|Web0S|WebOS|HbbTV|NETCAST|Viera|BRAVIA|Aquos|SmartHub|AndroidTV|GoogleTV|AppleTV|PhilipsTV|Hisense|Vestel|Roku/i.test(ua);
-      var isBigScreen = window.screen && window.screen.width >= 1600 && window.screen.height >= 900;
-      var isDesktopBig = !('ontouchstart' in window) && isBigScreen;
-      document.documentElement.dataset.tvMode = (isTvUA || isDesktopBig) ? 'on' : 'off';
+      document.documentElement.dataset.tvMode = isTvUA ? 'on' : 'off';
     } else {
       try { localStorage.setItem(TV_KEY, v); } catch (e) {}
       document.documentElement.dataset.tvMode = v;

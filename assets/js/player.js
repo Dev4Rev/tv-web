@@ -216,6 +216,37 @@
     });
   }
 
+  // Публичные каталоги могут выдавать страницу-плеер вместо потока.
+  // В таком случае достаём HLS-манифест в момент запуска: он содержит
+  // временные параметры и быстро устаревает, поэтому в плейлисте хранится
+  // постоянная адреса страницы, а не сам манифест.
+  var RE_EMBED = /^https:\/\/api\.nextembed\.ws\/embed\/(?:movie|kp)\/\d+(?:\?[^#]*)?$/i;
+
+  function resolveEmbed(url) {
+    if (!RE_EMBED.test(url)) return Promise.resolve(url);
+    if (!window.fetch) return Promise.resolve(null);
+
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+    var opts = { credentials: 'omit', cache: 'no-store' };
+    if (ctrl) opts.signal = ctrl.signal;
+
+    return fetch(url, opts).then(function (r) {
+      if (!r.ok) throw new Error('embed-status-' + r.status);
+      return r.text();
+    }).then(function (html) {
+      var match = html.match(/https:\/\/[^"'<>\\]+\.m3u8\?[^"'<>\\]+/i);
+      if (!match) throw new Error('embed-stream-not-found');
+      return match[0].replace(/&amp;/g, '&');
+    }).catch(function (e) {
+      log('embed-resolve', e);
+      return null;
+    }).then(function (resolved) {
+      clearTimeout(timer);
+      return resolved;
+    });
+  }
+
   function loadScript(src) {
     return new Promise(function (resolve, reject) {
       var s = document.createElement('script');
@@ -412,15 +443,23 @@
 
     showOverlay('Загружаем канал…');
 
-    var format = detectFormat(url);
-    if (format === 'unknown') {
-      sniffFormat(url).then(function (sniffed) {
-        if (!isActual(token)) return;
-        route(sniffed === 'hls' ? 'hls' : 'native', url, token);
-      });
-      return;
-    }
-    route(format, url, token);
+    resolveEmbed(url).then(function (resolved) {
+      if (!isActual(token)) return;
+      if (!resolved) {
+        failCurrent('Не удалось получить поток с этого сайта.', token);
+        return;
+      }
+
+      var format = detectFormat(resolved);
+      if (format === 'unknown') {
+        sniffFormat(resolved).then(function (sniffed) {
+          if (!isActual(token)) return;
+          route(sniffed === 'hls' ? 'hls' : 'native', resolved, token);
+        });
+        return;
+      }
+      route(format, resolved, token);
+    });
   }
 
   function startWatchdog(format, token) {

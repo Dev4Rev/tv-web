@@ -634,7 +634,10 @@
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>' +
       '</span>' +
       '<span class="playlist-item__name">' + escapeHtml(p.name) + '</span>' +
-      '<span class="playlist-item__meta">' + (count ? channelLabel(count) : 'каналы уточняются') + '</span>' +
+      '<span class="playlist-item__sub">' +
+        (p.label ? '<span class="playlist-item__label">' + escapeHtml(p.label) + '</span> ' : '') +
+        '<span class="playlist-item__meta">' + (count ? channelLabel(count) : 'каналы уточняются') + '</span>' +
+      '</span>' +
       '<span class="playlist-item__note">' + escapeHtml(p.note || '') + '</span>' +
     '</button>';
   }
@@ -932,14 +935,8 @@
     var q = String(query || '').trim().toLowerCase();
     if (q.length < 2) { closeGlobalResults(); return; }
 
-    // Строка поиска может быть за пределами экрана, если пользователь
-    // прокрутил страницу к плееру — возвращаем её в видимую область.
-    if (globalSearchBox) {
-      var boxBefore = globalSearchBox.getBoundingClientRect();
-      if (boxBefore.top < 8 || boxBefore.bottom > window.innerHeight - 8) {
-        globalSearchBox.scrollIntoView({ block: 'center', behavior: 'instant' });
-      }
-    }
+    // Прокрутку страницы здесь не делаем: фокус в поле уже возвращает его
+    // в видимую область, а принудительный center дёргает экран при вводе.
 
     var collectionItems = filteredCollections(q).slice(0, 4).map(function (c) {
       return '<button type="button" class="global-search__item" data-gs-collection="' + escapeAttr(c.id) + '">' +
@@ -952,7 +949,7 @@
     });
 
     var playlistItems = searchIndex.playlists.map(function (p) {
-      var score = bestScore([p.n, p.note, p.cn, p.file], q);
+      var score = bestScore([p.n, p.note, p.label, p.cn, p.file], q);
       return score < 0 ? null : { item: p, score: score };
     }).filter(Boolean).sort(function (a, b) {
       return a.score - b.score || String(a.item.n).localeCompare(String(b.item.n), 'ru');
@@ -962,8 +959,10 @@
           escapeAttr(p.ci + '|' + p.id) + '">' +
         '<span class="global-search__kind">плейлист</span>' +
         '<span class="global-search__title">' + highlight(p.n, q) + '</span>' +
-        '<span class="global-search__meta">' + highlight(p.cn, q) +
-          (p.count ? ' · ' + channelLabel(p.count) : '') + '</span>' +
+        '<span class="global-search__meta">' +
+          (p.label ? '<span class="global-search__badge">' + escapeHtml(p.label) + '</span> ' : '') +
+          highlight(p.cn, q) + (p.count ? ' · ' + channelLabel(p.count) : '') +
+        '</span>' +
       '</button>';
     });
 

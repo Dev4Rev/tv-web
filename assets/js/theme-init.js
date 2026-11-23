@@ -42,12 +42,9 @@
     } else {
       var ua = navigator.userAgent || '';
       var isTvUA = /SmartTV|Tizen|Web0S|WebOS|HbbTV|NETCAST|Viera|BRAVIA|Aquos|SmartHub|AndroidTV|GoogleTV|AppleTV|PhilipsTV|Hisense|Vestel|Roku/i.test(ua);
-      var isBigScreen = false;
-      try {
-        isBigScreen = window.screen && window.screen.width >= 1600 && window.screen.height >= 900;
-      } catch (e) {}
-      var isDesktopBig = !('ontouchstart' in window) && isBigScreen;
-      document.documentElement.dataset.tvMode = (isTvUA || isDesktopBig) ? 'on' : 'off';
+      // Авто включаем только для явных TV/консольных UA. Большой экран
+      // на ПК — не признак ТВ: пользователь может просто иметь монитор.
+      document.documentElement.dataset.tvMode = isTvUA ? 'on' : 'off';
     }
   } catch (e) {}
 })();

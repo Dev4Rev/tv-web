@@ -65,6 +65,9 @@ html[data-tv-mode="on"] {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--topbar-h) + 8px);
+  /* Скрытая панель каналов уезжает за правый край через transform —
+     без clip она расширяет документ и даёт горизонтальный скролл. */
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -77,6 +80,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
   /* Фон подстраивается под активную подборку/канал через динамические токены. */
   background:
     radial-gradient(circle at 12% -5%, color-mix(in srgb, var(--dynamic-accent) 9%, transparent), transparent 45%),
@@ -839,6 +843,7 @@ html[data-tv-mode="on"] .shelf__search { max-width: 80%; }
   font-weight: 600;
 }
 .global-search__meta {
+  grid-column: 2;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2136,12 +2141,46 @@ html[data-tv-mode="on"] .player__picker-select { font-size: 15px; max-width: 260
   font-size: 13px;
   font-weight: 600;
 }
+/* Метка и счётчик каналов живут в одной строке под названием. */
+.playlist-item__sub {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.playlist-item__label,
+.global-search__badge {
+  flex: 0 0 auto;
+  padding: 1px 5px;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  border-radius: 4px;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.global-search__badge {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+  vertical-align: middle;
+}
 .playlist-item__meta {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   color: var(--faint);
 }
 .playlist-item__note {
+  grid-column: 2;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
