@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru" data-tv-mode="auto">
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
+  <script src="./assets/js/theme-init.js"></script>
+  <title>Сигнал не найден — 404 | dev4rev TV</title>
+  <meta name="description" content="Страница не найдена. Вернитесь на главную dev4rev TV или откройте подборки плейлистов.">
+  <link rel="canonical" href="https://tv.dev4rev.ru/404">
+  <meta name="robots" content="noindex">
+  <meta name="author" content="dev4rev">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="dev4rev TV">
+  <meta property="og:title" content="Сигнал не найден — 404">
+  <meta property="og:description" content="Мы не поймали этот сигнал. Вернитесь к эфиру dev4rev TV.">
+  <meta property="og:url" content="https://tv.dev4rev.ru/404">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/pages.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="page-header__inner">
+        <a class="page-brand" href="./">dev4rev<span class="dot">.</span>tv</a>
+        <a class="page-back" href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          На главную
+        </a>
+      </div>
+    </header>
+
+    <main class="notfound-page">
+      <section class="notfound" aria-labelledby="nfTitle">
+        <p class="nf-eyebrow">Ошибка трансляции · 404</p>
+
+        <div class="nf-screen" aria-hidden="true">
+          <span class="nf-corner nf-corner--tl">CH -- / NO SIGNAL</span>
+          <span class="nf-corner nf-corner--br"><span class="nf-dot"></span>SEARCHING…</span>
+          <div class="nf-bars">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="nf-digits">404</div>
+        </div>
+
+        <h1 id="nfTitle">Сигнал не найден</h1>
+        <p class="notfound__text">
+          Похоже, эта частота вне эфира. Возможно, в адресе опечатка, ссылка устарела или страница переехала.
+          Приведите антенну в порядок — вернёмся к просмотру.
+        </p>
+
+        <p class="nf-from" id="nfFrom" hidden>Запрошенный адрес: <span id="nfFromValue"></span></p>
+
+        <div class="nf-actions">
+          <a class="page-btn page-btn--primary" href="./">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+            Вернуться в эфир
+          </a>
+          <a class="page-btn" href="./#homeShelf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            Открыть подборки
+          </a>
+          <a class="page-btn" href="https://t.me/dev4rev" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Сообщить об ошибке
+          </a>
+        </div>
+
+        <p class="nf-hint">Можно нажать <kbd>Alt</kbd> + <kbd>←</kbd> или выбрать «Вернуться в эфир».</p>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <div class="page-footer__inner">
+        <span>© 2023–2026 dev4rev</span>
+        <a href="./privacy">Политика конфиденциальности</a>
+        <a href="./">На главную</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      try {
+        var raw = new URLSearchParams(window.location.search).get('from');
+        if (!raw) return;
+        raw = raw.slice(0, 200);
+        document.getElementById('nfFromValue').textContent = raw;
+        document.getElementById('nfFrom').hidden = false;
+      } catch (e) {}
+    })();
+  </script>
+  <script src="./assets/js/consent.js" defer></script>
+</body>
+</html>

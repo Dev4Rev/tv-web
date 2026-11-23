@@ -1,3 +1,16 @@
+// Неизвестные адреса переводим на каноничную страницу 404. Работает и тогда,
+// когда хостинг отдает index.html вместо ошибки (SPA-подобный fallback).
+(function () {
+  try {
+    var path = window.location.pathname.replace(/\/+$/, '') || '/';
+    var known = ['/', '/index', '/index.html', '/privacy', '/privacy.html', '/404', '/404.html'];
+    if (known.indexOf(path) !== -1) return;
+    var from = window.location.pathname + window.location.search;
+    var query = from && from !== '/' ? '?from=' + encodeURIComponent(from.slice(0, 300)) : '';
+    window.location.replace(new URL('/404' + query, window.location.href).href);
+  } catch (e) {}
+})();
+
 (function () {
   try {
     // Режим «Кинотеатр».

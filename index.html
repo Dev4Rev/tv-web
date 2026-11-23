@@ -2,9 +2,22 @@
 <html lang="ru" data-tv-mode="auto">
 <head>
   <meta charset="utf-8">
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0a0a0a">
+  <script>
+    // Неизвестные адреса уводим на 404 ещё до загрузки остальных ассетов.
+    (function () {
+      try {
+        var p = location.pathname.replace(/\/+$/, '') || '/';
+        var known = ['/', '/index', '/index.html', '/privacy', '/privacy.html', '/404', '/404.html'];
+        if (known.indexOf(p) !== -1) return;
+        var from = location.pathname + location.search;
+        location.replace('/404?from=' + encodeURIComponent(from.slice(0, 300)));
+      } catch (e) {}
+    })();
+  </script>
   <script src="./assets/js/theme-init.js"></script>
   <title>TV - бесплатные IPTV-плейлисты M3U, просмотр в браузере и VLC</title>
   <meta name="description" content="TV dev4rev - бесплатные IPTV-плейлисты в формате M3U. Смотрите русские каналы, музыку, мультфильмы прямо в браузере или подключайте к VLC и другим плеерам. Без регистрации и рекламы.">
@@ -464,6 +477,7 @@
   <footer>
     <div class="footer__inner">
       <span>© <span id="since">2023</span>–<span id="y"></span> dev4rev</span>
+      <a href="./privacy">Политика конфиденциальности</a>
       <a href="https://dev4rev.ru/">dev4rev.ru</a>
     </div>
   </footer>
@@ -524,6 +538,7 @@
   <script src="./assets/js/cinema.js" defer></script>
   <script src="./assets/js/share.js" defer></script>
   <script src="./assets/js/mini-player.js" defer></script>
+  <script src="./assets/js/consent.js" defer></script>
 
   <button type="button" class="to-player" id="toPlayerBtn" aria-label="К плееру" title="К плееру">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
