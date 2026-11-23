@@ -114,7 +114,7 @@
         </button>
         <div class="playlist-links-help__tip" id="playlistLinksHelpTip" role="tooltip" hidden>
           <strong>Тестовые ссылки</strong>
-          <p><b>M3U</b><code>https://tv.dev4rev.ru/assets/data/collections/shrek.m3u</code></p>
+          <p><b>M3U</b><code>https://tv.dev4rev.ru/assets/data/collections/shrek-full-unofficial.m3u</code></p>
           <p><b>Magnet</b><code>magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10&amp;dn=Sintel&amp;tr=wss%3A%2F%2Ftracker.webtorrent.dev&amp;ws=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2F&amp;xs=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2Fsintel.torrent</code></p>
           <p><b>Torrent</b><code>https://tv.dev4rev.ru/assets/data/torrents/sintel.torrent</code></p>
           <p class="playlist-links-help__note">Торренты — только легальные раздачи. Прямые MP4/WebM/M3U8 добавляйте строками внутри плейлиста.</p>
@@ -284,6 +284,9 @@
             </button>
           </div>
           <div class="player__context-tabs" role="tablist" aria-label="Выбор в плеере">
+            <button type="button" class="player__context-tab" id="contextTabCollections"
+                    role="tab" aria-selected="false" aria-controls="playerCollectionsPane"
+                    data-context-tab="collections">Подборки</button>
             <button type="button" class="player__context-tab is-active" id="contextTabPlaylists"
                     role="tab" aria-selected="true" aria-controls="playerContext"
                     data-context-tab="playlists">Плейлисты</button>
@@ -325,6 +328,14 @@
               </div>
               <ul class="player__channels-list" id="playerChannelsList" role="list"></ul>
               <p class="player__channels-empty" id="playerChannelsEmpty" hidden>Каналы не найдены</p>
+            </div>
+            <div class="player__channels-pane player__collections-pane" id="playerCollectionsPane" role="tabpanel" aria-labelledby="contextTabCollections" hidden>
+              <div class="player__channels-filters">
+                <input type="search" class="player__channels-input" id="playerCollectionSearch"
+                       placeholder="Поиск подборки…" autocomplete="off" aria-label="Поиск подборки">
+              </div>
+              <div class="player__collections-list" id="playerCollectionsList"></div>
+              <p class="player__channels-empty" id="playerCollectionsEmpty" hidden>Подборки не найдены</p>
             </div>
           </div>
         </aside>

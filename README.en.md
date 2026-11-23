@@ -8,7 +8,7 @@
 
 Open the page and you get a TV and a cinema in one window. You can watch channels from ready-made thematic collections or paste your own playlist URL. Everything works in the browser without installing extra apps.
 
-Technically, it is a demo of a client-side media player and a collection system. The repository contains the site code and M3U files with links to publicly available media resources. Video files are not hosted here: the player only plays what is reachable at the given addresses. Some playlists contain unofficial recordings and are marked "НЕОФИЦИАЛЬНО" (unofficial) in the interface; official trailers and promos are marked "ТРЕЙЛЕРЫ" (trailers).
+Technically, it is a demo of a client-side media player and a collection system. The repository contains the site code and M3U files with links to publicly available media resources. Video files are not hosted here: the player only plays what is reachable at the given addresses. Full unofficial recordings are marked "НЕОФИЦИАЛЬНО" (unofficial) in the interface.
 
 ## Features
 

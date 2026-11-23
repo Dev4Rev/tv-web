@@ -262,12 +262,20 @@
         empty.hidden = false;
         empty.textContent = allChannels.length ? 'Каналы не найдены' : 'Сначала загрузите плейлист';
       }
-      if (count) count.textContent = '0';
+      if (count) {
+        var tab = window.dev4revCinema && window.dev4revCinema.getContextTab
+          ? window.dev4revCinema.getContextTab().tab : 'channels';
+        if (tab === 'channels') count.textContent = '0';
+      }
       return;
     }
     if (empty) empty.hidden = true;
 
-    if (count) count.textContent = visibleChannels.length + '';
+    if (count) {
+      var activeTab = window.dev4revCinema && window.dev4revCinema.getContextTab
+        ? window.dev4revCinema.getContextTab().tab : 'channels';
+      if (activeTab === 'channels') count.textContent = visibleChannels.length + '';
+    }
 
     list.innerHTML = visibleChannels.map(function (ch) {
       var logoHtml;

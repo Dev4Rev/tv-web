@@ -39,6 +39,10 @@
     document.querySelectorAll('[data-context-tab]'));
   var channelPlaylistNote = document.getElementById('channelPlaylistNote');
   var channelsPane = document.getElementById('playerChannelsPane');
+  var collectionsPane = document.getElementById('playerCollectionsPane');
+  var playerCollectionsList = document.getElementById('playerCollectionsList');
+  var playerCollectionsEmpty = document.getElementById('playerCollectionsEmpty');
+  var playerCollectionSearch = document.getElementById('playerCollectionSearch');
   // Единая кнопка в шапке плеера открывает панель плейлистов/каналов.
   var fsListBtn = document.getElementById('fsListBtn');
   // Блок под плеером: вкладки и поиск, дублирующие панель плеера.
@@ -52,6 +56,7 @@
   var channelsPlaylistSearch = document.getElementById('channelsPlaylistSearch');
   var playlistSearch = document.getElementById('playlistSearch');
   var playlistQuery = '';
+  var collectionQuery = '';
   var filteredCollectionId = null;
   var channelFilterQuery = '';
   // Панель описания не перекрывает видео по умолчанию — открывается одной кнопкой.
@@ -655,6 +660,8 @@
   // общий запрос живёт в main.js, у плейлистов — здесь.
   function syncSection() {
     var isChannels = contextTab === 'channels';
+    var isCollections = contextTab === 'collections';
+    var isPlaylists = !isChannels && !isCollections;
     var channelInput = document.getElementById('playerChannelSearch');
     if (channelInput && channelInput.value.toLowerCase().trim() !== channelFilterQuery) {
       channelFilterQuery = channelInput.value.toLowerCase().trim();
@@ -672,10 +679,14 @@
         playlistSearch.value !== playlistQuery) {
       playlistSearch.value = playlistQuery;
     }
+    if (playerCollectionSearch && document.activeElement !== playerCollectionSearch &&
+        playerCollectionSearch.value !== collectionQuery) {
+      playerCollectionSearch.value = collectionQuery;
+    }
     if (channelsChannelFilter) channelsChannelFilter.hidden = !isChannels;
-    if (channelsPlaylistFilter) channelsPlaylistFilter.hidden = isChannels;
-    if (channelsPlaylistList) channelsPlaylistList.hidden = !isChannels ? false : true;
-    if (channelsChannelView) channelsChannelView.hidden = isChannels ? false : true;
+    if (channelsPlaylistFilter) channelsPlaylistFilter.hidden = !isPlaylists;
+    if (channelsPlaylistList) channelsPlaylistList.hidden = !isPlaylists;
+    if (channelsChannelView) channelsChannelView.hidden = !isChannels;
   }
 
   function setPlaylistQuery(value) {
@@ -692,10 +703,51 @@
     renderPlayerContext(c, playlistsOf(c));
   }
 
+  function setCollectionQuery(value) {
+    collectionQuery = String(value || '');
+    if (playerCollectionSearch && document.activeElement !== playerCollectionSearch &&
+        playerCollectionSearch.value !== collectionQuery) {
+      playerCollectionSearch.value = collectionQuery;
+    }
+    renderCollectionsPane();
+  }
+
+  function filteredCollectionsList() {
+    var q = String(collectionQuery || '').toLowerCase().trim();
+    var list = collections.slice();
+    if (!q) return list;
+    return list.filter(function (c) {
+      return String(c.title || '').toLowerCase().indexOf(q) !== -1 ||
+             String(c.desc || '').toLowerCase().indexOf(q) !== -1 ||
+             String((c.tags || []).join(' ')).toLowerCase().indexOf(q) !== -1;
+    });
+  }
+
+  function collectionItemHtml(c) {
+    var active = c.id === activeCollectionId;
+    var count = playlistsOf(c).length;
+    return '<button type="button" class="collection-pick' + (active ? ' is-active' : '') + '"' +
+      ' data-collection-id="' + escapeAttr(c.id) + '" aria-pressed="' + (active ? 'true' : 'false') + '">' +
+      '<span class="collection-pick__icon">' + (c.thumb ? '<img src="' + escapeAttr(c.thumb) + '" alt="" loading="lazy" decoding="async">' : collectionArtFallback(c)) + '</span>' +
+      '<span class="collection-pick__body">' +
+        '<span class="collection-pick__title">' + escapeHtml(c.title || '') + '</span>' +
+        '<span class="collection-pick__meta">' + escapeHtml(playlistLabel(count)) + (c.user ? ' · моя' : '') + '</span>' +
+      '</span>' +
+      '<span class="collection-pick__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>' +
+    '</button>';
+  }
+
+  function renderCollectionsPane() {
+    var list = filteredCollectionsList();
+    var html = list.length ? list.map(collectionItemHtml).join('') : '';
+    if (playerCollectionsList) playerCollectionsList.innerHTML = html;
+    if (playerCollectionsEmpty) playerCollectionsEmpty.hidden = list.length > 0;
+  }
+
   // Чистая отрисовка содержимого панели. Вызывается и из main.js, когда
   // выдвижная панель уже открыта/закрыта — поэтому сама её не переключает.
   function setContextTab(tab, open) {
-    if (tab === 'playlists' || tab === 'channels') contextTab = tab;
+    if (tab === 'playlists' || tab === 'channels' || tab === 'collections') contextTab = tab;
     if (typeof open === 'boolean') contextOpen = open;
     var c = collectionById(activeCollectionId);
     renderPlayerContext(c, playlistsOf(c));
@@ -707,7 +759,7 @@
   // Открыть/закрыть выдвижную панель с нужной вкладкой.
   function setContextOpen(open, tab) {
     contextOpen = !!open;
-    if (tab === 'playlists' || tab === 'channels') contextTab = tab;
+    if (tab === 'playlists' || tab === 'channels' || tab === 'collections') contextTab = tab;
     if (window.dev4revApp && window.dev4revApp.setPlayerListOpen) {
       window.dev4revApp.setPlayerListOpen(contextOpen, contextTab);
     } else {
@@ -734,10 +786,10 @@
       if (playlistSearch) playlistSearch.value = '';
     }
     var shown = filteredPlaylists(c, list);
-    // Пока активна вкладка каналов, весь блок плейлистов скрыт целиком:
-    // иначе он остаётся flex-элементом нулевой ширины и список каналов
-    // вылезает за пределы выдвижной панели.
-    playerContext.hidden = contextTab !== 'playlists';
+    var isCollections = contextTab === 'collections';
+    var isChannels = contextTab === 'channels';
+    var isPlaylists = !isCollections && !isChannels;
+    playerContext.hidden = !isPlaylists;
     playerContext.dataset.tab = contextTab;
     contextTabs.forEach(function (tabBtn) {
       var selected = tabBtn.dataset.contextTab === contextTab;
@@ -766,7 +818,7 @@
         : '';
     }
     if (contextPlaylists) {
-      contextPlaylists.hidden = contextTab !== 'playlists';
+      contextPlaylists.hidden = !isPlaylists;
       if (contextPlaylistCount) {
         contextPlaylistCount.textContent = shown.length !== list.length
           ? shown.length + ' / ' + list.length
@@ -774,8 +826,13 @@
       }
     }
     var panelCount = document.getElementById('playerChannelsCount');
-    if (panelCount && contextTab === 'playlists') panelCount.textContent = shown.length + '';
-    if (channelsPane) channelsPane.hidden = contextTab !== 'channels';
+    if (panelCount) {
+      panelCount.textContent = isCollections ? (filteredCollectionsList().length + '')
+        : isChannels ? (panelCount.textContent || '—')
+        : (shown.length + '');
+    }
+    if (channelsPane) channelsPane.hidden = !isChannels;
+    if (collectionsPane) collectionsPane.hidden = !isCollections;
     if (channelPlaylistNote) {
       channelPlaylistNote.textContent = active
         ? 'Плейлист: ' + active.name + (list.length > 1 ? ' · ' + playlistLabel(list.length) + ' в подборке' : '')
@@ -788,6 +845,7 @@
           }).join('')
         : '<p class="playlist-list__empty">Плейлисты не найдены</p>';
     });
+    renderCollectionsPane();
     syncSection();
   }
 
@@ -1210,9 +1268,21 @@
     return !!(document.fullscreenElement || document.webkitFullscreenElement);
   }
 
-  function requestImmersive() {
+  function shouldAutoImmersive() {
+    // На ПК полноэкранный режим по выбору подборки навязчив; оставляем
+    // автопереход только для явного ТВ-режима.
+    try {
+      return document.documentElement.dataset.tvMode === 'on';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function requestImmersive(opts) {
     var wrap = document.getElementById('playerWrap');
     if (!wrap || isImmersive()) return;
+    var o = opts || {};
+    if (!o.force && !shouldAutoImmersive()) return;
     var req = wrap.requestFullscreen || wrap.webkitRequestFullscreen || wrap.webkitRequestFullScreen;
     if (req) {
       try {
@@ -1357,6 +1427,11 @@
       setPlaylistQuery(playlistSearch.value);
     });
   }
+  if (playerCollectionSearch) {
+    playerCollectionSearch.addEventListener('input', function () {
+      setCollectionQuery(playerCollectionSearch.value);
+    });
+  }
 
   function activateTab(tabBtn, tab) {
     // Вкладка в блоке под плеером только переключает содержимое; панель
@@ -1424,6 +1499,18 @@
     }
     if (saveHelpPopover && (!e.target.closest || !e.target.closest('.shelf__help-wrap'))) {
       closeSaveHelp();
+    }
+
+    var collectionItem = e.target && e.target.closest ? e.target.closest('[data-collection-id]') : null;
+    if (collectionItem && collectionItem.closest('#playerCollectionsList')) {
+      var nextC = collectionById(collectionItem.dataset.collectionId);
+      if (!nextC) return;
+      if (nextC.id === activeCollectionId) {
+        setContextOpen(true, 'playlists');
+      } else {
+        openCollection(nextC.id, { autoplay: true, force: true });
+      }
+      return;
     }
 
     var item = e.target && e.target.closest ? e.target.closest('[data-playlist-id]') : null;
@@ -1515,7 +1602,7 @@
     if (e.key === 'f' || e.key === 'F' || e.key === 'а' || e.key === 'А') {
       e.preventDefault();
       if (isImmersive()) exitImmersive();
-      else requestImmersive();
+      else requestImmersive({ force: true });
     }
   });
 
