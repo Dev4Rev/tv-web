@@ -134,7 +134,16 @@ body.is-idle { cursor: none; }
   justify-content: center;
   padding: 16px 24px;
   pointer-events: none;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
+}
+body.cinema-immersive .topbar,
+body:has(.player__video-wrap:fullscreen) .topbar,
+body:has(.player__video-wrap:-webkit-full-screen) .topbar {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: background 0.3s ease, border-color 0.3s ease, opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
 }
 html[data-tv-mode="on"] .topbar { padding: 24px 40px; }
 

@@ -1,0 +1,12 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Ледниковый период — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="ice-age-1-ru" group-title="Полные фильмы;Неофициально",Ледниковый период (2002) — полный фильм
+https://api.embf.net/embed/movie/417
+#EXTINF:-1 tvg-id="ice-age-2-ru" group-title="Полные фильмы;Неофициально",Ледниковый период 2: Глобальное потепление (2006) — полный фильм
+https://api.domem.ws/embed/movie/418
+#EXTINF:-1 tvg-id="ice-age-3-ru" group-title="Полные фильмы;Неофициально",Ледниковый период 3: Эра динозавров (2009) — полный фильм
+https://api.domem.ws/embed/movie/419
+#EXTINF:-1 tvg-id="ice-age-4-ru" group-title="Полные фильмы;Неофициально",Ледниковый период 4: Континентальный дрейф (2012) — полный фильм
+https://api.domem.ws/embed/movie/420
+#EXTINF:-1 tvg-id="ice-age-5-ru" group-title="Полные фильмы;Неофициально",Ледниковый период 5: Столкновение неизбежно (2016) — полный фильм
+https://api.domem.ws/embed/movie/421

@@ -1,0 +1,6 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Гринч — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="grinch-2000-ru" group-title="Полные фильмы;Неофициально",Гринч — похититель Рождества (2000) — полный фильм
+https://api.nextembed.ws/embed/kp/525
+#EXTINF:-1 tvg-id="grinch-2018-ru" group-title="Полные фильмы;Неофициально",Гринч (2018) — полный фильм
+https://api.nextembed.ws/embed/kp/738499

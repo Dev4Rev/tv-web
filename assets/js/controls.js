@@ -39,7 +39,12 @@
     return !isFinite(video.duration) || video.duration === Infinity || video.duration === 0;
   }
 
+  function isEmbed() {
+    return false;
+  }
+
   function hasMedia() {
+    if (isEmbed()) return true;
     if (!video) return false;
     if (video.src) return true;
     if (video.currentSrc) return true;
@@ -76,7 +81,13 @@
   }
 
   function updatePlayState() {
-    if (!wrap || !video) return;
+    if (!wrap) return;
+    if (isEmbed()) {
+      wrap.classList.add('is-playing');
+      if (bigPlay) bigPlay.hidden = true;
+      return;
+    }
+    if (!video) return;
     var playing = !video.paused && !video.ended;
     wrap.classList.toggle('is-playing', playing);
     if (bigPlay) bigPlay.hidden = playing;
@@ -88,7 +99,18 @@
   }
 
   function updateSeek() {
-    if (!seekBar || !video) return;
+    if (!seekBar) return;
+    if (isEmbed()) {
+      seekBar.disabled = true;
+      seekBar.style.opacity = '0.4';
+      seekBar.style.cursor = 'default';
+      seekBar.value = '0';
+      seekBar.style.setProperty('--progress', '0%');
+      if (currentTimeEl) currentTimeEl.textContent = '—';
+      if (durationEl) durationEl.textContent = '—';
+      return;
+    }
+    if (!video) return;
 
     if (video.readyState < 1) {
       seekBar.disabled = true;
@@ -122,7 +144,16 @@
   }
 
   function updateVolume() {
-    if (!volumeBar || !video) return;
+    if (!volumeBar) return;
+    if (isEmbed()) {
+      volumeBar.disabled = true;
+      volumeBar.style.opacity = '0.4';
+      if (muteBtn) muteBtn.disabled = true;
+      return;
+    }
+    if (volumeBar.disabled) { volumeBar.disabled = false; volumeBar.style.opacity = ''; }
+    if (muteBtn && muteBtn.disabled) muteBtn.disabled = false;
+    if (!video) return;
     var val = video.muted ? 0 : Math.round(video.volume * 100);
     if (!volumeBar.matches(':active')) volumeBar.value = String(val);
     volumeBar.style.setProperty('--progress', val + '%');
@@ -131,6 +162,10 @@
 
   // ─── Ключевое: пустое видео отдаём main.js ──────────────
   function togglePlay() {
+    if (isEmbed()) {
+      showControls();
+      return;
+    }
     if (!video) return;
 
     if (!hasMedia()) {
@@ -166,37 +201,29 @@
     return !!document.pictureInPictureElement;
   }
 
-  function syncPipButton() {
+    function syncPipButton() {
     if (!pipBtn) return;
+    if (isEmbed()) { pipBtn.disabled = true; pipBtn.hidden = true; return; }
+    pipBtn.hidden = false;
     var active = isPipActive();
     pipBtn.classList.toggle('is-active', active);
     pipBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
-    pipBtn.setAttribute('aria-label', active
-      ? 'Закрыть плавающее окно'
-      : 'Плавающее окно (картинка в картинке)');
-    pipBtn.setAttribute('title', active
-      ? 'Закрыть плавающее окно'
-      : 'Плавающее окно поверх вкладок');
+    pipBtn.setAttribute('aria-label', active ? 'Закрыть картинку в картинке' : 'Картинка в картинке');
   }
 
   function togglePip() {
-    if (!video) return;
-    var canPip = document.pictureInPictureEnabled &&
-      typeof video.requestPictureInPicture === 'function';
+    if (isEmbed() || !video) return;
+    var canPip = document.pictureInPictureEnabled && typeof video.requestPictureInPicture === 'function';
     if (!canPip) return;
-
     try {
       if (isPipActive()) {
-        var exitPip = document.exitPictureInPicture;
-        if (exitPip) {
-          var p0 = exitPip.call(document);
-          if (p0 && p0.catch) p0.catch(function (e) { log('pip-exit', e); });
-        }
-        return;
+        var exitPip = document.exitPictureInPicture();
+        if (exitPip && exitPip.catch) exitPip.catch(function (e) { log('pip-exit', e); });
+      } else {
+        if (document.pictureInPictureElement) return;
+        var p = video.requestPictureInPicture();
+        if (p && p.catch) p.catch(function (e) { log('pip-enter', e); });
       }
-      if (!hasMedia()) return;
-      var p = video.requestPictureInPicture();
-      if (p && p.catch) p.catch(function (e) { log('pip-enter', e); });
     } catch (e) { log('pip-toggle', e); }
   }
 

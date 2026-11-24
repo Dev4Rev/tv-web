@@ -62,6 +62,7 @@
   // Панель описания не перекрывает видео по умолчанию — открывается одной кнопкой.
   var contextOpen = false;
   var contextTab = 'playlists';
+  var sectionTab = 'channels';
 
   var staticCollections = [];
   var collections = [];
@@ -659,9 +660,9 @@
   // Блок под плеером и панель плеера показывают одно и то же: у каналов
   // общий запрос живёт в main.js, у плейлистов — здесь.
   function syncSection() {
-    var isChannels = contextTab === 'channels';
-    var isCollections = contextTab === 'collections';
-    var isPlaylists = !isChannels && !isCollections;
+    var tab = (sectionTab === 'channels') ? 'channels' : 'playlists';
+    var isChannels = tab === 'channels';
+    var isPlaylists = tab === 'playlists';
     var channelInput = document.getElementById('playerChannelSearch');
     if (channelInput && channelInput.value.toLowerCase().trim() !== channelFilterQuery) {
       channelFilterQuery = channelInput.value.toLowerCase().trim();
@@ -687,6 +688,13 @@
     if (channelsPlaylistFilter) channelsPlaylistFilter.hidden = !isPlaylists;
     if (channelsPlaylistList) channelsPlaylistList.hidden = !isPlaylists;
     if (channelsChannelView) channelsChannelView.hidden = !isChannels;
+    if (channelsSection) {
+      channelsSection.querySelectorAll('[data-context-tab]').forEach(function(b){
+        var t=b.dataset.contextTab; var sel=(t==='channels')?isChannels:isPlaylists;
+        b.classList.toggle('is-active', sel);
+        b.setAttribute('aria-selected', sel?'true':'false');
+      });
+    }
   }
 
   function setPlaylistQuery(value) {
@@ -792,6 +800,7 @@
     playerContext.hidden = !isPlaylists;
     playerContext.dataset.tab = contextTab;
     contextTabs.forEach(function (tabBtn) {
+      if (channelsSection && channelsSection.contains(tabBtn)) return;
       var selected = tabBtn.dataset.contextTab === contextTab;
       tabBtn.classList.toggle('is-active', selected);
       tabBtn.setAttribute('aria-selected', selected ? 'true' : 'false');
@@ -1434,10 +1443,11 @@
   }
 
   function activateTab(tabBtn, tab) {
-    // Вкладка в блоке под плеером только переключает содержимое; панель
-    // внутри плеера повторяет выбранную вкладку, но не открывается сама.
     if (channelsSection && channelsSection.contains(tabBtn)) {
-      setContextTab(tab, contextOpen);
+      sectionTab = (tab === 'channels') ? 'channels' : 'playlists';
+      var st = channelsSection.querySelectorAll('[data-context-tab]');
+      st.forEach(function(b){ var sel=b.dataset.contextTab===sectionTab; b.classList.toggle('is-active',sel); b.setAttribute('aria-selected', sel?'true':'false'); b.tabIndex=sel?0:-1; });
+      syncSection();
     } else {
       setContextOpen(true, tab);
     }

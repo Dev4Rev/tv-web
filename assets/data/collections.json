@@ -204,6 +204,46 @@
           "file": "./assets/data/collections/cartoons-ngrch.m3u",
           "count": 40,
           "note": "Русскоязычные мультканалы, включая Disney XD"
+        },
+        {
+          "id": "franchise-ice-age-full",
+          "name": "Ледниковый период — полные фильмы",
+          "file": "./assets/data/collections/ice-age-full-unofficial.m3u",
+          "count": 5,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Ледниковый период» 1–5. Источник: HTTPS-embed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-home-alone-full",
+          "name": "Один дома — полные фильмы",
+          "file": "./assets/data/collections/home-alone-full-unofficial.m3u",
+          "count": 5,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Один дома» 1–5. Источник: HTTPS-embed nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-grinch-full",
+          "name": "Гринч — полные фильмы",
+          "file": "./assets/data/collections/grinch-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы: «Гринч — похититель Рождества» (2000) и «Гринч» (2018). Источник: HTTPS-embed nextembed."
+        },
+        {
+          "id": "franchise-frozen-full",
+          "name": "Холодное сердце — полные фильмы",
+          "file": "./assets/data/collections/frozen-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы: «Холодное сердце» (2013) и «Холодное сердце 2» (2019). Источник: HTTPS-embed nextembed."
+        },
+        {
+          "id": "franchise-klaus-full",
+          "name": "Клаус — полный фильм",
+          "file": "./assets/data/collections/klaus-full-unofficial.m3u",
+          "count": 1,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальный полный фильм «Клаус» (2019). Источник: HTTPS-embed nextembed."
         }
       ]
     },

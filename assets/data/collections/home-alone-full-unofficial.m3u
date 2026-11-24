@@ -1,0 +1,12 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Один дома — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="home-alone-1-ru" group-title="Полные фильмы;Неофициально",Один дома (1990) — полный фильм
+https://api.nextembed.ws/embed/kp/8124
+#EXTINF:-1 tvg-id="home-alone-2-ru" group-title="Полные фильмы;Неофициально",Один дома 2: Затерянный в Нью-Йорке (1992) — полный фильм
+https://api.nextembed.ws/embed/kp/5928
+#EXTINF:-1 tvg-id="home-alone-3-ru" group-title="Полные фильмы;Неофициально",Один дома 3 (1997) — полный фильм
+https://api.nextembed.ws/embed/kp/20789
+#EXTINF:-1 tvg-id="home-alone-4-ru" group-title="Полные фильмы;Неофициально",Один дома 4 (2002) — полный фильм
+https://api.nextembed.ws/embed/kp/81576
+#EXTINF:-1 tvg-id="home-alone-5-ru" group-title="Полные фильмы;Неофициально",Один дома 5: Праздничное ограбление (2012) — полный фильм
+https://api.nextembed.ws/embed/kp/673340

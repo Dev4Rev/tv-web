@@ -1,0 +1,4 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Клаус — неофициальный полный фильм
+#EXTINF:-1 tvg-id="klaus-2019-ru" group-title="Полные фильмы;Неофициально",Клаус (2019) — полный фильм
+https://api.nextembed.ws/embed/kp/957887
