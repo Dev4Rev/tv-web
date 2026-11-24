@@ -1,0 +1,26 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Короткометражки и ранняя анимация
+#EXTINF:-1 tvg-id="os-enchanted-drawing-1900" group-title="Короткометражки;Открытое кино",Волшебный рисунок (1900) — PD
+https://archive.org/download/TheEnchantedDrawing1900/the-enchanted-drawing.mp4
+#EXTINF:-1 tvg-id="os-dollie-1908" group-title="Короткометражки;Открытое кино",Приключения Долли (1908) — CC0
+https://archive.org/download/TheAdventuresOfDollie/AdventuresOfDpllie_512kb.mp4
+#EXTINF:-1 tvg-id="os-on-roofs-1897" group-title="Короткометражки;Открытое кино",На крышах (1897) — PD
+https://archive.org/download/On_the_Roof/On_the_Roof_1897_512kb.mp4
+#EXTINF:-1 tvg-id="os-miroir-magique-1908" group-title="Короткометражки;Открытое кино",Волшебное зеркало (1908) — CC0
+https://archive.org/download/LeMiroirMagique/SegundoDeChomnLeMiroirMagique1908_512kb.mp4
+#EXTINF:-1 tvg-id="os-boite-cigares-1907" group-title="Короткометражки;Открытое кино",Коробка сигар (1907) — CC0
+https://archive.org/download/LaBoiteACigares/SegundoDeChomnLaBoiteACigars1907_512kb.mp4
+#EXTINF:-1 tvg-id="os-roses-magique-1906" group-title="Короткометражки;Открытое кино",Волшебные розы (1906) — CC0
+https://archive.org/download/LesRosesMagique/SegundoDeChomnLesRosesMagique1906_512kb.mp4
+#EXTINF:-1 tvg-id="os-oeufs-paques-1907" group-title="Короткометражки;Открытое кино",Пасхальные яйца (1907) — CC0
+https://archive.org/download/LesOeufsDePaques/SegundoDeChomon-LesOeufsDePaques1907_512kb.mp4
+#EXTINF:-1 tvg-id="os-papillons-1908" group-title="Короткометражки;Открытое кино",Японские бабочки (1908) — CC0
+https://archive.org/download/LesPapillonsJaponais/SegundoDeChomnLesPapillonsJaponais1908_512kb.mp4
+#EXTINF:-1 tvg-id="os-symphonie-bizarre-1909" group-title="Короткометражки;Открытое кино",Странная симфония (1909) — PD
+https://archive.org/download/SymphonieBizarre/1909SegundoDeChomon-SymphonieBizarrebizzareSymphonyFragment.mp4
+#EXTINF:-1 tvg-id="os-excursion-moon-1908" group-title="Короткометражки;Открытое кино",Путешествие на Луну (1908) — PD
+https://archive.org/download/Excursion_to_the_Moon/Excursion_to_the_Moon.mp4
+#EXTINF:-1 tvg-id="os-mabel-strange-1914" group-title="Короткометражки;Открытое кино",Чаплин: Странное положение Мейбл (1914) — PD
+https://archive.org/download/charlie-chaplin-.-mabels-strange-predicament-1914-restored-short-silent-film-noir-comedy/Charlie%20Chaplin%20.%20Mabel's%20Strange%20Predicament%20(1914%20Restored%20Short%20Silent%20Film%20Noir%20Comedy).mp4
+#EXTINF:-1 tvg-id="os-charlie-shanghaied-1915" group-title="Короткометражки;Открытое кино",Чаплин: Чарли в плену (1915) — PD
+https://archive.org/download/CC_1915_10_04_CharlieShanghaied/CC_1915_10_04_CharlieShanghaied_512kb.mp4

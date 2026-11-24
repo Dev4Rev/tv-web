@@ -8,7 +8,7 @@
 
 Open the page and you get a TV and a cinema in one window. You can watch channels from ready-made thematic collections or paste your own playlist URL. Everything works in the browser without installing extra apps.
 
-Technically, it is a demo of a client-side media player and a collection system. The repository contains the site code and M3U files with links to publicly available media resources. Video files are not hosted here: the player only plays what is reachable at the given addresses. Full unofficial recordings are marked "НЕОФИЦИАЛЬНО" (unofficial) in the interface.
+Technically, it is a demo of a client-side media player and a collection system. The repository contains the site code and M3U files with links to publicly available media resources. Video files are not hosted here: the player only plays what is reachable at the given addresses. Legal films and cartoons with direct HTTPS links are grouped in the "Открытое кино" (open cinema) section and marked "ОТКРЫТОЕ КИНО". Restored full-movie playlists and torrent distributions are still marked "НЕОФИЦИАЛЬНО"; their availability depends on the original sources.
 
 ## Features
 
@@ -52,4 +52,4 @@ Internal paths are relative (`./assets/...`), but `<base href="/">` binds them t
 
 ## Disclaimer
 
-This project is a technical demo and is not a host for video content. All links point to third-party public resources; availability and legality of specific materials are determined by their owners and the law of the applicable jurisdiction. The user decides which streams to open. Labels in the interface help distinguish official materials from unofficial ones.
+This project is a technical demo and is not a host for video content. All links point to third-party public resources; availability and legality of specific materials are determined by their owners and the law of the applicable jurisdiction. The user decides which streams to open. Labels in the interface distinguish official, open-licensed and unofficial materials.

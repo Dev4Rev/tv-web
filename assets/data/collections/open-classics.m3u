@@ -1,0 +1,34 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Классика кино
+#EXTINF:-1 tvg-id="oc-living-dead-1968" group-title="Классика кино;Открытое кино",Ночь живых мертвецов (1968) — PD
+https://archive.org/download/night-of-the-living-dead-1968-720p/Night%20of%20the%20Living%20Dead%20(1968)%20720p.mp4
+#EXTINF:-1 tvg-id="oc-nosferatu-1922" group-title="Классика кино;Открытое кино",Носферату (1922) — PD
+https://archive.org/download/nosferatu.-1922/Nosferatu.1922.ia.mp4
+#EXTINF:-1 tvg-id="oc-metropolis-1927" group-title="Классика кино;Открытое кино",Метрополис (1927) — CC0
+https://archive.org/download/MetropolisSilent/ZZMetroplois.mp4
+#EXTINF:-1 tvg-id="oc-potemkin-1925" group-title="Классика кино;Открытое кино",Броненосец «Потёмкин» (1925) — PD
+https://archive.org/download/battleship-potemkin-1925-by-sergei-m.-eisenstein/Battleship.Potemkin.1925.1080p.BluRay.x264-%5BYTS.AM%5D.mp4
+#EXTINF:-1 tvg-id="oc-general-1926" group-title="Классика кино;Открытое кино",Генерал (1926) — PD
+https://archive.org/download/TheGeneral/The_General_512kb.mp4
+#EXTINF:-1 tvg-id="oc-reefer-madness-1936" group-title="Классика кино;Открытое кино",Бесовская страсть (1936) — PD
+https://archive.org/download/reefer_madness_ipod/reefer_madness1938_512kb.mp4
+#EXTINF:-1 tvg-id="oc-general-line-1929" group-title="Классика кино;Открытое кино",Старое и новое (1929) — PD
+https://archive.org/download/StaroyeINovoye/StaroyeINovoye.mp4
+#EXTINF:-1 tvg-id="oc-midnight-girl-1925" group-title="Классика кино;Открытое кино",Полночная девушка (1925) — PD
+https://archive.org/download/TheMidnightGirl/TheMidnightGirl_512kb.mp4
+#EXTINF:-1 tvg-id="oc-boat-1921" group-title="Классика кино;Открытое кино",Лодка (1921) — PD
+https://archive.org/download/TheBoat/The_Boat_512kb.mp4
+#EXTINF:-1 tvg-id="oc-eoch-arden-1911" group-title="Классика кино;Открытое кино",Енох Арден (1911) — CC0
+https://archive.org/download/EnochArden_94/EnochArden_512kb.mp4
+#EXTINF:-1 tvg-id="oc-deerslayer-1920" group-title="Классика кино;Открытое кино",Охотник на оленей (1920) — PD
+https://archive.org/download/TheDeerslayer1920/TheDeerslayer_512kb.mp4
+#EXTINF:-1 tvg-id="oc-bulldog-drummond-1937" group-title="Классика кино;Открытое кино",Бульдог Драммонд спасается (1937) — PD
+https://archive.org/download/bulldog_drummond_escapes/bulldog_drummond_escapes_512kb.mp4
+#EXTINF:-1 tvg-id="oc-hook-line-1930" group-title="Классика кино;Открытое кино",Крючок, леска и грузило (1930) — PD
+https://archive.org/download/hook_line_and_sinker/hook_line_and_sinker_512kb.mp4
+#EXTINF:-1 tvg-id="oc-washington-1943" group-title="Классика кино;Открытое кино",Вот это Вашингтон (1943) — PD
+https://archive.org/download/so_this_is_washington/so_this_is_washington_512kb.mp4
+#EXTINF:-1 tvg-id="oc-daredevil-1923" group-title="Классика кино;Открытое кино",Смельчак (1923) — PD
+https://archive.org/download/TheDaredevil1923--BenTurpin/Daredevil2.mp4
+#EXTINF:-1 tvg-id="oc-squaws-love-1911" group-title="Классика кино;Открытое кино",Любовь индианки (1911) — PD
+https://archive.org/download/TheSquawsLove1911_28/SquawsLove2.mp4
