@@ -1274,7 +1274,8 @@
 
   // ─── Fullscreen / immersive helpers ─────────────────────
   function isImmersive() {
-    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+    var v = document.getElementById('video');
+    return !!(document.fullscreenElement || document.webkitFullscreenElement || (v && v.webkitDisplayingFullscreen));
   }
 
   function shouldAutoImmersive() {
@@ -1303,6 +1304,11 @@
 
   function exitImmersive() {
     if (!isImmersive()) return;
+    var v = document.getElementById('video');
+    if (v && v.webkitDisplayingFullscreen && typeof v.webkitExitFullscreen === 'function') {
+      try { v.webkitExitFullscreen(); } catch (e) {}
+      return;
+    }
     var exit = document.exitFullscreen || document.webkitExitFullscreen || document.webkitCancelFullScreen;
     if (exit) {
       try {

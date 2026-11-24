@@ -1146,16 +1146,49 @@
   var RE_EMBED = /^https:\/\/api\.(?:nextembed\.ws|embf\.net|domem\.ws)\/embed\/(?:movie|kp)\/\d+(?:\?[^#]*)?$/i;
 
 
+  var EMBED_HOSTS = ['api.nextembed.ws', 'api.embf.net', 'api.domem.ws'];
+
+  function embedCandidates(url) {
+    var m = String(url || '').match(/^https:\/\/(api\.(?:nextembed\.ws|embf\.net|domem\.ws))(\/embed\/(?:movie|kp)\/\d+(?:\?[^#]*)?)$/i);
+    if (!m) return [url];
+    var path = m[2];
+    var out = [];
+    var seen = {};
+    [m[1]].concat(EMBED_HOSTS).forEach(function (host) {
+      var u = 'https://' + host + path;
+      if (seen[u]) return;
+      seen[u] = true;
+      out.push(u);
+    });
+    return out;
+  }
+
   function resolveEmbed(url) {
     if (!RE_EMBED.test(url)) return Promise.resolve(url);
     if (window.location.protocol === 'file:') return Promise.resolve(null);
-    return fetch(url, { credentials: 'omit', cache: 'no-store' })
-      .then(function (r) { return r.ok ? r.text() : Promise.reject(new Error('embed ' + r.status)); })
-      .then(function (html) {
-        var m = html.match(/https?:\/\/[^\s"'<>]+?\.m3u8[^\s"'<>]*/i);
-        return m ? m[0] : null;
-      })
-      .catch(function (e) { log('embed-resolve', e); return null; });
+    var candidates = embedCandidates(url);
+    var i = 0;
+    function tryNext(lastErr) {
+      if (i >= candidates.length) {
+        if (lastErr) log('embed-resolve', lastErr);
+        return Promise.resolve(null);
+      }
+      var candidate = candidates[i++];
+      return fetch(candidate, { credentials: 'omit', cache: 'no-store' })
+        .then(function (r) {
+          if (!r.ok) throw new Error('embed ' + r.status + ' ' + candidate);
+          return r.text();
+        })
+        .then(function (html) {
+          var mm = html.match(/https?:\/\/[^\s"'<>]+?\.m3u8[^\s"'<>]*/i);
+          if (mm) return mm[0];
+          throw new Error('embed no m3u8 ' + candidate);
+        })
+        .catch(function (e) {
+          return tryNext(e);
+        });
+    }
+    return tryNext(null);
   }
 
   function play(source, idx) {

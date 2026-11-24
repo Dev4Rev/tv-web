@@ -690,8 +690,11 @@
 
   function isFullscreen() {
     var wrap = document.getElementById('playerWrap');
-    if (!wrap) return false;
-    return document.fullscreenElement === wrap || document.webkitFullscreenElement === wrap;
+    var video = document.getElementById('video');
+    if (!wrap) return !!(video && video.webkitDisplayingFullscreen);
+    return document.fullscreenElement === wrap ||
+      document.webkitFullscreenElement === wrap ||
+      !!(video && video.webkitDisplayingFullscreen);
   }
 
   function updateFsIcon() {
@@ -756,6 +759,11 @@
   }
 
   function exitFullscreen() {
+    var video = document.getElementById('video');
+    if (video && video.webkitDisplayingFullscreen && typeof video.webkitExitFullscreen === 'function') {
+      try { video.webkitExitFullscreen(); } catch (e) {}
+      return;
+    }
     if (!isFullscreen()) return;
     var exit = document.exitFullscreen || document.webkitExitFullscreen || document.webkitCancelFullScreen;
     if (exit) { var p = exit.call(document); if (p && p.catch) p.catch(function () {}); }

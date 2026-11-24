@@ -192,6 +192,7 @@
   }
 
   function isFullscreen() {
+    if (video && video.webkitDisplayingFullscreen) return true;
     if (!wrap) return false;
     return document.fullscreenElement === wrap || document.webkitFullscreenElement === wrap;
   }
@@ -231,6 +232,10 @@
     if (!wrap) return;
 
     if (isFullscreen()) {
+      if (video && video.webkitDisplayingFullscreen && typeof video.webkitExitFullscreen === 'function') {
+        try { video.webkitExitFullscreen(); } catch (e) {}
+        return;
+      }
       var exit = document.exitFullscreen || document.webkitExitFullscreen || document.webkitCancelFullScreen;
       if (exit) { try { var p = exit.call(document); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
       return;
