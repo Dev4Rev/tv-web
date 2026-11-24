@@ -1147,6 +1147,7 @@
 
 
   var EMBED_HOSTS = ['api.nextembed.ws', 'api.embf.net', 'api.domem.ws'];
+  var lastEmbedError = '';
 
   function embedCandidates(url) {
     var m = String(url || '').match(/^https:\/\/(api\.(?:nextembed\.ws|embf\.net|domem\.ws))(\/embed\/(?:movie|kp)\/\d+(?:\?[^#]*)?)$/i);
@@ -1164,17 +1165,26 @@
   }
 
   function resolveEmbed(url) {
+    lastEmbedError = '';
     if (!RE_EMBED.test(url)) return Promise.resolve(url);
-    if (window.location.protocol === 'file:') return Promise.resolve(null);
+    if (window.location.protocol === 'file:') {
+      lastEmbedError = 'file-protocol';
+      return Promise.resolve(null);
+    }
     var candidates = embedCandidates(url);
     var i = 0;
     function tryNext(lastErr) {
       if (i >= candidates.length) {
         if (lastErr) log('embed-resolve', lastErr);
+        lastEmbedError = lastErr ? String(lastErr.message || lastErr) : 'unknown';
         return Promise.resolve(null);
       }
       var candidate = candidates[i++];
-      return fetch(candidate, { credentials: 'omit', cache: 'no-store' })
+      return fetch(candidate, {
+        credentials: 'omit',
+        cache: 'no-store',
+        referrerPolicy: 'no-referrer'
+      })
         .then(function (r) {
           if (!r.ok) throw new Error('embed ' + r.status + ' ' + candidate);
           return r.text();
@@ -1227,7 +1237,13 @@
     resolveEmbed(url).then(function (resolved) {
       if (!isActual(token)) return;
       if (!resolved) {
-        failCurrent('Не удалось получить поток из внешнего источника.', token);
+        var msg = 'Не удалось получить поток из внешнего источника.';
+        if (lastEmbedError && /embed 422/.test(lastEmbedError)) {
+          msg = 'Источник временно недоступен (422). Попробуйте позже или откройте другой источник.';
+        } else if (lastEmbedError && /embed 403|embed 401/.test(lastEmbedError)) {
+          msg = 'Источник отклонил запрос (доступ ограничен). Попробуйте позже или другой источник.';
+        }
+        failCurrent(msg, token);
         return;
       }
 
