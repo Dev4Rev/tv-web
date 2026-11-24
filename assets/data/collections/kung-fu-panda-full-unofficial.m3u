@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Кунг-фу Панда — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="kung-fu-panda-1-ru" group-title="Полные фильмы;Неофициально",Кунг-фу Панда (2008) — полный фильм
+https://api.nextembed.ws/embed/kp/103734
+#EXTINF:-1 tvg-id="kung-fu-panda-2-ru" group-title="Полные фильмы;Неофициально",Кунг-фу Панда 2 (2011) — полный фильм
+https://api.nextembed.ws/embed/kp/427878
+#EXTINF:-1 tvg-id="kung-fu-panda-3-ru" group-title="Полные фильмы;Неофициально",Кунг-фу Панда 3 (2016) — полный фильм
+https://api.nextembed.ws/embed/kp/692865

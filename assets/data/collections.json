@@ -244,6 +244,110 @@
           "count": 1,
           "label": "НЕОФИЦИАЛЬНО",
           "note": "Неофициальный полный фильм «Клаус» (2019). Источник: HTTPS-embed nextembed."
+        },
+        {
+          "id": "franchise-madagascar-full",
+          "name": "Мадагаскар — полные фильмы",
+          "file": "./assets/data/collections/madagascar-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Мадагаскар» (2005) и «Мадагаскар 3» (2012). Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-kung-fu-panda-full",
+          "name": "Кунг-фу Панда — полные фильмы",
+          "file": "./assets/data/collections/kung-fu-panda-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Кунг-фу Панда» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-cars-full",
+          "name": "Тачки — полные фильмы",
+          "file": "./assets/data/collections/cars-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Тачки» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-httyd-full",
+          "name": "Как приручить дракона — полные фильмы",
+          "file": "./assets/data/collections/httyd-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Как приручить дракона» 1–2. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-toy-story-full",
+          "name": "История игрушек — полные фильмы",
+          "file": "./assets/data/collections/toy-story-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «История игрушек» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-monsters-inc-full",
+          "name": "Корпорация монстров — полные фильмы",
+          "file": "./assets/data/collections/monsters-inc-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Корпорация монстров» и «Университет монстров». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-incredibles-full",
+          "name": "Суперсемейка — полные фильмы",
+          "file": "./assets/data/collections/incredibles-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Суперсемейка» 1–2. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-nemo-full",
+          "name": "В поисках Немо / Дори — полные фильмы",
+          "file": "./assets/data/collections/nemo-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «В поисках Немо» и «В поисках Дори». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-spider-man-raimi-full",
+          "name": "Человек-паук (Сэм Рэйми) — полные фильмы",
+          "file": "./assets/data/collections/spider-man-raimi-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Человек-паук» 1–3 (Сэм Рэйми). Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-pirates-full",
+          "name": "Пираты Карибского моря — полные фильмы",
+          "file": "./assets/data/collections/pirates-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Пираты Карибского моря» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-pixar-2000s-full",
+          "name": "Pixar 2000-х — полные фильмы",
+          "file": "./assets/data/collections/pixar-2000s-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы Pixar: «Рататуй», «ВАЛЛ·И», «Вверх». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-dreamworks-disney-2000s-full",
+          "name": "Анимация 2000-х — полные фильмы",
+          "file": "./assets/data/collections/dreamworks-disney-2000s-full-unofficial.m3u",
+          "count": 5,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы: «Мегамозг», «Гадкий я», «Рапунцель», «Вольт», «Монстры против пришельцев». Источник: nextembed."
+        },
+        {
+          "id": "nostalgia-2000s-liveaction-full",
+          "name": "Кино 2000-х: ностальгия — полные фильмы",
+          "file": "./assets/data/collections/nostalgia-2000s-liveaction-full-unofficial.m3u",
+          "count": 8,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы-ностальгия: Железный человек, Трансформеры, Аватар, Чарли и шоколадная фабрика, Маска, Джуманджи, Пятый элемент, Мумия. Источник: nextembed."
         }
       ]
     },
@@ -414,6 +518,86 @@
           "name": "Мультфильмы мира",
           "file": "./assets/data/collections/cartoons-world.m3u",
           "count": 34
+        },
+        {
+          "id": "franchise-madagascar-full",
+          "name": "Мадагаскар — полные фильмы",
+          "file": "./assets/data/collections/madagascar-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Мадагаскар» (2005) и «Мадагаскар 3» (2012). Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-kung-fu-panda-full",
+          "name": "Кунг-фу Панда — полные фильмы",
+          "file": "./assets/data/collections/kung-fu-panda-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Кунг-фу Панда» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-cars-full",
+          "name": "Тачки — полные фильмы",
+          "file": "./assets/data/collections/cars-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Тачки» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-httyd-full",
+          "name": "Как приручить дракона — полные фильмы",
+          "file": "./assets/data/collections/httyd-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Как приручить дракона» 1–2. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-toy-story-full",
+          "name": "История игрушек — полные фильмы",
+          "file": "./assets/data/collections/toy-story-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «История игрушек» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-monsters-inc-full",
+          "name": "Корпорация монстров — полные фильмы",
+          "file": "./assets/data/collections/monsters-inc-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Корпорация монстров» и «Университет монстров». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-incredibles-full",
+          "name": "Суперсемейка — полные фильмы",
+          "file": "./assets/data/collections/incredibles-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Суперсемейка» 1–2. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-nemo-full",
+          "name": "В поисках Немо / Дори — полные фильмы",
+          "file": "./assets/data/collections/nemo-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «В поисках Немо» и «В поисках Дори». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-pixar-2000s-full",
+          "name": "Pixar 2000-х — полные фильмы",
+          "file": "./assets/data/collections/pixar-2000s-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы Pixar: «Рататуй», «ВАЛЛ·И», «Вверх». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-dreamworks-disney-2000s-full",
+          "name": "Анимация 2000-х — полные фильмы",
+          "file": "./assets/data/collections/dreamworks-disney-2000s-full-unofficial.m3u",
+          "count": 5,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы: «Мегамозг», «Гадкий я», «Рапунцель», «Вольт», «Монстры против пришельцев». Источник: nextembed."
         }
       ]
     },
@@ -492,6 +676,94 @@
           "name": "Фильмы",
           "file": "./assets/data/collections/movies.m3u",
           "count": 30
+        },
+        {
+          "id": "franchise-madagascar-full",
+          "name": "Мадагаскар — полные фильмы",
+          "file": "./assets/data/collections/madagascar-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Мадагаскар» (2005) и «Мадагаскар 3» (2012). Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-kung-fu-panda-full",
+          "name": "Кунг-фу Панда — полные фильмы",
+          "file": "./assets/data/collections/kung-fu-panda-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Кунг-фу Панда» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-cars-full",
+          "name": "Тачки — полные фильмы",
+          "file": "./assets/data/collections/cars-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Тачки» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-httyd-full",
+          "name": "Как приручить дракона — полные фильмы",
+          "file": "./assets/data/collections/httyd-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Как приручить дракона» 1–2. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-toy-story-full",
+          "name": "История игрушек — полные фильмы",
+          "file": "./assets/data/collections/toy-story-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «История игрушек» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-monsters-inc-full",
+          "name": "Корпорация монстров — полные фильмы",
+          "file": "./assets/data/collections/monsters-inc-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Корпорация монстров» и «Университет монстров». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-incredibles-full",
+          "name": "Суперсемейка — полные фильмы",
+          "file": "./assets/data/collections/incredibles-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Суперсемейка» 1–2. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-nemo-full",
+          "name": "В поисках Немо / Дори — полные фильмы",
+          "file": "./assets/data/collections/nemo-full-unofficial.m3u",
+          "count": 2,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «В поисках Немо» и «В поисках Дори». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-pixar-2000s-full",
+          "name": "Pixar 2000-х — полные фильмы",
+          "file": "./assets/data/collections/pixar-2000s-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы Pixar: «Рататуй», «ВАЛЛ·И», «Вверх». Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-dreamworks-disney-2000s-full",
+          "name": "Анимация 2000-х — полные фильмы",
+          "file": "./assets/data/collections/dreamworks-disney-2000s-full-unofficial.m3u",
+          "count": 5,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы: «Мегамозг», «Гадкий я», «Рапунцель», «Вольт», «Монстры против пришельцев». Источник: nextembed."
+        },
+        {
+          "id": "nostalgia-2000s-liveaction-full",
+          "name": "Кино 2000-х: ностальгия — полные фильмы",
+          "file": "./assets/data/collections/nostalgia-2000s-liveaction-full-unofficial.m3u",
+          "count": 8,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы-ностальгия: Железный человек, Трансформеры, Аватар, Чарли и шоколадная фабрика, Маска, Джуманджи, Пятый элемент, Мумия. Источник: nextembed."
         }
       ]
     },
@@ -528,6 +800,30 @@
           "name": "Кино · Free-TV",
           "file": "./assets/data/collections/world-mix.m3u",
           "count": 34
+        },
+        {
+          "id": "franchise-spider-man-raimi-full",
+          "name": "Человек-паук (Сэм Рэйми) — полные фильмы",
+          "file": "./assets/data/collections/spider-man-raimi-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Человек-паук» 1–3 (Сэм Рэйми). Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "franchise-pirates-full",
+          "name": "Пираты Карибского моря — полные фильмы",
+          "file": "./assets/data/collections/pirates-full-unofficial.m3u",
+          "count": 3,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы «Пираты Карибского моря» 1–3. Источник: nextembed, воспроизводится в нашем плеере."
+        },
+        {
+          "id": "nostalgia-2000s-liveaction-full",
+          "name": "Кино 2000-х: ностальгия — полные фильмы",
+          "file": "./assets/data/collections/nostalgia-2000s-liveaction-full-unofficial.m3u",
+          "count": 8,
+          "label": "НЕОФИЦИАЛЬНО",
+          "note": "Неофициальные полные фильмы-ностальгия: Железный человек, Трансформеры, Аватар, Чарли и шоколадная фабрика, Маска, Джуманджи, Пятый элемент, Мумия. Источник: nextembed."
         }
       ]
     },

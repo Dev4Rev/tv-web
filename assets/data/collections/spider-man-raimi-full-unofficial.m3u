@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Человек-паук (Сэм Рэйми) — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="spider-man-1-ru" group-title="Полные фильмы;Неофициально",Человек-паук (2002) — полный фильм
+https://api.nextembed.ws/embed/kp/838
+#EXTINF:-1 tvg-id="spider-man-2-ru" group-title="Полные фильмы;Неофициально",Человек-паук 2 (2004) — полный фильм
+https://api.nextembed.ws/embed/kp/2898
+#EXTINF:-1 tvg-id="spider-man-3-ru" group-title="Полные фильмы;Неофициально",Человек-паук 3: Враг в отражении (2007) — полный фильм
+https://api.nextembed.ws/embed/kp/82441

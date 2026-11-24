@@ -1,0 +1,6 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",В поисках Немо / Дори — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="finding-nemo-ru" group-title="Полные фильмы;Неофициально",В поисках Немо (2003) — полный фильм
+https://api.nextembed.ws/embed/kp/7908
+#EXTINF:-1 tvg-id="finding-dory-ru" group-title="Полные фильмы;Неофициально",В поисках Дори (2016) — полный фильм
+https://api.nextembed.ws/embed/kp/692957

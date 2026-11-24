@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Тачки — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="cars-1-ru" group-title="Полные фильмы;Неофициально",Тачки (2006) — полный фильм
+https://api.nextembed.ws/embed/kp/61249
+#EXTINF:-1 tvg-id="cars-2-ru" group-title="Полные фильмы;Неофициально",Тачки 2 (2011) — полный фильм
+https://api.nextembed.ws/embed/kp/409013
+#EXTINF:-1 tvg-id="cars-3-ru" group-title="Полные фильмы;Неофициально",Тачки 3 (2017) — полный фильм
+https://api.nextembed.ws/embed/kp/839646

@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Пираты Карибского моря — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="pirates-1-ru" group-title="Полные фильмы;Неофициально",Пираты Карибского моря: Проклятие Чёрной жемчужины (2003) — полный фильм
+https://api.nextembed.ws/embed/kp/4374
+#EXTINF:-1 tvg-id="pirates-2-ru" group-title="Полные фильмы;Неофициально",Пираты Карибского моря: Сундук мертвеца (2006) — полный фильм
+https://api.nextembed.ws/embed/kp/63991
+#EXTINF:-1 tvg-id="pirates-3-ru" group-title="Полные фильмы;Неофициально",Пираты Карибского моря: На краю света (2007) — полный фильм
+https://api.nextembed.ws/embed/kp/102124

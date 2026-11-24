@@ -1,0 +1,6 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Мадагаскар — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="madagascar-1-ru" group-title="Полные фильмы;Неофициально",Мадагаскар (2005) — полный фильм
+https://api.nextembed.ws/embed/kp/6006
+#EXTINF:-1 tvg-id="madagascar-3-ru" group-title="Полные фильмы;Неофициально",Мадагаскар 3 (2012) — полный фильм
+https://api.nextembed.ws/embed/kp/422792

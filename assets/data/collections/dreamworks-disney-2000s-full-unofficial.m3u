@@ -1,0 +1,12 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Анимация 2000-х — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="megamind-ru" group-title="Полные фильмы;Неофициально",Мегамозг (2010) — полный фильм
+https://api.nextembed.ws/embed/kp/405608
+#EXTINF:-1 tvg-id="despicable-me-ru" group-title="Полные фильмы;Неофициально",Гадкий я (2010) — полный фильм
+https://api.nextembed.ws/embed/kp/432724
+#EXTINF:-1 tvg-id="tangled-ru" group-title="Полные фильмы;Неофициально",Рапунцель: Запутанная история (2010) — полный фильм
+https://api.nextembed.ws/embed/kp/84049
+#EXTINF:-1 tvg-id="bolt-ru" group-title="Полные фильмы;Неофициально",Вольт (2008) — полный фильм
+https://api.nextembed.ws/embed/kp/70955
+#EXTINF:-1 tvg-id="monsters-vs-aliens-ru" group-title="Полные фильмы;Неофициально",Монстры против пришельцев (2009) — полный фильм
+https://api.nextembed.ws/embed/kp/280161

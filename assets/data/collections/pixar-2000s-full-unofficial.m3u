@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Pixar 2000-х — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="ratatouille-ru" group-title="Полные фильмы;Неофициально",Рататуй (2007) — полный фильм
+https://api.nextembed.ws/embed/kp/89514
+#EXTINF:-1 tvg-id="walle-ru" group-title="Полные фильмы;Неофициально",ВАЛЛ·И (2008) — полный фильм
+https://api.nextembed.ws/embed/kp/279102
+#EXTINF:-1 tvg-id="up-ru" group-title="Полные фильмы;Неофициально",Вверх (2009) — полный фильм
+https://api.nextembed.ws/embed/kp/325381

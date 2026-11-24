@@ -1,0 +1,8 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",История игрушек — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="toy-story-1-ru" group-title="Полные фильмы;Неофициально",История игрушек (1995) — полный фильм
+https://api.nextembed.ws/embed/kp/482
+#EXTINF:-1 tvg-id="toy-story-2-ru" group-title="Полные фильмы;Неофициально",История игрушек 2 (1999) — полный фильм
+https://api.nextembed.ws/embed/kp/405
+#EXTINF:-1 tvg-id="toy-story-3-ru" group-title="Полные фильмы;Неофициально",История игрушек: Большой побег (2010) — полный фильм
+https://api.nextembed.ws/embed/kp/258328

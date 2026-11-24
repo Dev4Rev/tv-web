@@ -1,0 +1,6 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Суперсемейка — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="incredibles-1-ru" group-title="Полные фильмы;Неофициально",Суперсемейка (2004) — полный фильм
+https://api.nextembed.ws/embed/kp/38903
+#EXTINF:-1 tvg-id="incredibles-2-ru" group-title="Полные фильмы;Неофициально",Суперсемейка 2 (2018) — полный фильм
+https://api.nextembed.ws/embed/kp/839650

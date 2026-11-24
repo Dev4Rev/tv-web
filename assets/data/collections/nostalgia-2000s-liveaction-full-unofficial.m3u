@@ -1,0 +1,18 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Кино 2000-х ностальгия — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="iron-man-ru" group-title="Полные фильмы;Неофициально",Железный человек (2008) — полный фильм
+https://api.nextembed.ws/embed/kp/61237
+#EXTINF:-1 tvg-id="transformers-1-ru" group-title="Полные фильмы;Неофициально",Трансформеры (2007) — полный фильм
+https://api.nextembed.ws/embed/kp/81288
+#EXTINF:-1 tvg-id="avatar-ru" group-title="Полные фильмы;Неофициально",Аватар (2009) — полный фильм
+https://api.nextembed.ws/embed/kp/251733
+#EXTINF:-1 tvg-id="charlie-chocolate-factory-ru" group-title="Полные фильмы;Неофициально",Чарли и шоколадная фабрика (2005) — полный фильм
+https://api.nextembed.ws/embed/kp/38905
+#EXTINF:-1 tvg-id="mask-ru" group-title="Полные фильмы;Неофициально",Маска (1994) — полный фильм
+https://api.nextembed.ws/embed/kp/6039
+#EXTINF:-1 tvg-id="jumanji-ru" group-title="Полные фильмы;Неофициально",Джуманджи (1995) — полный фильм
+https://api.nextembed.ws/embed/kp/8161
+#EXTINF:-1 tvg-id="fifth-element-ru" group-title="Полные фильмы;Неофициально",Пятый элемент (1997) — полный фильм
+https://api.nextembed.ws/embed/kp/2656
+#EXTINF:-1 tvg-id="mummy-ru" group-title="Полные фильмы;Неофициально",Мумия (1999) — полный фильм
+https://api.nextembed.ws/embed/kp/4484

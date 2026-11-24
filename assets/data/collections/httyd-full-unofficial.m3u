@@ -1,0 +1,6 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Как приручить дракона — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="httyd-1-ru" group-title="Полные фильмы;Неофициально",Как приручить дракона (2010) — полный фильм
+https://api.nextembed.ws/embed/kp/280172
+#EXTINF:-1 tvg-id="httyd-2-ru" group-title="Полные фильмы;Неофициально",Как приручить дракона 2 (2014) — полный фильм
+https://api.nextembed.ws/embed/kp/512883

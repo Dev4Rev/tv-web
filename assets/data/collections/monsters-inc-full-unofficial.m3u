@@ -1,0 +1,6 @@
+#EXTM3U
+#EXTINF:-1 group-title="dev4rev",Корпорация монстров — неофициальные полные фильмы
+#EXTINF:-1 tvg-id="monsters-inc-1-ru" group-title="Полные фильмы;Неофициально",Корпорация монстров (2001) — полный фильм
+https://api.nextembed.ws/embed/kp/458
+#EXTINF:-1 tvg-id="monsters-university-ru" group-title="Полные фильмы;Неофициально",Университет монстров (2013) — полный фильм
+https://api.nextembed.ws/embed/kp/468904
